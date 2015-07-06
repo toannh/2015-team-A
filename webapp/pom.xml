@@ -44,4 +44,31 @@
       <scope>provided</scope>
     </dependency>
   </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.lesscss</groupId>
+        <artifactId>lesscss-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>teama_less</id>
+            <configuration>
+              <!--Should be the final one because the less folder should be outside the webapp in /src/main/less   -->
+              <!--<sourceDirectory>${basedir}/src/main/less/bootstrap/less</sourceDirectory>-->
+              <sourceDirectory>${project.basedir}/src/main/webapp/less</sourceDirectory>
+              <outputDirectory>${project.build.directory}/${project.build.finalName}/css</outputDirectory>
+              <compress>false</compress>
+              <includes>
+                <include>style.less</include>
+              </includes>
+            </configuration>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>

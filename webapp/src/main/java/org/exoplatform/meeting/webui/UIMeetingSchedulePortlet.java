@@ -20,19 +20,33 @@
 package org.exoplatform.meeting.webui;
 
 import org.exoplatform.commons.serialization.api.annotations.Serialized;
+import org.exoplatform.portal.webui.portal.UIPortalComponentActionListener;
 import org.exoplatform.webui.config.annotation.ComponentConfig;
+import org.exoplatform.webui.config.annotation.EventConfig;
 import org.exoplatform.webui.core.UIPortletApplication;
 import org.exoplatform.webui.core.lifecycle.UIApplicationLifecycle;
+import org.exoplatform.webui.event.Event;
+import org.exoplatform.webui.event.EventListener;
 
 /**
  * @author <a href="mailto:tuyennt@exoplatform.com">Tuyen Nguyen The</a>.
  */
 @ComponentConfig(lifecycle = UIApplicationLifecycle.class, template = "app:/groovy/meetingschedule/webui/UIMeetingSchedulePortlet.gtmpl", events = {
-
+        @EventConfig(listeners = UIMeetingSchedulePortlet.ScheduleNewMeetingActionListener.class),
+        @EventConfig(listeners = UIPortalComponentActionListener.ViewChildActionListener.class)
 })
 @Serialized
 public class UIMeetingSchedulePortlet extends UIPortletApplication {
   public UIMeetingSchedulePortlet() throws Exception {
     super();
+    //addChild(UIListMeetingSchedule.class, null, null);
+    //addChild(UINewMeetingSchedule.class, null, null).setRendered(false);
+  }
+
+  public static class ScheduleNewMeetingActionListener extends EventListener<UIMeetingSchedulePortlet> {
+    @Override
+    public void execute(Event<UIMeetingSchedulePortlet> uiMeetingSchedulePortletEvent) throws Exception {
+      System.out.println("Hello world");
+    }
   }
 }
