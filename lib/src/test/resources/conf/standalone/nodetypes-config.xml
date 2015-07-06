@@ -1,0 +1,122 @@
+<nodeTypes
+        xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+        xmlns:mix="http://www.jcp.org/jcr/mix/1.0"
+        xmlns:jcr="http://www.jcp.org/jcr/1.0"
+        xmlns:exo="http://www.exoplatform.com/jcr/exo/1.0">
+
+  <nodeType name="exo:meeting" isMixin="false" hasOrderableChildNodes="false" primaryItemName=""  >
+
+    <supertypes>
+      <supertype>nt:base</supertype>
+    </supertypes>
+
+    <propertyDefinitions>
+      <propertyDefinition name="exo:meetingTitle" requiredType="String" autoCreated="false" mandatory="false"
+                          onParentVersion="COPY" protected="false" multiple="false">
+        <valueConstraints/>
+      </propertyDefinition>
+
+      <propertyDefinition name="exo:meetingValidation" requiredType="Long" autoCreated="false" mandatory="false"
+                          onParentVersion="COPY" protected="false" multiple="false">
+        <valueConstraints/>
+      </propertyDefinition>
+
+      <propertyDefinition name="exo:meetingDescription" requiredType="String" autoCreated="false" mandatory="false"
+                          onParentVersion="COPY" protected="false" multiple="false">
+        <valueConstraints/>
+      </propertyDefinition>
+
+
+
+    </propertyDefinitions>
+
+    <childNodeDefinitions>
+      <childNodeDefinition name="comments" defaultPrimaryType="" autoCreated="false" mandatory="false"
+                           onParentVersion="COPY" protected="false" sameNameSiblings="false">
+        <requiredPrimaryTypes>
+          <requiredPrimaryType>nt:unstructured</requiredPrimaryType>
+        </requiredPrimaryTypes>
+      </childNodeDefinition>
+    </childNodeDefinitions>
+  </nodeType>
+
+  <nodeType name="mix:timeOption" isMixin="true" hasOrderableChildNodes="false" primaryItemName="">
+    <propertyDefinitions>
+      <propertyDefinition name="desc" requiredType="String" autoCreated="false" mandatory="false"
+                          onParentVersion="COPY" protected="false" multiple="false" >
+        <valueConstraints/>
+      </propertyDefinition>
+
+      <propertyDefinition name="fromDate" requiredType="Long" autoCreated="false" mandatory="false"
+                          onParentVersion="COPY" protected="false" multiple="false" >
+        <valueConstraints/>
+      </propertyDefinition>
+
+      <propertyDefinition name="toDate" requiredType="Long" autoCreated="false" mandatory="false"
+                          onParentVersion="COPY" protected="false" multiple="false" >
+        <valueConstraints/>
+      </propertyDefinition>
+
+      <propertyDefinition name="vote" requiredType="String" autoCreated="false" mandatory="false"
+                          onParentVersion="COPY" protected="false" multiple="false" >
+        <valueConstraints/>
+      </propertyDefinition>
+
+      <propertyDefinition name="userVote" requiredType="String" autoCreated="false" mandatory="false"
+                          onParentVersion="COPY" protected="false" multiple="false" >
+        <valueConstraints/>
+      </propertyDefinition>
+
+    </propertyDefinitions>
+  </nodeType>
+
+
+  <nodeType name="mix:i18n" isMixin="true" hasOrderableChildNodes="false" primaryItemName="">
+    <propertyDefinitions>
+      <propertyDefinition name="exo:language" requiredType="String" autoCreated="true" mandatory="false"
+                          onParentVersion="COPY" protected="false" multiple="false">
+        <valueConstraints/>
+        <defaultValues>
+          <defaultValue>en</defaultValue>
+        </defaultValues>
+      </propertyDefinition>
+    </propertyDefinitions>
+    <childNodeDefinitions>
+      <childNodeDefinition name="*" defaultPrimaryType="nt:unstructured" autoCreated="false" mandatory="false"
+                           onParentVersion="COPY" protected="false" sameNameSiblings="false">
+        <requiredPrimaryTypes>
+          <requiredPrimaryType>nt:unstructured</requiredPrimaryType>
+        </requiredPrimaryTypes>
+      </childNodeDefinition>
+    </childNodeDefinitions>
+  </nodeType>
+
+  <nodeType name="mix:commentable" isMixin="true" hasOrderableChildNodes="false" primaryItemName=""></nodeType>
+
+  <nodeType	name="exo:comments" isMixin="false" hasOrderableChildNodes="false" primaryItemName="">
+    <supertypes>
+      <supertype>nt:unstructured</supertype>
+    </supertypes>
+    <propertyDefinitions>
+      <propertyDefinition name="exo:commentor" requiredType="String" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="false">
+        <valueConstraints/>
+      </propertyDefinition>
+      <propertyDefinition name="exo:commentorFullName" requiredType="String" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="false">
+        <valueConstraints/>
+      </propertyDefinition>
+      <propertyDefinition name="exo:commentorEmail" requiredType="String" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="false">
+        <valueConstraints/>
+      </propertyDefinition>
+      <propertyDefinition name="exo:commentorSite" requiredType="String" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="false">
+        <valueConstraints/>
+      </propertyDefinition>
+      <propertyDefinition name="exo:commentDate" requiredType="Date" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="false">
+        <valueConstraints/>
+      </propertyDefinition>
+      <propertyDefinition name="exo:commentContent" requiredType="String" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="false">
+        <valueConstraints/>
+      </propertyDefinition>
+    </propertyDefinitions>
+  </nodeType>
+
+</nodeTypes>
