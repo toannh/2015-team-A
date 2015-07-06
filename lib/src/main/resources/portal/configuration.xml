@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<configuration
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.exoplatform.org/xml/ns/kernel_1_1.xsd
+        http://www.exoplatform.org/xml/ns/kernel_1_1.xsd"
+        xmlns="http://www.exoplatform.org/xml/ns/kernel_1_1.xsd">
+
+  <component>
+    <key>org.exoplatform.com.meeting.service.MeetingService</key>
+    <type>org.exoplatform.com.meeting.service.impl.MeetingServiceImpl</type>
+  </component>
+
+  <component>
+    <key>org.exoplatform.services.cms.comments.CommentsService</key>
+    <type>org.exoplatform.services.cms.comments.impl.CommentsServiceImpl</type>
+  </component>
+
+  <component>
+    <key>org.exoplatform.services.cms.i18n.MultiLanguageService</key>
+    <type>org.exoplatform.services.cms.i18n.impl.MultiLanguageServiceImpl</type>
+  </component>
+
+  <component>
+    <type>org.exoplatform.services.cms.jcrext.activity.ActivityCommonService</type>
+    <init-params>
+      <value-param>
+        <name>acceptedNodeTypes</name>
+        <value>{exo:accessibleMedia}{acme:contact_us}{exo:webContent}{exo:pictureOnHeadWebcontent}{exo:link}{acme:product}</value>
+      </value-param>
+      <value-param>
+        <name>acceptedProperties</name>
+        <value>{dc:title}{dc:description}{dc:creator}{dc:source}{exo:summary}{exo:title}{exo:text}</value>
+      </value-param>
+      <value-param>
+        <name>acceptedFileProperties</name>
+        <value>{dc:title}{dc:description}{dc:creator}{dc:source}{exo:summary}{exo:title}{exo:language}{jcr:data}</value>
+      </value-param>
+    </init-params>
+  </component>
+
+  <component>
+    <key>org.exoplatform.portal.config.UserACL</key>
+    <type>org.exoplatform.portal.config.UserACL</type>
+    <init-params>
+      <value-param>
+        <name>super.user</name>
+        <value>root</value>
+      </value-param>
+      <value-param>
+        <name>guests.group</name>
+        <value>/platform/guests</value>
+      </value-param>
+      <value-param>
+        <name>navigation.creator.membership.type</name>
+        <value>manager</value>
+      </value-param>
+    </init-params>
+  </component>
+
+  <external-component-plugins>
+    <target-component>org.exoplatform.services.resources.ResourceBundleService</target-component>
+    <component-plugin>
+      <name>Common utils ResourceBundle Plugin</name>
+      <set-method>addResourceBundle</set-method>
+      <type>org.exoplatform.services.resources.impl.BaseResourceBundlePlugin</type>
+      <init-params>
+        <values-param>
+          <name>classpath.resources</name>
+          <description>The resources that start with the following package name should be load from file system</description>
+          <value>locale.meeting.Meeting</value>
+        </values-param>
+
+        <values-param>
+          <name>portal.resource.names</name>
+          <description>The properties files of the portal , those file will be merged into one ResoruceBundle properties </description>
+          <value>locale.meeting.Meeting</value>
+        </values-param>
+
+      </init-params>
+    </component-plugin>
+  </external-component-plugins>
+
+</configuration>

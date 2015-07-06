@@ -1,5 +1,7 @@
 package org.exoplatform.com.meeting.service.entity;
 
+import java.util.UUID;
+
 /**
  * Created by The eXo Platform SEA
  * Author : eXoPlatform
@@ -8,18 +10,12 @@ package org.exoplatform.com.meeting.service.entity;
  * #comments here
  */
 public class TimeOption {
-  private String desc;
   private long fromDate;
   private long toDate;
-  private String vote; //total vote of option
-  private String userVote; // user vote option
+  private String id;
 
-  public String getDesc() {
-    return desc;
-  }
-
-  public void setDesc(String desc) {
-    this.desc = desc;
+  public TimeOption(){
+    id = UUID.randomUUID().toString();
   }
 
   public long getFromDate() {
@@ -38,19 +34,4 @@ public class TimeOption {
     this.toDate = toDate;
   }
 
-  public String getVote() {
-    return vote;
-  }
-
-  public void setVote(String vote) {
-    this.vote = vote;
-  }
-
-  public String getUserVote() {
-    return userVote;
-  }
-
-  public void setUserVote(String userVote) {
-    this.userVote = userVote;
-  }
 }

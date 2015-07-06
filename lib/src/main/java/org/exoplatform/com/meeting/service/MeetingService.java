@@ -15,6 +15,15 @@ import java.util.List;
  */
 public interface MeetingService {
 
+  public final String EXO_PROP_MEETING_TITLE        = "exo:meetingTitle";
+  public final String EXO_PROP_MEETING_VALIDATION   = "exo:meetingValidation";
+  public final String EXO_PROP_MEETING_DESCRIPTION  = "exo:meetingDescription";
+
+  public final String EXO_MIX_TIME_OPTION           = "mix:timeOption";
+  public final String EXO_MIX_PROP_OPTION_ID        = "exo:timeOptionId";
+  public final String EXO_MIX_PROP_OPTION_FROM_DATE = "exo:timeOptionFromDate";
+  public final String EXO_MIX_PROP_OPTION_TO_DATE   = "exo:timeOptionToDate";
+
   /**
    * Get all current of meeting
    * @param username: current PLF user

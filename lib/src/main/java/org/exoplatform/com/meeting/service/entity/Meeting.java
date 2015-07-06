@@ -20,7 +20,10 @@ public class Meeting {
   private long meetingValidation; // Expiration vote time
 
   private String owner;
-  private List<String> participantEmails;
+  private List<String> participant;
+
+  private List<UserVoted> userVotes;
+
   private int status; // Event status, values: 1: booked, 0: voting, -1: closed
 
   private String documentPath;
@@ -97,12 +100,20 @@ public class Meeting {
     this.owner = owner;
   }
 
-  public List<String> getParticipantEmails() {
-    return participantEmails;
+  public List<String> getParticipant() {
+    return participant;
   }
 
-  public void setParticipantEmails(List<String> participantEmails) {
-    this.participantEmails = participantEmails;
+  public void setParticipant(List<String> participant) {
+    this.participant = participant;
+  }
+
+  public List<UserVoted> getUserVotes() {
+    return userVotes;
+  }
+
+  public void setUserVotes(List<UserVoted> userVotes) {
+    this.userVotes = userVotes;
   }
 
   public int getStatus() {
