@@ -1,3 +1,105 @@
-<div id="MeetingSchedulePortlet">
-    Hello world
+<div id="MeetingSchedulePortlet" class="pd20 schedule-meeting-wrap">
+	<div class="uiActionBar uiGrayLightBox mgB15 clearfix">
+		<div class="pull-left btnLeft">
+			<button id="UIActionBarQuickAddEvent" class="btn btn-primary" type="button">
+			<i class="uiIconClock  uiIconDarkGray"></i> Schedule Meeting
+			</button>
+		</div>
+	</div>
+	<div id="UITabPane" class="uiTabNormal uiTabInPage">
+		<ul class="nav nav-tabs">
+			<li class="active">
+				<a data-target="#tab1" data-toggle="tab">Coming up</a>
+			</li>
+			<li>
+				<a data-target="#tab2" data-toggle="tab">Pending</a>
+			</li>
+			<li>
+				<a data-target="#tab3" data-toggle="tab">Invite</a>
+			</li>
+		</ul>
+		<div class="tab-content">
+			<div class="tab-pane fade in active" id="tab1">
+				<h4 class="titleWithBorder mgB15">All meeting coming up</h4>
+				<table class="uiGrid table table-hover table-striped table-metting">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Time</th>
+							<th>Member</th>
+							<th class="center">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><a href="#" class="meeting-name">Lorem ipsum dolor sit amet</a></td>
+							<td>
+								<div><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</div>
+								<div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
+							</td>
+							<td>
+								<span class="uiMention">giangnt</span><span class="uiMention">toanhn</span>
+							</td>
+							<td class="center">
+								<a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Edit"><i class="uiIconEdit"></i></a>
+								<a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Delete"><i class="uiIconDelete"></i></a>
+							</td>
+						</tr>
+						<tr class="meeting">
+							<td><a href="#" class="meeting-name">In non risus quis libero convallis</a></td>
+							<td>
+								<ol class="list-time">
+									<li class="muted"><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</li>
+									<li><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</li>
+									<li><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</li>
+								</ol>
+								<div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
+							</td>
+							<td>
+								<span class="uiMention">giangnt</span><span class="uiMention">toanhn</span>
+							</td>
+							<td class="center">
+								<a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Edit"><i class="uiIconEdit"></i></a>
+								<a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Delete"><i class="uiIconDelete"></i></a>
+							</td>
+						</tr>
+						<tr>
+							<td><a href="#" class="meeting-name">Aenean non eleifend magna</a></td>
+							<td>
+								<div><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</div>
+								<div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
+							</td>
+							<td>
+								<span class="uiMention">giangnt</span><span class="uiMention">toanhn</span>
+							</td>
+							<td class="center">
+								<a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Edit"><i class="uiIconEdit"></i></a>
+								<a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Delete"><i class="uiIconDelete"></i></a>
+							</td>
+						</tr>
+						<tr>
+							<td><a href="#" class="meeting-name">Scum Meeting week 25</a></td>
+							<td>
+								<div><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</div>
+								<div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
+							</td>
+							<td>
+								<span class="uiMention">giangnt</span><span class="uiMention">toanhn</span>
+							</td>
+							<td class="center">
+								<a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Edit"><i class="uiIconEdit"></i></a>
+								<a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Delete"><i class="uiIconDelete"></i></a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="tab-pane fade" id="tab2">
+				The Content of Tab 2 ...
+			</div>
+			<div class="tab-pane fade" id="tab3">
+				The Content of Tab 3 ...
+			</div>
+		</div>
+	</div>
 </div>

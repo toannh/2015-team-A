@@ -1,3 +1,62 @@
 #MeetingSchedulePortlet {
-   background: red;
+	.table-metting {
+		.meeting-name {
+			font-size: 14px;
+		}
+		.meeting {
+			td {
+				background-color: #D7F8D5;
+			}
+			/*position: relative;
+			td:first-child {
+				&:before {
+					content: "";
+					width: 2px;
+					height: 100%;
+					position: absolute;
+					left: -1px;
+					top: 0;
+					background-color: #39C522;
+				}
+			}*/
+		}
+		.expire-vote {
+			margin-top: 5px;
+			position: relative;
+			font-style: italic;
+			&:before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: block;
+				height: 1px;
+				width: 5px;
+				background-color: rgba(0, 0, 0, 0.5);
+			}
+			> small {
+				display: inline-block;
+				padding-top: 3px;
+			}
+		}
+		&:last-child{
+			margin-bottom: 0;
+		}
+		.list-time {
+			margin-left: 12px;
+			margin-bottom: 0;
+			> li {
+				list-style: disc;
+				&.muted {
+					text-decoration: line-through;
+				}
+				del {
+					//color: #999;
+				}
+				+ li {
+					margin-top: 5px;
+				}
+			}
+		}
+	}
 }
