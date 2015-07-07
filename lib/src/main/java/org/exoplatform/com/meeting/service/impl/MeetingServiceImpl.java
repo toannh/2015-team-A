@@ -69,7 +69,7 @@ public class MeetingServiceImpl implements MeetingService {
 
   @Override
   public List<Meeting> getMeetings(String username, Page page) {
-    return null;
+    return getMeetings(username, 1, page);
   }
 
   @Override
@@ -158,7 +158,7 @@ public class MeetingServiceImpl implements MeetingService {
       queryBuilder.append(" AND (" + EXO_PROP_MEETING_OWNER + " LIKE '%" + username + "%'");
       queryBuilder.append(" OR CONTAINS(" + EXO_PROP_MEETING_PARTICIPANT + ", '" + username + "')");
       queryBuilder.append(") ");
-      queryBuilder.append(" AND ("+EXO_PROP_MEETING_STATUS+" = '"+status+"' )");
+      queryBuilder.append(" AND (" + EXO_PROP_MEETING_STATUS + " = '" + status + "' )");
       queryBuilder.append(" ORDER BY " + EXO_PROP_MEETING_DATE_CREATED + " " + page.getSort());
       System.out.println(queryBuilder.toString());
       QueryManager queryManager = session.getWorkspace().getQueryManager();
@@ -193,11 +193,11 @@ public class MeetingServiceImpl implements MeetingService {
           meeting.setTimeOptions(gson.fromJson(node.getProperty(EXO_PROP_MEETING_TIME_OPTION).getString(), timeOptions.getClass()));
         if (node.hasNode(EXO_PROP_MEETING_PARTICIPANT))
           meeting.setParticipant(gson.fromJson(node.getProperty(EXO_PROP_MEETING_PARTICIPANT).getString(), participants.getClass()));
-        if(node.hasNode(EXO_PROP_MEETING_USER_VOTED))
+        if (node.hasNode(EXO_PROP_MEETING_USER_VOTED))
           meeting.setUserVotes(gson.fromJson(node.getProperty(EXO_PROP_MEETING_USER_VOTED).getString(), userVoteds.getClass()));
-        if(node.hasNode(EXO_PROP_MEETING_DATE_CREATED))
+        if (node.hasNode(EXO_PROP_MEETING_DATE_CREATED))
           meeting.setDateCreated(node.getProperty(EXO_PROP_MEETING_DATE_CREATED).getLong());
-        if(node.hasNode(EXO_PROP_MEETING_DATE_MODIFIED))
+        if (node.hasNode(EXO_PROP_MEETING_DATE_MODIFIED))
           meeting.setDateModified(node.getProperty(EXO_PROP_MEETING_DATE_MODIFIED).getLong());
 
         meetings.add(meeting);
@@ -236,6 +236,7 @@ public class MeetingServiceImpl implements MeetingService {
 
   @Override
   public Meeting addTimeOption(Meeting meeting, TimeOption option) {
+
     return null;
   }
 
@@ -245,12 +246,36 @@ public class MeetingServiceImpl implements MeetingService {
   }
 
   @Override
-  public Meeting addParticipant(Meeting meeting, String username) {
+  public Meeting addParticipant(Meeting meeting, String username) throws Exception{
+    Session session = getSession();
+    List<String> participants = new ArrayList<String>();
+    Node meetingNode = (Node) session.getItem(meeting.getJcrPath());
+    if (meetingNode.hasProperty(EXO_PROP_MEETING_PARTICIPANT)) {
+      String participantOrigin = meetingNode.getProperty(EXO_PROP_MEETING_PARTICIPANT).getString();
+      participants = gson.fromJson(participantOrigin, participants.getClass());
+      if(!participants.contains(username)) participants.add(username);
+      meetingNode.setProperty(EXO_PROP_MEETING_PARTICIPANT, gson.toJson(participants));
+      meetingNode.getParent().save();
+      meeting.setParticipant(participants);
+      return meeting;
+    }
     return null;
   }
 
   @Override
-  public Meeting removeParticipant(Meeting meeting, String username) {
+  public Meeting removeParticipant(Meeting meeting, String username) throws Exception {
+    Session session = getSession();
+    List<String> participants = new ArrayList<String>();
+    Node meetingNode = (Node) session.getItem(meeting.getJcrPath());
+    if (meetingNode.hasProperty(EXO_PROP_MEETING_PARTICIPANT)) {
+      String participantOrigin = meetingNode.getProperty(EXO_PROP_MEETING_PARTICIPANT).getString();
+      participants = gson.fromJson(participantOrigin, participants.getClass());
+      if(participants.contains(username)) participants.remove(username);
+      meetingNode.setProperty(EXO_PROP_MEETING_PARTICIPANT, gson.toJson(participants));
+      meetingNode.getParent().save();
+      meeting.setParticipant(participants);
+      return meeting;
+    }
     return null;
   }
 }

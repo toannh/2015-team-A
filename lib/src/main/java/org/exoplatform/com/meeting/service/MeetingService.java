@@ -90,7 +90,20 @@ public interface MeetingService {
 
   public Meeting removeTimeOption(Meeting meeting, String timeOptionId);
 
-  public Meeting addParticipant(Meeting meeting, String username);
+  /**
+   * Add new option for meeting
+   * @param meeting
+   * @param username
+   * @return Meeting object with new participant list
+   */
+  public Meeting addParticipant(Meeting meeting, String username) throws Exception;
 
-  public Meeting removeParticipant(Meeting meeting, String username);
+  /**
+   * Remove username from Meeting's participants
+   * @param meeting
+   * @param username
+   * @return Meeting object with new list of paricipants
+   * @throws Exception
+   */
+  public Meeting removeParticipant(Meeting meeting, String username) throws Exception;
 }
