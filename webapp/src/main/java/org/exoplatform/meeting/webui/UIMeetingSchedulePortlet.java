@@ -32,7 +32,6 @@ import org.exoplatform.webui.event.EventListener;
  * @author <a href="mailto:tuyennt@exoplatform.com">Tuyen Nguyen The</a>.
  */
 @ComponentConfig(lifecycle = UIApplicationLifecycle.class, template = "app:/groovy/meetingschedule/webui/UIMeetingSchedulePortlet.gtmpl", events = {
-        @EventConfig(listeners = UIMeetingSchedulePortlet.ScheduleNewMeetingActionListener.class),
         @EventConfig(listeners = UIPortalComponentActionListener.ViewChildActionListener.class)
 })
 @Serialized
@@ -40,13 +39,7 @@ public class UIMeetingSchedulePortlet extends UIPortletApplication {
   public UIMeetingSchedulePortlet() throws Exception {
     super();
     addChild(UIListMeetingSchedule.class, null, "UIListMeetings");
-    //addChild(UINewMeetingSchedule.class, null, null).setRendered(false);
-  }
-
-  public static class ScheduleNewMeetingActionListener extends EventListener<UIMeetingSchedulePortlet> {
-    @Override
-    public void execute(Event<UIMeetingSchedulePortlet> uiMeetingSchedulePortletEvent) throws Exception {
-      System.out.println("Hello world");
-    }
+    addChild(UINewMeetingSchedule.class, null, "UIMeetingForm").setRendered(false);
+    addChild(UIMeetingDetail.class, null, "UIMeetingDetail");
   }
 }

@@ -20,16 +20,14 @@
 package org.exoplatform.meeting.webui;
 
 import org.exoplatform.webui.config.annotation.ComponentConfig;
-import org.exoplatform.webui.form.UIForm;
-import org.exoplatform.webui.form.UIFormStringInput;
+import org.exoplatform.webui.config.annotation.EventConfig;
+import org.exoplatform.webui.core.UIContainer;
 
 /**
  * @author <a href="mailto:tuyennt@exoplatform.com">Tuyen Nguyen The</a>.
  */
-@ComponentConfig()
-public class UINewMeetingSchedule extends UIForm {
-  public UINewMeetingSchedule() {
-    UIFormStringInput input = new UIFormStringInput("title", "title", "hello world");
-    addUIFormInput(input);
-  }
+@ComponentConfig(template = "app:/groovy/meetingschedule/webui/UIMeetingDetail.gtmpl", events = {
+
+})
+public class UIMeetingDetail extends UIContainer {
 }

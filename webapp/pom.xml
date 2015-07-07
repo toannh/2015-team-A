@@ -43,6 +43,10 @@
       <artifactId>exo.portal.webui.portlet</artifactId>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+      <groupId>org.exoplatform.addons.codefest.team_a</groupId>
+      <artifactId>team-a-addon-lib</artifactId>
+    </dependency>
   </dependencies>
 
   <build>
