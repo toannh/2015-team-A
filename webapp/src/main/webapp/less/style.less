@@ -1,10 +1,26 @@
-#MeetingSchedulePortlet {
+#UIMeetingSchedulePortlet {
 	.uiMention {
 		margin-bottom: 6px;
-		.disabled {
+		&.disabled {
 			background-color: #eee;
 			color: #aaa;
 			border-color: #ccc;
+		}
+	}
+	.table {
+		.meeting, .active, .me {
+			td {
+				background-color: #D7F8D5;
+			}
+		}
+		.center {
+			text-align: center!important;
+		}
+		.right {
+			text-align: right!important;
+		}
+		.left {
+			text-align: left!important;
 		}
 	}
 	.table-metting {
@@ -53,11 +69,6 @@
 		.time-column {
 			width: 30%;
 		}
-		.meeting {
-			td {
-				background-color: #D7F8D5;
-			}
-		}
 		.expire-vote {
 			margin-top: 5px;
 			position: relative;
@@ -96,12 +107,76 @@
 				}
 			}
 		}
-		.right {
-			text-align: right!important;
+	}
+	.table-metting-vote {
+		.vote-column {
+			width: 85px;
+			text-align: center;
+			line-height: 18px;
+			div {
+				font-size: 12px;
+				font-weight: normal;
+			}
+			h5 {
+				margin: 0;
+			}
 		}
-		.left {
-			text-align: left!important;
+		tfoot {
+			tr td {
+				background-color: #F0F0F0;
+			}
 		}
+	}
+	.detail-meeting {
+		.span3 {
+			background-color: #f8f8f8;
+			border-radius: 5px;
+		}
+		.sub-info {
+			padding: 15px;
+			hr {
+				border-top-color: #ddd;
+			}
+		}
+	}
+	.control-text {
+		line-height: 20px;
+		margin-top: 5px;
+	}
+
+	.UIComboboxList {
+		z-index: 9;
+		position: absolute;
+	}
+	.select-time-meeting {
+		.controls .date,
+		.controls .time {
+			margin-right: 10px;
+		}
+	}
+	.row-select-time {
+		.control-text {
+			margin-right: 10px;
+		}
+		+.row-select-time {
+			clear: both;
+			margin-top: 10px;
+		}
+	}
+	.form-horizontal {
+		padding-top: 10px;
+	}
+}
+
+.UIComboboxList {
+	padding-top: 28px;
+	padding-left: 7px;
+
+	.UIComboboxContainer {
+		display: none;
+		height: 150px;
+		overflow: auto;
+		background-color: #fff;
 	}
 }
 

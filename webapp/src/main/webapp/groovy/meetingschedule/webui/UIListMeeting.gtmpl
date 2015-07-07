@@ -1,9 +1,19 @@
 <div class="uiActionBar uiGrayLightBox mgB15 clearfix">
     <div class="pull-left btnLeft">
-        <button id="UIActionBarQuickAddEvent" class="btn btn-primary" type="button" onclick="<%=uicomponent.event('ScheduleNewMeeting')%>">
+        <button id="UIActionBarQuickAddEvent" class="btn btn-primary" type="button">
         <i class="uiIconClock  uiIconDarkGray"></i> Schedule Meeting
         </button>
     </div>
+    <div class="pull-right btnRight">
+        <form class="UIForm" id="UISearchForm" action="" method="post" _lpchecked="1"><div><input type="hidden" name="formOp" value=""><input type="hidden" name="gtn:csrf" value="669619ADC0A8046A7AE3F6C8AD7DEA67"></div>
+           <div class="uiSearchForm uiSearchInput pull-right searchWithIcon" onclick="">
+               <a href="javascript:void(0)" data-placement="bottom" rel="tooltip" class="advancedSearch" title="" data-original-title="Search"><i class="uiIconSearch uiIconLightGray"></i></a>
+               <input name="value" type="text" id="value" placeholder="Search">
+           </div>
+       </form>
+
+       <span class="separatorLine pull-right"></span>
+   </div>
 </div>
 <div id="UITabPane" class="uiTabNormal uiTabInPage">
     <ul class="nav nav-tabs">
@@ -27,10 +37,11 @@
                         <th class="center"><a class="actionIcon" href="#"><i class="uiIconDelete uiIconLightGray"></i></a></th>
                         <th class="left"></th>
                         <th>
-                            <a href="#" class="pull-left"><i class="uiIconMiniArrowLeft uiIconLightGray"></i></a>
-                            <span>Week 28, 6 - 12 July 2015</span>
-                            <a href="#" class="pull-right"><i class="uiIconMiniArrowRight uiIconLightGray"></i></a>
-                        </th>
+                            <div class="control-time">
+                                <a href="#" class="pull-left"><i class="uiIconMiniArrowLeft uiIconLightGray"></i></a>
+                                <span>Week 28, 6 - 12 July 2015</span>
+                                <a href="#" class="pull-right"><i class="uiIconMiniArrowRight uiIconLightGray"></i></a>
+                            </div></th>
                         <th colspan="2" class="right">
                             <button class="btn btn-default">Today</button>
                             <ul class="btn-group">
@@ -161,9 +172,11 @@
                         <th class="center"><a class="actionIcon" href="#"><i class="uiIconDelete uiIconLightGray"></i></a></th>
                         <th class="left"></th>
                         <th>
-                            <a href="#" class="pull-left"><i class="uiIconMiniArrowLeft uiIconLightGray"></i></a>
-                            <span>Week 28, 6 - 12 July 2015</span>
-                            <a href="#" class="pull-right"><i class="uiIconMiniArrowRight uiIconLightGray"></i></a>
+                            <div class="control-time">
+                                <a href="#" class="pull-left"><i class="uiIconMiniArrowLeft uiIconLightGray"></i></a>
+                                <span>Week 28, 6 - 12 July 2015</span>
+                                <a href="#" class="pull-right"><i class="uiIconMiniArrowRight uiIconLightGray"></i></a>
+                            </div>
                         </th>
                         <th colspan="2" class="right">
                             <button class="btn btn-default">Today</button>
@@ -299,9 +312,11 @@
                         <th class="center"><a class="actionIcon" href="#"><i class="uiIconDelete uiIconLightGray"></i></a></th>
                         <th class="left"></th>
                         <th>
-                            <a href="#" class="pull-left"><i class="uiIconMiniArrowLeft uiIconLightGray"></i></a>
-                            <span>Week 28, 6 - 12 July 2015</span>
-                            <a href="#" class="pull-right"><i class="uiIconMiniArrowRight uiIconLightGray"></i></a>
+                            <div class="control-time">
+                                <a href="#" class="pull-left"><i class="uiIconMiniArrowLeft uiIconLightGray"></i></a>
+                                <span>Week 28, 6 - 12 July 2015</span>
+                                <a href="#" class="pull-right"><i class="uiIconMiniArrowRight uiIconLightGray"></i></a>
+                            </div>
                         </th>
                         <th colspan="2" class="right">
                             <button class="btn btn-default">Today</button>

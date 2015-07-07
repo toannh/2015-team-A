@@ -1,3 +1,314 @@
-<div>
-    Hello meeting detail
+<div class="uiActionBar uiGrayLightBox mgB15 clearfix">
+    <div class="pull-left btnLeft">
+    	<button class="btn pdL5"><i class="uiIconBack"></i> Back</button>
+        <button id="UIActionBarQuickAddEvent" class="btn btn-primary" type="button" onclick="<%=uicomponent.event('ScheduleNewMeeting')%>">
+        <i class="uiIconClock  uiIconDarkGray"></i> Schedule Meeting
+        </button>
+    </div>
+    <div class="pull-right btnRight">
+        <form class="UIForm" id="UISearchForm" action="" method="post" _lpchecked="1"><div><input type="hidden" name="formOp" value=""><input type="hidden" name="gtn:csrf" value="669619ADC0A8046A7AE3F6C8AD7DEA67"></div>
+           <div class="uiSearchForm uiSearchInput pull-right searchWithIcon" onclick="">
+               <a href="javascript:void(0)" data-placement="bottom" rel="tooltip" class="advancedSearch" title="" data-original-title="Search"><i class="uiIconSearch uiIconLightGray"></i></a>
+               <input name="value" type="text" id="value" placeholder="Search">
+           </div>
+       </form>
+       <span class="separatorLine pull-right"></span>
+   </div>
+</div>
+
+<div class="uiBox">
+	<form class="uiContentBox">
+		<div class="row-fluid detail-meeting">
+			<div class="span9">
+				<div class="form-horizontal">
+					<div class="control-group">
+						<label class="control-label">Title:</label>
+						<div class="controls">
+							<input type="text" id="" placeholder="">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">Location:</label>
+						<div class="controls">
+							<input type="text" id="" placeholder="">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">Description: </label>
+						<div class="controls">
+							<textarea rows="3"></textarea>
+						</div>
+					</div>
+					<!-- when be vote will no display start date and due date -->
+					<div class="control-group select-time-meeting">
+						<label class="control-label">Select time:</label>
+						<div class="controls">
+							<div class="row-select-time">
+								
+								<div class="date inputSmall pull-left">
+									<input id="DateTimePicker-uniq-06048722-9c42-4121-bbb2-f4d344b048c9" lang="en" format="MM/dd/yyyy" type="text" name="from" value="07/07/2015">
+								</div>
+								<div class="time inputSmall  pull-left"><!-- start time -->
+									<div class="UIComboboxComponent"><div class="UIComboboxList"><div class="UIComboboxContainer"><div class="UIComboboxItemContainer"><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="00:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">00:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="00:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">00:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="01:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">01:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="01:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">01:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="02:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">02:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="02:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">02:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="03:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">03:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="03:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">03:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="04:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">04:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="04:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">04:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="05:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">05:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="05:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">05:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="06:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">06:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="06:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">06:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="07:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">07:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="07:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">07:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="08:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">08:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="08:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">08:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="09:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">09:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="09:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">09:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="10:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">10:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="10:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">10:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="11:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">11:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="11:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">11:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="12:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">12:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="12:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">12:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="13:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">13:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="13:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">13:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="14:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">14:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="14:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">14:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="15:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">15:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="15:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">15:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="16:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">16:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="16:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">16:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="17:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">17:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="17:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">17:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="18:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">18:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="18:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">18:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="19:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">19:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="19:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">19:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="20:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">20:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="20:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">20:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="21:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">21:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="21:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">21:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="22:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">22:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="22:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">22:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="23:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">23:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="23:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">23:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="23:59" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">23:59</div></div></a></div></div></div><input type="hidden" name="fromTime" id="fromTime" value="09:45"><input class="UIComboboxInput" options="['00:00','00:30','01:00','01:30','02:00','02:30','03:00','03:30','04:00','04:30','05:00','05:30','06:00','06:30','07:00','07:30','08:00','08:30','09:00','09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00','17:30','18:00','18:30','19:00','19:30','20:00','20:30','21:00','21:30','22:00','22:30','23:00','23:30','23:59']" onkeyup="eXo.webui.UICombobox.complete(this,event);" type="text" value="09:45" style="visibility: visible;"></div>
+								</div>
+								<span class="control-text pull-left muted">To</span>
+								<div class="date inputSmall pull-left">
+									<input id="DateTimePicker-uniq-06048722-9c42-4121-bbb2-f4d344b048c9" lang="en" format="MM/dd/yyyy" type="text" name="from" value="07/07/2015">
+								</div>
+								<div class="time inputSmall  pull-left"><!-- start time -->
+									<div class="UIComboboxComponent"><div class="UIComboboxList"><div class="UIComboboxContainer"><div class="UIComboboxItemContainer"><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="00:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">00:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="00:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">00:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="01:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">01:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="01:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">01:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="02:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">02:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="02:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">02:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="03:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">03:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="03:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">03:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="04:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">04:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="04:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">04:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="05:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">05:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="05:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">05:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="06:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">06:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="06:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">06:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="07:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">07:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="07:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">07:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="08:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">08:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="08:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">08:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="09:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">09:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="09:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">09:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="10:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">10:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="10:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">10:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="11:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">11:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="11:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">11:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="12:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">12:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="12:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">12:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="13:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">13:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="13:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">13:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="14:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">14:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="14:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">14:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="15:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">15:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="15:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">15:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="16:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">16:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="16:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">16:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="17:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">17:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="17:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">17:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="18:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">18:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="18:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">18:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="19:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">19:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="19:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">19:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="20:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">20:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="20:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">20:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="21:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">21:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="21:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">21:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="22:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">22:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="22:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">22:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="23:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">23:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="23:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">23:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="23:59" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">23:59</div></div></a></div></div></div><input type="hidden" name="fromTime" id="fromTime" value="09:45"><input class="UIComboboxInput" options="['00:00','00:30','01:00','01:30','02:00','02:30','03:00','03:30','04:00','04:30','05:00','05:30','06:00','06:30','07:00','07:30','08:00','08:30','09:00','09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00','17:30','18:00','18:30','19:00','19:30','20:00','20:30','21:00','21:30','22:00','22:30','23:00','23:30','23:59']" onkeyup="eXo.webui.UICombobox.complete(this,event);" type="text" value="09:45" style="visibility: visible;"></div>
+								</div>
+								<a class="actionIcon" rel="tooltip" data-placement="bottom" title="" href="#" data-original-title="Add time"><i class="uiIconDelete uiIconLightGray"></i></a>
+							</div>
+							<div class="row-select-time">
+								
+								<div class="date inputSmall pull-left">
+									<input id="DateTimePicker-uniq-06048722-9c42-4121-bbb2-f4d344b048c9" lang="en" format="MM/dd/yyyy" type="text" name="from" value="07/07/2015">
+								</div>
+								<div class="time inputSmall  pull-left"><!-- start time -->
+									<div class="UIComboboxComponent"><div class="UIComboboxList"><div class="UIComboboxContainer"><div class="UIComboboxItemContainer"><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="00:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">00:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="00:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">00:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="01:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">01:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="01:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">01:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="02:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">02:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="02:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">02:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="03:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">03:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="03:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">03:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="04:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">04:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="04:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">04:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="05:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">05:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="05:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">05:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="06:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">06:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="06:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">06:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="07:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">07:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="07:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">07:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="08:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">08:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="08:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">08:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="09:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">09:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="09:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">09:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="10:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">10:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="10:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">10:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="11:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">11:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="11:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">11:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="12:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">12:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="12:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">12:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="13:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">13:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="13:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">13:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="14:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">14:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="14:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">14:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="15:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">15:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="15:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">15:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="16:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">16:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="16:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">16:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="17:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">17:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="17:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">17:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="18:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">18:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="18:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">18:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="19:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">19:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="19:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">19:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="20:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">20:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="20:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">20:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="21:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">21:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="21:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">21:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="22:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">22:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="22:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">22:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="23:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">23:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="23:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">23:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="23:59" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">23:59</div></div></a></div></div></div><input type="hidden" name="fromTime" id="fromTime" value="09:45"><input class="UIComboboxInput" options="['00:00','00:30','01:00','01:30','02:00','02:30','03:00','03:30','04:00','04:30','05:00','05:30','06:00','06:30','07:00','07:30','08:00','08:30','09:00','09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00','17:30','18:00','18:30','19:00','19:30','20:00','20:30','21:00','21:30','22:00','22:30','23:00','23:30','23:59']" onkeyup="eXo.webui.UICombobox.complete(this,event);" type="text" value="09:45" style="visibility: visible;"></div>
+								</div>
+								<span class="control-text pull-left muted">To</span>
+								<div class="date inputSmall pull-left">
+									<input id="DateTimePicker-uniq-06048722-9c42-4121-bbb2-f4d344b048c9" lang="en" format="MM/dd/yyyy" type="text" name="from" value="07/07/2015">
+								</div>
+								<div class="time inputSmall  pull-left"><!-- start time -->
+									<div class="UIComboboxComponent"><div class="UIComboboxList"><div class="UIComboboxContainer"><div class="UIComboboxItemContainer"><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="00:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">00:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="00:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">00:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="01:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">01:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="01:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">01:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="02:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">02:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="02:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">02:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="03:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">03:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="03:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">03:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="04:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">04:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="04:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">04:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="05:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">05:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="05:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">05:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="06:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">06:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="06:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">06:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="07:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">07:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="07:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">07:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="08:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">08:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="08:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">08:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="09:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">09:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="09:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">09:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="10:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">10:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="10:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">10:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="11:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">11:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="11:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">11:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="12:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">12:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="12:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">12:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="13:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">13:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="13:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">13:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="14:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">14:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="14:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">14:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="15:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">15:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="15:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">15:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="16:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">16:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="16:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">16:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="17:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">17:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="17:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">17:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="18:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">18:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="18:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">18:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="19:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">19:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="19:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">19:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="20:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">20:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="20:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">20:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="21:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">21:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="21:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">21:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="22:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">22:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="22:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">22:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="23:00" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">23:00</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="23:30" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">23:30</div></div></a><a href="javascript:void(0);" onclick="eXo.webui.UICombobox.getValue(this);" value="23:59" class="UIComboboxItem"><div class="UIComboboxIcon"><div class="UIComboboxLabel">23:59</div></div></a></div></div></div><input type="hidden" name="fromTime" id="fromTime" value="09:45"><input class="UIComboboxInput" options="['00:00','00:30','01:00','01:30','02:00','02:30','03:00','03:30','04:00','04:30','05:00','05:30','06:00','06:30','07:00','07:30','08:00','08:30','09:00','09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00','17:30','18:00','18:30','19:00','19:30','20:00','20:30','21:00','21:30','22:00','22:30','23:00','23:30','23:59']" onkeyup="eXo.webui.UICombobox.complete(this,event);" type="text" value="09:45" style="visibility: visible;"></div>
+								</div>
+								<a class="actionIcon" rel="tooltip" data-placement="bottom" title="" href="#" data-original-title="Add time"><i class="uiIconPlus uiIconLightGray"></i></a>
+							</div>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">Member:</label>
+						<div class="controls">
+							<span class="uiMention">giagnnt <a href="#" class="uiIconClose"></a></span>
+							<span class="uiMention">tuyennt <a href="#" class="uiIconClose"></a></span>
+							<a class="actionIcon" rel="tooltip" data-placement="bottom" title="" href="#" data-original-title="Add Member">
+								<i class="uiIconPlus uiIconLightGray"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="span3">
+				<div class="sub-info">
+					<div>
+						<div class="mgB5"><strong>Attached file(s):</strong></div>
+						<p class="attachmentIcon">
+							<a href="#" rel="tooltip" data-placement="bottom" title="" data-original-title="config taskMng.txt(1.75 KB) ">
+								<i class="uiIcon16x16FileTxt uiIcon16x16nt_file"></i>&nbsp;config taskMng.txt
+							</a>
+							(1.75 KB)
+						</p>
+					</div>
+					<hr>
+					<div>
+						<p class="text-center">Upload Attached file:</p>
+						<div>
+							<button class="btn btn-primary  btn-block"><i class="uiIconUpload"></i> Upload file</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr>
+		<div class="text-right">
+			<button type="submit" class="btn">Cancel</button>
+			<button type="submit" class="btn btn-primary">Send Invitation</button>
+		</div>
+	</form>
+</div>
+
+<div class="uiBox">
+	<h5 class="title"><i class="uiIconClock  uiIconDarkGray"></i> Sprin meeting week 30</h5>
+	<div class="uiContentBox">
+		<table class="uiGrid table table-hover table-striped table-metting-vote">
+			<thead>
+				<tr>
+					<th class="member-column"><h4>Attendees</h4></th>
+					<th class="vote-column">
+						<h5>Wed 8/7</h5>
+						<div>9:15 AM</div>
+						<div>12:00 AM</div>
+					</th>
+					<th class="vote-column">
+						<h5>Wed 8/8</h5>
+						<div>9:15 AM</div>
+						<div>12:00 AM</div>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="me">
+					<td><strong>Nguyen Truong Giang</strong></td>
+					<td class="center">
+						<div class="uiSwitchBtn" style="width: 60px;">
+							<div class="iPhoneCheckContainer" style="width: 60px;">
+								<input type="checkbox" name="NewUserPlugin" checked="checked" class="providerAction yesno enable" data-no="NO" data-yes="YES" value="false">
+								<label class="switchBtnLabelOff" style="width: 51px;">
+									<span style="margin-right: -41px;">NO</span>
+								</label>
+								<label class="switchBtnLabelOn" style="width: 51px;">
+									<span style="margin-left: 0px;">YES</span>
+								</label>
+								<div class="switchBtnHandle" style="left: 41px;">
+									<div class="switchBtnHandleRight">
+										<div class="switchBtnHandleCenter"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</td>
+					<td class="center">
+						<div class="uiSwitchBtn" style="width: 60px;">
+							<div class="iPhoneCheckContainer" style="width: 60px;">
+								<input type="checkbox" name="NewUserPlugin" checked="checked" class="providerAction yesno enable" data-no="NO" data-yes="YES" value="false">
+								<label class="switchBtnLabelOff" style="width: 51px;">
+									<span style="margin-right: -41px;">NO</span>
+								</label>
+								<label class="switchBtnLabelOn" style="width: 51px;">
+									<span style="margin-left: 0px;">YES</span>
+								</label>
+								<div class="switchBtnHandle" style="left: 41px;">
+									<div class="switchBtnHandleRight">
+										<div class="switchBtnHandleCenter"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td><strong>Nguyen Hai Toan</strong></td>
+					<td class="center">
+						<i class="uiIconColorValidate"></i>
+					</td>
+					<td class="center">
+						<i class="uiIconQuestion"></i>
+					</td>
+				</tr>
+				<tr>
+					<td><strong>Nguyen The Tuyen</strong></td>
+					<td class="center">
+						<i class="uiIconColorError"></i>
+					</td>
+					<td class="center">
+						<i class="uiIconColorValidate"></i>
+					</td>
+				</tr>
+				<tr>
+					<td><strong>Vu Huyen Trang</strong></td>
+					<td class="center">
+						<i class="uiIconColorValidate"></i>
+					</td>
+					<td class="center">
+						<i class="uiIconColorError"></i>
+					</td>
+				</tr>
+				<tr>
+					<td><strong>Nguyen Duy Tu</strong></td>
+					<td class="center">
+						<i class="uiIconQuestion"></i>
+					</td>
+					<td class="center">
+						<i class="uiIconQuestion"></i>
+					</td>
+				</tr>
+			</tbody>
+			<!-- tfoot only show for ad -->
+			<tfoot>
+				<tr>
+					<td class="right"><strong>Select time to meeting</strong></td>
+					<td class="center">
+						<span class="uiCheckbox">
+							<input type="checkbox" class="checkbox">
+							<span></span>
+						</span>
+					</td>
+					<td class="center">
+						<span class="uiCheckbox">
+							<input type="checkbox" class="checkbox">
+							<span></span>
+						</span>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+		<div class="text-right">
+			<button class="btn btn-primary">Create Meeting</button>
+		</div>
+		<hr>
+		<div class="row-fluid detail-meeting">
+			<div class="span9">
+				<form class="form-horizontal">
+					<div class="control-group">
+						<label class="control-label">Title:</label>
+						<div class="controls">
+							<div class="control-text"><strong>Sprin meeting week 30</strong></div>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">Location:</label>
+						<div class="controls">
+							<div class="control-text">Room M8</div>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">Description: </label>
+						<div class="controls">
+							<div class="control-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa necessitatibus, deserunt totam illo nihil magni distinctio earum quaerat soluta, aperiam sit repellendus blanditiis sed hic numquam. Nostrum quas libero blanditiis.</div>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">Member:</label>
+						<div class="controls">
+							<div class="uiMention">giagnnt</div>
+							<div class="uiMention">toanhn</div>
+							<div class="uiMention">tuyennt</div>
+							<div class="uiMention">trangvh</div>
+						</div>
+					</div>
+					<!-- when be vote will no display start date and due date -->
+					<div class="control-group">
+						<label class="control-label">Start time:</label>
+						<div class="controls">
+							<div class="control-text">07/07/2015 07:00</div>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">End time:</label>
+						<div class="controls">
+							<div class="control-text">07/07/2015 08:00</div>
+						</div>
+					</div>
+
+					<br>
+					<!-- <div class="control-group">
+						<div class="controls">
+							<button type="submit" class="btn">Cancel</button>
+							<button type="submit" class="btn btn-primary">Create Meeting</button>
+						</div>
+					</div> -->
+				</form>
+			</div>
+			<div class="span3">
+				<div class="sub-info">
+					<div class="mgB5"><strong>Attached file(s):</strong></div>
+					<div class="attachmentIcon">
+						<a href="#" rel="tooltip" data-placement="bottom" title="" data-original-title="config taskMng.txt(1.75 KB) ">
+							<i class="uiIcon16x16FileTxt uiIcon16x16nt_file"></i>&nbsp;config taskMng.txt
+						</a>
+						(1.75 KB)
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<hr>
+		<div class="text-right">
+			<button class="btn"><i class="uiIconEdit uiIconLightGray"></i>&nbsp;Edit</button>
+			<button class="btn"><i class="uiIconDelete uiIconLightGray"></i>&nbsp;Delete</button>
+		</div>
+	</div>
 </div>
