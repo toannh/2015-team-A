@@ -19,8 +19,8 @@
 
 package org.exoplatform.meeting.webui;
 
-import org.exoplatform.com.meeting.service.MeetingService;
-import org.exoplatform.com.meeting.service.entity.Meeting;
+import org.exoplatform.codefest.service.MeetingService;
+import org.exoplatform.codefest.entity.Meeting;
 import org.exoplatform.services.security.ConversationState;
 import org.exoplatform.services.security.Identity;
 import org.exoplatform.webui.config.annotation.ComponentConfig;

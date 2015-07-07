@@ -1,7 +1,7 @@
-package org.exoplatform.com.meeting.service;
+package org.exoplatform.codefest.service;
 
-import org.exoplatform.com.meeting.service.entity.Meeting;
-import org.exoplatform.com.meeting.service.entity.Page;
+import org.exoplatform.codefest.entity.Meeting;
+import org.exoplatform.codefest.entity.Page;
 
 import java.util.List;
 import java.util.Map;

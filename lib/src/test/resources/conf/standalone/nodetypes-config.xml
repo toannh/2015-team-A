@@ -79,14 +79,6 @@
 
     </propertyDefinitions>
 
-    <childNodeDefinitions>
-      <childNodeDefinition name="comments" defaultPrimaryType="" autoCreated="false" mandatory="false"
-                           onParentVersion="COPY" protected="false" sameNameSiblings="false">
-        <requiredPrimaryTypes>
-          <requiredPrimaryType>nt:unstructured</requiredPrimaryType>
-        </requiredPrimaryTypes>
-      </childNodeDefinition>
-    </childNodeDefinitions>
   </nodeType>
 
   <nodeType name="mix:i18n" isMixin="true" hasOrderableChildNodes="false" primaryItemName="">

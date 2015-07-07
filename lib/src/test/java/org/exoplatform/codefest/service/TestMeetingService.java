@@ -1,15 +1,13 @@
-package org.exoplatform.com.meeting.service;
+package org.exoplatform.codefest.service;
 
 import junit.framework.TestCase;
-import org.exoplatform.com.meeting.service.entity.Meeting;
-import org.exoplatform.com.meeting.service.entity.Page;
-import org.exoplatform.com.meeting.service.entity.TimeOption;
-import org.exoplatform.com.meeting.service.entity.UserVoted;
+import org.exoplatform.codefest.entity.Meeting;
+import org.exoplatform.codefest.entity.Page;
+import org.exoplatform.codefest.entity.TimeOption;
+import org.exoplatform.codefest.entity.UserVoted;
 import org.exoplatform.container.StandaloneContainer;
 import org.exoplatform.container.component.RequestLifeCycle;
-import org.exoplatform.services.cms.comments.CommentsService;
 import org.exoplatform.services.jcr.RepositoryService;
-import org.exoplatform.services.jcr.core.CredentialsImpl;
 import org.exoplatform.services.jcr.core.ManageableRepository;
 import org.exoplatform.services.jcr.ext.app.SessionProviderService;
 import org.exoplatform.services.jcr.ext.common.SessionProvider;
@@ -37,12 +35,10 @@ public class TestMeetingService extends TestCase {
 
 
   private static StandaloneContainer container;
-  private static CommentsService commentsService;
   private static MeetingService meetingService;
   private RepositoryService repositoryService;
   protected ManageableRepository repository;
   protected SessionProvider sessionProvider;
-  protected CredentialsImpl credentials;
   protected Session session;
   protected SessionProviderService sessionProviderService_;
 
@@ -88,7 +84,6 @@ public class TestMeetingService extends TestCase {
     repositoryService = (RepositoryService) container.getComponentInstanceOfType(RepositoryService.class);
     sessionProviderService_ = (SessionProviderService) container.getComponentInstanceOfType(SessionProviderService.class);
 
-    commentsService = (CommentsService) container.getComponentInstanceOfType(CommentsService.class);
     meetingService = (MeetingService) container.getComponentInstanceOfType(MeetingService.class);
     applySystemSession();
     reset();

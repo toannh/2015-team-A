@@ -1,0 +1,83 @@
+<nodeTypes
+        xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+        xmlns:mix="http://www.jcp.org/jcr/mix/1.0"
+        xmlns:jcr="http://www.jcp.org/jcr/1.0"
+        xmlns:exo="http://www.exoplatform.com/jcr/exo/1.0">
+
+    <nodeType name="exo:meeting" isMixin="false" hasOrderableChildNodes="false" primaryItemName=""  >
+
+        <supertypes>
+            <supertype>nt:base</supertype>
+        </supertypes>
+
+        <propertyDefinitions>
+            <propertyDefinition name="exo:meetingTitle" requiredType="String" autoCreated="false" mandatory="false"
+                                onParentVersion="COPY" protected="false" multiple="false">
+                <valueConstraints/>
+            </propertyDefinition>
+
+            <propertyDefinition name="exo:meetingValidation" requiredType="Long" autoCreated="false" mandatory="false"
+                                onParentVersion="COPY" protected="false" multiple="false">
+                <valueConstraints/>
+            </propertyDefinition>
+
+            <propertyDefinition name="exo:meetingDateCreated" requiredType="Long" autoCreated="false" mandatory="false"
+                                onParentVersion="COPY" protected="false" multiple="false">
+                <valueConstraints/>
+            </propertyDefinition>
+
+            <propertyDefinition name="exo:meetingDateModified" requiredType="Long" autoCreated="false" mandatory="false"
+                                onParentVersion="COPY" protected="false" multiple="false">
+                <valueConstraints/>
+            </propertyDefinition>
+
+            <propertyDefinition name="exo:meetingDescription" requiredType="String" autoCreated="false" mandatory="false"
+                                onParentVersion="COPY" protected="false" multiple="false">
+                <valueConstraints/>
+            </propertyDefinition>
+
+            <propertyDefinition name="exo:meetingLocation" requiredType="String" autoCreated="false" mandatory="false"
+                                onParentVersion="COPY" protected="false" multiple="false">
+                <valueConstraints/>
+            </propertyDefinition>
+
+            <propertyDefinition name="exo:meetingTimeOptions" requiredType="String" autoCreated="false" mandatory="false"
+                                onParentVersion="COPY" protected="false" multiple="false">
+                <valueConstraints/>
+            </propertyDefinition>
+
+            <propertyDefinition name="exo:meetingOwner" requiredType="String" autoCreated="false" mandatory="false"
+                                onParentVersion="COPY" protected="false" multiple="false">
+                <valueConstraints/>
+            </propertyDefinition>
+
+            <propertyDefinition name="exo:meetingType" requiredType="String" autoCreated="false" mandatory="false"
+                                onParentVersion="COPY" protected="false" multiple="false">
+                <valueConstraints/>
+            </propertyDefinition>
+
+            <propertyDefinition name="exo:meetingDocumentPath" requiredType="String" autoCreated="false" mandatory="false"
+                                onParentVersion="COPY" protected="false" multiple="false">
+                <valueConstraints/>
+            </propertyDefinition>
+
+            <propertyDefinition name="exo:meetingParticipant" requiredType="String" autoCreated="false" mandatory="false"
+                                onParentVersion="COPY" protected="false" multiple="false">
+                <valueConstraints/>
+            </propertyDefinition>
+
+            <propertyDefinition name="exo:meetingUserVoted" requiredType="String" autoCreated="false" mandatory="false"
+                                onParentVersion="COPY" protected="false" multiple="false">
+                <valueConstraints/>
+            </propertyDefinition>
+
+            <propertyDefinition name="exo:meetingStatus" requiredType="Integer" autoCreated="false" mandatory="false"
+                                onParentVersion="COPY" protected="false" multiple="false">
+                <valueConstraints/>
+            </propertyDefinition>
+
+
+        </propertyDefinitions>
+
+    </nodeType>
+</nodeTypes>

@@ -1,4 +1,4 @@
-package org.exoplatform.com.meeting.service;
+package org.exoplatform.codefest.service;
 
 import org.exoplatform.services.jcr.core.ManageableRepository;
 import org.exoplatform.services.jcr.ext.app.ThreadLocalSessionProviderService;

@@ -1,6 +1,6 @@
 <%
     import org.exoplatform.webui.core.UIPopupWindow;
-    import org.exoplatform.com.meeting.service.entity.TimeOption;
+    import org.exoplatform.codefest.entity.TimeOption;
     import java.util.Date;
     import java.text.SimpleDateFormat;
     def df = new SimpleDateFormat("dd MMM");

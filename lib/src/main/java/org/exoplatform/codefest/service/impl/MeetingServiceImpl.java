@@ -1,13 +1,11 @@
-package org.exoplatform.com.meeting.service.impl;
+package org.exoplatform.codefest.service.impl;
 
 import com.google.gson.Gson;
-import org.exoplatform.com.meeting.service.MeetingService;
-import org.exoplatform.com.meeting.service.entity.Meeting;
-import org.exoplatform.com.meeting.service.entity.Page;
-import org.exoplatform.com.meeting.service.entity.TimeOption;
-import org.exoplatform.com.meeting.service.entity.UserVoted;
-import org.exoplatform.portal.config.UserACL;
-import org.exoplatform.services.cms.drives.ManageDriveService;
+import org.exoplatform.codefest.service.MeetingService;
+import org.exoplatform.codefest.entity.Meeting;
+import org.exoplatform.codefest.entity.Page;
+import org.exoplatform.codefest.entity.TimeOption;
+import org.exoplatform.codefest.entity.UserVoted;
 import org.exoplatform.services.jcr.RepositoryService;
 import org.exoplatform.services.jcr.core.ManageableRepository;
 import org.exoplatform.services.jcr.ext.app.SessionProviderService;
@@ -43,27 +41,21 @@ public class MeetingServiceImpl implements MeetingService {
 
   private RepositoryService repoService;
   private SessionProviderService sessionProviderService;
-  private ManageDriveService manageDriveService;
-  private UserACL userACL;
-  private Gson gson = new Gson();
+  private Gson gson;
+
 
   public MeetingServiceImpl(RepositoryService repoService,
-                            SessionProviderService sessionProviderService,
-                            ManageDriveService managerDriverService,
-                            UserACL userACL) {
+                            SessionProviderService sessionProviderService) {
     this.repoService = repoService;
     this.sessionProviderService = sessionProviderService;
-    this.manageDriveService = managerDriverService;
-    this.userACL = userACL;
-
-    try {
-      this.repo = repoService.getCurrentRepository().getConfiguration().getName();
-      this.ws = managerDriverService.getDriveByName(EXO_MEETING_DRIVE).getWorkspace();
-    } catch (Exception ex) {
-      if (log.isErrorEnabled()) {
-        log.error("Using default repository & workspace", ex.getMessage());
-      }
-    }
+    this.gson = new Gson();
+//    try {
+//      this.repo = repoService.getCurrentRepository().getConfiguration().getName();
+//    } catch (Exception ex) {
+//      if (log.isErrorEnabled()) {
+//        log.error("Using default repository & workspace", ex.getMessage());
+//      }
+//    }
 
   }
 

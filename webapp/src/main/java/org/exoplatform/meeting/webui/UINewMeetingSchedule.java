@@ -19,16 +19,14 @@
 
 package org.exoplatform.meeting.webui;
 
-import org.exoplatform.com.meeting.service.MeetingService;
-import org.exoplatform.com.meeting.service.entity.Meeting;
-import org.exoplatform.com.meeting.service.entity.TimeOption;
+import org.exoplatform.codefest.service.MeetingService;
+import org.exoplatform.codefest.entity.Meeting;
+import org.exoplatform.codefest.entity.TimeOption;
 import org.exoplatform.services.security.ConversationState;
 import org.exoplatform.services.security.Identity;
 import org.exoplatform.web.application.AbstractApplicationMessage;
 import org.exoplatform.web.application.ApplicationMessage;
-import org.exoplatform.web.application.JavascriptManager;
 import org.exoplatform.web.application.RequestContext;
-import org.exoplatform.web.application.RequireJS;
 import org.exoplatform.webui.application.WebuiRequestContext;
 import org.exoplatform.webui.config.annotation.ComponentConfig;
 import org.exoplatform.webui.config.annotation.ComponentConfigs;
@@ -40,14 +38,10 @@ import org.exoplatform.webui.core.model.SelectItemOption;
 import org.exoplatform.webui.event.Event;
 import org.exoplatform.webui.event.EventListener;
 import org.exoplatform.webui.form.UIForm;
-import org.exoplatform.webui.form.UIFormCheckBoxInput;
 import org.exoplatform.webui.form.UIFormDateTimeInput;
 import org.exoplatform.webui.form.UIFormStringInput;
 import org.exoplatform.webui.form.UIFormTextAreaInput;
 import org.exoplatform.webui.form.ext.UIFormComboBox;
-import org.exoplatform.webui.form.input.UICheckBoxInput;
-import org.exoplatform.webui.form.validator.MandatoryValidator;
-import org.exoplatform.webui.form.validator.StringLengthValidator;
 import org.exoplatform.webui.organization.account.UIUserSelector;
 
 import java.text.DateFormat;

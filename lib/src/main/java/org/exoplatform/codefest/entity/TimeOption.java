@@ -1,4 +1,4 @@
-package org.exoplatform.com.meeting.service.entity;
+package org.exoplatform.codefest.entity;
 
 import java.util.UUID;
 
