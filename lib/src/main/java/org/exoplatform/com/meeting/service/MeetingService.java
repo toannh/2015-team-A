@@ -2,9 +2,9 @@ package org.exoplatform.com.meeting.service;
 
 import org.exoplatform.com.meeting.service.entity.Meeting;
 import org.exoplatform.com.meeting.service.entity.Page;
-import org.exoplatform.com.meeting.service.entity.TimeOption;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by The eXo Platform SEA
@@ -53,7 +53,7 @@ public interface MeetingService {
    * @param id
    * @return
    */
-  public Meeting getMeeting(String id);
+  public Meeting getMeeting(String id) throws Exception;
 
   /**
    * Get total meeting relate to current user
@@ -75,20 +75,16 @@ public interface MeetingService {
    * @param meeting
    * @return
    */
-  public boolean delete(Meeting meeting);
+  public boolean delete(Meeting meeting) throws Exception;
 
   /**
    *
-   * @param timeOptionId
+   * @param userVoteds
    * @return
    */
-  public void updateVote(Meeting meeting, String username, String[] timeOptionId);
+  public void updateVote(Meeting meeting, String username, Map<String, String> userVoteds) throws Exception;
 
   public void finalMeeting(Meeting meeting, String[] timeOptionId);
-
-  public Meeting addTimeOption(Meeting meeting, TimeOption option);
-
-  public Meeting removeTimeOption(Meeting meeting, String timeOptionId);
 
   /**
    * Add new option for meeting

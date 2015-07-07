@@ -24,6 +24,7 @@ import javax.jcr.query.QueryManager;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -73,9 +74,12 @@ public class MeetingServiceImpl implements MeetingService {
   }
 
   @Override
-  public Meeting getMeeting(String id) {
-
-    return null;
+  public Meeting getMeeting(String jcrPath) throws Exception{
+    Session session = getSession();
+    Node meetingNode = (Node)session.getItem(jcrPath);
+    Meeting meeting = new Meeting();
+    meetingNodeToObject(meeting, meetingNode);
+    return meeting;
   }
 
   @Override
@@ -124,7 +128,9 @@ public class MeetingServiceImpl implements MeetingService {
 
     Node meetingMonthNode = meetingYearNode.getNode(meetingMonth);
 
-    Node meetingNode = meetingMonthNode.addNode(meeting.getId(), EXO_MEETING);
+    if(!meetingMonthNode.hasNode(meeting.getId())) meetingMonthNode.addNode(meeting.getId(), EXO_MEETING);
+
+    Node meetingNode = meetingMonthNode.getNode(meeting.getId());
     meetingNode.setProperty(EXO_PROP_MEETING_TITLE, meeting.getTitle());
     meetingNode.setProperty(EXO_PROP_MEETING_DESCRIPTION, meeting.getDescription());
     meetingNode.setProperty(EXO_PROP_MEETING_VALIDATION, meeting.getMeetingValidation());
@@ -144,8 +150,12 @@ public class MeetingServiceImpl implements MeetingService {
   }
 
   @Override
-  public boolean delete(Meeting meeting) {
-    return false;
+  public boolean delete(Meeting meeting) throws Exception{
+    Session session = getSession();
+    Node m = (Node) session.getItem(meeting.getJcrPath());
+    m.remove();
+    m.getParent().save();
+    return true;
   }
 
   @Override
@@ -166,40 +176,10 @@ public class MeetingServiceImpl implements MeetingService {
       query.setLimit(page.getLimit());
       query.setOffset(page.getOffset());
       NodeIterator nodes = query.execute().getNodes();
-      List<TimeOption> timeOptions = new ArrayList<TimeOption>();
-      List<String> participants = new ArrayList<String>();
-      List<UserVoted> userVoteds = new ArrayList<UserVoted>();
       while (nodes.hasNext()) {
         Meeting meeting = new Meeting();
         Node node = nodes.nextNode();
-
-        if (node.hasProperty(EXO_PROP_MEETING_TITLE))
-          meeting.setTitle(node.getProperty(EXO_PROP_MEETING_TITLE).getString());
-        if (node.hasProperty(EXO_PROP_MEETING_DESCRIPTION))
-          meeting.setDescription(node.getProperty(EXO_PROP_MEETING_DESCRIPTION).getString());
-        if (node.hasProperty(EXO_PROP_MEETING_LOCATION))
-          meeting.setLocation(node.getProperty(EXO_PROP_MEETING_LOCATION).getString());
-        if (node.hasProperty(EXO_PROP_MEETING_TYPE))
-          meeting.setType(node.getProperty(EXO_PROP_MEETING_TYPE).getString());
-        if (node.hasProperty(EXO_PROP_MEETING_STATUS))
-          meeting.setStatus(Integer.parseInt(node.getProperty(EXO_PROP_MEETING_STATUS).getString()));
-        if (node.hasProperty(EXO_PROP_MEETING_OWNER))
-          meeting.setOwner(node.getProperty(EXO_PROP_MEETING_OWNER).getString());
-        if (node.hasProperty(EXO_PROP_MEETING_DOC_PATH))
-          meeting.setDocumentPath(node.getProperty(EXO_PROP_MEETING_DOC_PATH).getString());
-        if (node.hasNode(EXO_PROP_MEETING_VALIDATION))
-          meeting.setMeetingValidation(node.getProperty(EXO_PROP_MEETING_VALIDATION).getLong());
-        if (node.hasNode(EXO_PROP_MEETING_TIME_OPTION))
-          meeting.setTimeOptions(gson.fromJson(node.getProperty(EXO_PROP_MEETING_TIME_OPTION).getString(), timeOptions.getClass()));
-        if (node.hasNode(EXO_PROP_MEETING_PARTICIPANT))
-          meeting.setParticipant(gson.fromJson(node.getProperty(EXO_PROP_MEETING_PARTICIPANT).getString(), participants.getClass()));
-        if (node.hasNode(EXO_PROP_MEETING_USER_VOTED))
-          meeting.setUserVotes(gson.fromJson(node.getProperty(EXO_PROP_MEETING_USER_VOTED).getString(), userVoteds.getClass()));
-        if (node.hasNode(EXO_PROP_MEETING_DATE_CREATED))
-          meeting.setDateCreated(node.getProperty(EXO_PROP_MEETING_DATE_CREATED).getLong());
-        if (node.hasNode(EXO_PROP_MEETING_DATE_MODIFIED))
-          meeting.setDateModified(node.getProperty(EXO_PROP_MEETING_DATE_MODIFIED).getLong());
-
+        meetingNodeToObject(meeting, node);
         meetings.add(meeting);
       }
       return meetings;
@@ -211,8 +191,30 @@ public class MeetingServiceImpl implements MeetingService {
   }
 
   @Override
-  public void updateVote(Meeting meeting, String username, String[] timeOptionId) {
+  public void updateVote(Meeting m, String username, Map<String, String> userVoteds) throws Exception{
+    Meeting meeting = getMeeting(m.getJcrPath());
+    List<UserVoted> _userVotedsFromDB = meeting.getUserVotes();
+    if(_userVotedsFromDB == null ) _userVotedsFromDB = new ArrayList<UserVoted>();
 
+
+    for (String optionId: userVoteds.keySet()) {// optionids to update
+      UserVoted userVoted = null;
+      for(UserVoted v : _userVotedsFromDB) {
+        if (v.getUsername() == username && v.getOptionId() == optionId) {
+          userVoted = v;
+          break;
+        }
+      }
+      if (userVoted == null) {
+        userVoted = new UserVoted(username, optionId, Integer.parseInt(userVoteds.get(optionId)));
+        _userVotedsFromDB.add(userVoted);
+      } else {
+        userVoted.setValue(Integer.parseInt(userVoteds.get(optionId)));
+      }
+    }
+
+    meeting.setUserVotes(_userVotedsFromDB);
+    save(meeting);
   }
 
   @Override
@@ -232,17 +234,6 @@ public class MeetingServiceImpl implements MeetingService {
     SessionProvider sessionProvider = sessionProviderService.getSystemSessionProvider(null);
     Session session = sessionProvider.getSession(this.ws, repository);
     return session;
-  }
-
-  @Override
-  public Meeting addTimeOption(Meeting meeting, TimeOption option) {
-
-    return null;
-  }
-
-  @Override
-  public Meeting removeTimeOption(Meeting meeting, String timeOptionId) {
-    return null;
   }
 
   @Override
@@ -277,5 +268,38 @@ public class MeetingServiceImpl implements MeetingService {
       return meeting;
     }
     return null;
+  }
+
+  private void meetingNodeToObject(Meeting meeting, Node node) throws Exception{
+    List<TimeOption> timeOptions = new ArrayList<TimeOption>();
+    List<String> participants = new ArrayList<String>();
+    List<UserVoted> userVoteds = new ArrayList<UserVoted>();
+
+    if (node.hasProperty(EXO_PROP_MEETING_TITLE))
+      meeting.setTitle(node.getProperty(EXO_PROP_MEETING_TITLE).getString());
+    if (node.hasProperty(EXO_PROP_MEETING_DESCRIPTION))
+      meeting.setDescription(node.getProperty(EXO_PROP_MEETING_DESCRIPTION).getString());
+    if (node.hasProperty(EXO_PROP_MEETING_LOCATION))
+      meeting.setLocation(node.getProperty(EXO_PROP_MEETING_LOCATION).getString());
+    if (node.hasProperty(EXO_PROP_MEETING_TYPE))
+      meeting.setType(node.getProperty(EXO_PROP_MEETING_TYPE).getString());
+    if (node.hasProperty(EXO_PROP_MEETING_STATUS))
+      meeting.setStatus(Integer.parseInt(node.getProperty(EXO_PROP_MEETING_STATUS).getString()));
+    if (node.hasProperty(EXO_PROP_MEETING_OWNER))
+      meeting.setOwner(node.getProperty(EXO_PROP_MEETING_OWNER).getString());
+    if (node.hasProperty(EXO_PROP_MEETING_DOC_PATH))
+      meeting.setDocumentPath(node.getProperty(EXO_PROP_MEETING_DOC_PATH).getString());
+    if (node.hasNode(EXO_PROP_MEETING_VALIDATION))
+      meeting.setMeetingValidation(node.getProperty(EXO_PROP_MEETING_VALIDATION).getLong());
+    if (node.hasNode(EXO_PROP_MEETING_TIME_OPTION))
+      meeting.setTimeOptions(gson.fromJson(node.getProperty(EXO_PROP_MEETING_TIME_OPTION).getString(), timeOptions.getClass()));
+    if (node.hasNode(EXO_PROP_MEETING_PARTICIPANT))
+      meeting.setParticipant(gson.fromJson(node.getProperty(EXO_PROP_MEETING_PARTICIPANT).getString(), participants.getClass()));
+    if (node.hasNode(EXO_PROP_MEETING_USER_VOTED))
+      meeting.setUserVotes(gson.fromJson(node.getProperty(EXO_PROP_MEETING_USER_VOTED).getString(), userVoteds.getClass()));
+    if (node.hasNode(EXO_PROP_MEETING_DATE_CREATED))
+      meeting.setDateCreated(node.getProperty(EXO_PROP_MEETING_DATE_CREATED).getLong());
+    if (node.hasNode(EXO_PROP_MEETING_DATE_MODIFIED))
+      meeting.setDateModified(node.getProperty(EXO_PROP_MEETING_DATE_MODIFIED).getLong());
   }
 }
