@@ -12,10 +12,19 @@ import java.util.UUID;
 public class TimeOption {
   private long fromDate;
   private long toDate;
-  private String id;
+  private boolean isSelected;
+  private final String id;
 
   public TimeOption(){
-    id = UUID.randomUUID().toString();
+    this(UUID.randomUUID().toString());
+  }
+
+  public TimeOption(String id) {
+    this.id = id;
+  }
+
+  public String getId() {
+    return id;
   }
 
   public long getFromDate() {
@@ -34,4 +43,11 @@ public class TimeOption {
     this.toDate = toDate;
   }
 
+  public boolean isSelected() {
+    return isSelected;
+  }
+
+  public void setSelected(boolean isSelected) {
+    this.isSelected = isSelected;
+  }
 }

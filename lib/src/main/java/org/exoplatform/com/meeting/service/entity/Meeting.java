@@ -18,8 +18,11 @@ public class Meeting {
   private String description;
   private List<TimeOption> timeOptions;
   private long meetingValidation; // Expiration vote time
+  private boolean isMultiChoice;
 
   private String owner;
+  private String type;
+
   private List<String> participant;
 
   private List<UserVoted> userVotes;

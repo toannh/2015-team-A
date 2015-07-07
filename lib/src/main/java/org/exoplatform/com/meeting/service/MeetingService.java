@@ -29,7 +29,16 @@ public interface MeetingService {
    * @param username: current PLF user
    * @return a list of all meeting relate to current username
    */
-  public List<Meeting> getMeeting(String username, Page page);
+  public List<Meeting> getMeetings(String username, Page page);
+
+  /**
+   * Get all meeting by status
+   * @param username
+   * @param status
+   * @param page
+   * @return
+   */
+  public List<Meeting> getMeetings(String username, int status, Page page);
 
   /**
    * Get details a meeting
@@ -62,8 +71,18 @@ public interface MeetingService {
 
   /**
    *
-   * @param timeOption
+   * @param timeOptionId
    * @return
    */
-  public TimeOption updateVote(TimeOption timeOption);
+  public void updateVote(Meeting meeting, String username, String[] timeOptionId);
+
+  public void finalMeeting(Meeting meeting, String[] timeOptionId);
+
+  public Meeting addTimeOption(Meeting meeting, TimeOption option);
+
+  public Meeting removeTimeOption(Meeting meeting, String timeOptionId);
+
+  public Meeting addParticipant(Meeting meeting, String username);
+
+  public Meeting removeParticipant(Meeting meeting, String username);
 }

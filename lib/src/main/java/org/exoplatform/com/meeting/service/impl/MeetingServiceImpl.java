@@ -46,7 +46,7 @@ public class MeetingServiceImpl implements MeetingService{
 
 
   @Override
-  public List<Meeting> getMeeting(String username, Page page) {
+  public List<Meeting> getMeetings(String username, Page page) {
     return null;
   }
 
@@ -78,10 +78,19 @@ public class MeetingServiceImpl implements MeetingService{
   }
 
   @Override
-  public TimeOption updateVote(TimeOption timeOption) {
+  public List<Meeting> getMeetings(String username, int status, Page page) {
     return null;
   }
 
+  @Override
+  public void updateVote(Meeting meeting, String username, String[] timeOptionId) {
+
+  }
+
+  @Override
+  public void finalMeeting(Meeting meeting, String[] timeOptionId) {
+
+  }
 
   /**
    * Get system session, only for init data.
