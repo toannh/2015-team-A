@@ -35,4 +35,10 @@ public class UserVoted {
   public void setValue(int value) {
     this.value = value;
   }
+
+  public UserVoted(String username, String optionId, int value) {
+    this.username = username;
+    this.optionId = optionId;
+    this.value = value;
+  }
 }

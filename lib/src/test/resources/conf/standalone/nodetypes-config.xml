@@ -21,11 +21,60 @@
         <valueConstraints/>
       </propertyDefinition>
 
+      <propertyDefinition name="exo:meetingDateCreated" requiredType="Long" autoCreated="false" mandatory="false"
+                          onParentVersion="COPY" protected="false" multiple="false">
+        <valueConstraints/>
+      </propertyDefinition>
+
+      <propertyDefinition name="exo:meetingDateModified" requiredType="Long" autoCreated="false" mandatory="false"
+                          onParentVersion="COPY" protected="false" multiple="false">
+        <valueConstraints/>
+      </propertyDefinition>
+
       <propertyDefinition name="exo:meetingDescription" requiredType="String" autoCreated="false" mandatory="false"
                           onParentVersion="COPY" protected="false" multiple="false">
         <valueConstraints/>
       </propertyDefinition>
 
+      <propertyDefinition name="exo:meetingLocation" requiredType="String" autoCreated="false" mandatory="false"
+                          onParentVersion="COPY" protected="false" multiple="false">
+        <valueConstraints/>
+      </propertyDefinition>
+
+      <propertyDefinition name="exo:meetingTimeOptions" requiredType="String" autoCreated="false" mandatory="false"
+                          onParentVersion="COPY" protected="false" multiple="false">
+        <valueConstraints/>
+      </propertyDefinition>
+
+      <propertyDefinition name="exo:meetingOwner" requiredType="String" autoCreated="false" mandatory="false"
+                          onParentVersion="COPY" protected="false" multiple="false">
+        <valueConstraints/>
+      </propertyDefinition>
+
+      <propertyDefinition name="exo:meetingType" requiredType="String" autoCreated="false" mandatory="false"
+                          onParentVersion="COPY" protected="false" multiple="false">
+        <valueConstraints/>
+      </propertyDefinition>
+
+      <propertyDefinition name="exo:meetingDocumentPath" requiredType="String" autoCreated="false" mandatory="false"
+                          onParentVersion="COPY" protected="false" multiple="false">
+        <valueConstraints/>
+      </propertyDefinition>
+
+      <propertyDefinition name="exo:meetingParticipant" requiredType="String" autoCreated="false" mandatory="false"
+                          onParentVersion="COPY" protected="false" multiple="false">
+        <valueConstraints/>
+      </propertyDefinition>
+
+      <propertyDefinition name="exo:meetingUserVoted" requiredType="String" autoCreated="false" mandatory="false"
+                          onParentVersion="COPY" protected="false" multiple="false">
+        <valueConstraints/>
+      </propertyDefinition>
+
+      <propertyDefinition name="exo:meetingStatus" requiredType="Integer" autoCreated="false" mandatory="false"
+                          onParentVersion="COPY" protected="false" multiple="false">
+        <valueConstraints/>
+      </propertyDefinition>
 
 
     </propertyDefinitions>
@@ -39,37 +88,6 @@
       </childNodeDefinition>
     </childNodeDefinitions>
   </nodeType>
-
-  <nodeType name="mix:timeOption" isMixin="true" hasOrderableChildNodes="false" primaryItemName="">
-    <propertyDefinitions>
-      <propertyDefinition name="desc" requiredType="String" autoCreated="false" mandatory="false"
-                          onParentVersion="COPY" protected="false" multiple="false" >
-        <valueConstraints/>
-      </propertyDefinition>
-
-      <propertyDefinition name="fromDate" requiredType="Long" autoCreated="false" mandatory="false"
-                          onParentVersion="COPY" protected="false" multiple="false" >
-        <valueConstraints/>
-      </propertyDefinition>
-
-      <propertyDefinition name="toDate" requiredType="Long" autoCreated="false" mandatory="false"
-                          onParentVersion="COPY" protected="false" multiple="false" >
-        <valueConstraints/>
-      </propertyDefinition>
-
-      <propertyDefinition name="vote" requiredType="String" autoCreated="false" mandatory="false"
-                          onParentVersion="COPY" protected="false" multiple="false" >
-        <valueConstraints/>
-      </propertyDefinition>
-
-      <propertyDefinition name="userVote" requiredType="String" autoCreated="false" mandatory="false"
-                          onParentVersion="COPY" protected="false" multiple="false" >
-        <valueConstraints/>
-      </propertyDefinition>
-
-    </propertyDefinitions>
-  </nodeType>
-
 
   <nodeType name="mix:i18n" isMixin="true" hasOrderableChildNodes="false" primaryItemName="">
     <propertyDefinitions>

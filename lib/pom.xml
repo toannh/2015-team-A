@@ -87,6 +87,13 @@
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+
+
         <!--only 4 unitest-->
         <dependency>
             <groupId>org.exoplatform.core</groupId>

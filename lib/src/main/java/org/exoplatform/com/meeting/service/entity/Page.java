@@ -12,6 +12,14 @@ public class Page {
   private int offset;
   private String sort; // time desc; asc
 
+  public Page() { }
+
+  public Page(int limit, int offset, String sort) {
+    this.limit = limit;
+    this.offset = offset;
+    this.sort = sort;
+  }
+
   public int getLimit() {
     return limit;
   }

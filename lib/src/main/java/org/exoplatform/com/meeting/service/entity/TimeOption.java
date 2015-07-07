@@ -23,6 +23,13 @@ public class TimeOption {
     this.id = id;
   }
 
+  public TimeOption(boolean isSelected, long toDate, long fromDate) {
+    this(UUID.randomUUID().toString());
+    this.isSelected = isSelected;
+    this.toDate = toDate;
+    this.fromDate = fromDate;
+  }
+
   public String getId() {
     return id;
   }

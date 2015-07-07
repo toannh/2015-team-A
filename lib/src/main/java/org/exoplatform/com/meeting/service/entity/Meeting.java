@@ -1,6 +1,9 @@
 package org.exoplatform.com.meeting.service.entity;
 
+import com.google.gson.Gson;
+
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by The eXo Platform SEA
@@ -30,13 +33,41 @@ public class Meeting {
   private int status; // Event status, values: 1: booked, 0: voting, -1: closed
 
   private String documentPath;
+  private long dateCreated;
+  private long dateModified;
+
+  public Meeting(String jcrPath, String title, String location, String description,
+                 List<TimeOption> timeOptions, long meetingValidation, boolean isMultiChoice, String owner,
+                 String type, List<String> participant, List<UserVoted> userVotes, int status,
+                 String documentPath, long dateCreated, long dateModified) {
+    this(UUID.randomUUID().toString());
+    this.jcrPath = jcrPath;
+    this.title = title;
+    this.location = location;
+    this.description = description;
+    this.timeOptions = timeOptions;
+    this.meetingValidation = meetingValidation;
+    this.isMultiChoice = isMultiChoice;
+    this.owner = owner;
+    this.type = type;
+    this.participant = participant;
+    this.userVotes = userVotes;
+    this.status = status;
+    this.documentPath = documentPath;
+    this.dateCreated = dateCreated;
+    this.dateModified = dateModified;
+  }
+
+  public Meeting(){
+    this(UUID.randomUUID().toString());
+  }
+
+  public Meeting(String id) {
+    this.id = id;
+  }
 
   public String getId() {
     return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
   }
 
   public String getJcrPath() {
@@ -125,5 +156,43 @@ public class Meeting {
 
   public void setStatus(int status) {
     this.status = status;
+  }
+
+  public long getDateCreated() {
+    return dateCreated;
+  }
+
+  public void setDateCreated(long dateCreated) {
+    this.dateCreated = dateCreated;
+  }
+
+  public long getDateModified() {
+    return dateModified;
+  }
+
+  public void setDateModified(long dateModified) {
+    this.dateModified = dateModified;
+  }
+
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
+  public boolean isMultiChoice() {
+    return isMultiChoice;
+  }
+
+  public void setMultiChoice(boolean isMultiChoice) {
+    this.isMultiChoice = isMultiChoice;
+  }
+
+  @Override
+  public String toString(){
+    Gson gson = new Gson();
+    return gson.toJson(this);
   }
 }
