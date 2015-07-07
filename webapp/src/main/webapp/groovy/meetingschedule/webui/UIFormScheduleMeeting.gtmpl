@@ -1,0 +1,84 @@
+<%
+    import org.exoplatform.webui.core.UIPopupWindow;
+    import org.exoplatform.com.meeting.service.entity.TimeOption;
+    import java.util.Date;
+    import java.text.SimpleDateFormat;
+    def df = new SimpleDateFormat("dd MMM");
+%>
+<div class="uiQuickAddEvent">
+    <div class="form-horizontal quickAddEventContainer">
+        <%uiform.begin()%>
+        <div class="control-group">
+            <div class="control-label" ><%=uicomponent.getLabel("title")%>:</div>
+            <div class="controls">
+                <%uicomponent.renderField("title")%>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="control-label" ><%=uicomponent.getLabel("location")%>:</div>
+            <div class="controls">
+                <%uicomponent.renderField("location")%>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="control-label" ><%=uicomponent.getLabel("description")%>:</div>
+            <div class="controls descriptionArea">
+                <%uicomponent.renderField("description")%>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls descriptionArea">
+                <%
+                    for(TimeOption opt : uicomponent.getTimeOptions()) {
+                        def fromDate = new Date(opt.getFromDate());
+                        def toDate = new Date(opt.getToDate());
+                    %>
+                    <div><%=df.format(fromDate);%> - <%=df.format(toDate)%></div>
+                    <%}
+                %>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="control-label" ><%=uicomponent.getLabel("from")%>:</div>
+            <div class="controls">
+                <div class="date inputSmall pull-left">
+                    <%uicomponent.renderField("from")%>
+                </div>
+                <div class="time inputSmall  pull-left"><!-- start time -->
+                    <%uicomponent.renderField("from_time")%>
+                </div>
+            </div>
+            <div class="control-label" ><%=uicomponent.getLabel("to")%>:</div>
+            <div class="controls">
+                <div class="date inputSmall pull-left">
+                    <%uicomponent.renderField("to")%>
+                </div>
+                <div class="time inputSmall  pull-left"><!-- start time -->
+                    <%uicomponent.renderField("to_time")%>
+                </div>
+            </div>
+            <button id="UIActionBarQuickAddEvent" class="btn btn-primary" type="button" onclick="<%=uicomponent.event('AddTimeOption')%>">
+                <i class="uiIconPlus  uiIconDarkGray"></i>
+            </button>
+        </div>
+        <button id="UIActionBarQuickAddEvent" class="btn btn-primary" type="button" onclick="<%=uicomponent.event('Invite')%>">
+            <i class="uiIconPlus  uiIconDarkGray"></i>
+        </button>
+        <%uiform.end();%>
+    </div>
+    <div class="uiAction uiActionBorder">
+        <% for(action in uicomponent.getActions()) {
+            String actionLabel = _ctx.appRes(uicomponent.getName() + ".action." + action) ;
+            String link = uicomponent.event(action) ;
+        %>
+        <button onclick="$link" type="button" class="btn">$actionLabel</button>
+        <%}%>
+    </div>
+    <%
+        if (uicomponent.getChild(UIPopupWindow.class) == null) {%>
+            <div>Wrong in render popup</div>
+        <%} else { %>
+            <% uicomponent.renderChild(UIPopupWindow.class); %>
+        <%}
+    %>
+</div>
