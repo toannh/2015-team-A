@@ -106,5 +106,23 @@ public class MeetingServiceImpl implements MeetingService{
     return session;
   }
 
+  @Override
+  public Meeting addTimeOption(Meeting meeting, TimeOption option) {
+    return null;
+  }
 
+  @Override
+  public Meeting removeTimeOption(Meeting meeting, String timeOptionId) {
+    return null;
+  }
+
+  @Override
+  public Meeting addParticipant(Meeting meeting, String username) {
+    return null;
+  }
+
+  @Override
+  public Meeting removeParticipant(Meeting meeting, String username) {
+    return null;
+  }
 }
