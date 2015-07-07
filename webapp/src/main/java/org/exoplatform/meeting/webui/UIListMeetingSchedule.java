@@ -19,11 +19,13 @@
 
 package org.exoplatform.meeting.webui;
 
+import org.exoplatform.webui.config.annotation.ComponentConfig;
 import org.exoplatform.webui.core.UIContainer;
 
 /**
  * @author <a href="mailto:tuyennt@exoplatform.com">Tuyen Nguyen The</a>.
  */
+@ComponentConfig(template = "app:/groovy/meetingschedule/webui/UIListMeeting.gtmpl", events = {})
 public class UIListMeetingSchedule extends UIContainer {
 
 }

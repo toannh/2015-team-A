@@ -39,7 +39,7 @@ import org.exoplatform.webui.event.EventListener;
 public class UIMeetingSchedulePortlet extends UIPortletApplication {
   public UIMeetingSchedulePortlet() throws Exception {
     super();
-    //addChild(UIListMeetingSchedule.class, null, null);
+    addChild(UIListMeetingSchedule.class, null, "UIListMeetings");
     //addChild(UINewMeetingSchedule.class, null, null).setRendered(false);
   }
 

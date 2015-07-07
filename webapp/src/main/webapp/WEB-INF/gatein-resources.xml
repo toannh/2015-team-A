@@ -38,6 +38,9 @@
         <module>jquery</module>
         <as>$</as>
       </depends>
+      <depends>
+        <module>bts_tab</module>
+      </depends>
     </module>
   </portlet>
 </gatein-resources>
