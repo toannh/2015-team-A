@@ -1,3 +1,3 @@
-<div id="MeetingSchedulePortlet">
+<div id="MeetingSchedulePortlet" class="pd20 schedule-meeting-wrap">
     <% uicomponent.renderChildren(); %>
 </div>

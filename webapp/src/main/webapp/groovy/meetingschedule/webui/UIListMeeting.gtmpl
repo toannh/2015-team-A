@@ -1,37 +1,72 @@
-<div class="pd20 schedule-meeting-wrap">
-    <div class="uiActionBar uiGrayLightBox mgB15 clearfix">
-        <div class="pull-left btnLeft">
-            <button id="UIActionBarQuickAddEvent" class="btn btn-primary" type="button">
-                <i class="uiIconClock  uiIconDarkGray"></i> Schedule Meeting
-            </button>
-        </div>
+<div class="uiActionBar uiGrayLightBox mgB15 clearfix">
+    <div class="pull-left btnLeft">
+        <button id="UIActionBarQuickAddEvent" class="btn btn-primary" type="button">
+        <i class="uiIconClock  uiIconDarkGray"></i> Schedule Meeting
+        </button>
     </div>
-    <div id="UITabPane" class="uiTabNormal uiTabInPage">
-        <ul class="nav nav-tabs">
-            <li class="active">
-                <a data-target="#tab1" data-toggle="tab">Coming up</a>
-            </li>
-            <li>
-                <a data-target="#tab2" data-toggle="tab">Pending</a>
-            </li>
-            <li>
-                <a data-target="#tab3" data-toggle="tab">Invite</a>
-            </li>
-        </ul>
-        <div class="tab-content">
-            <div class="tab-pane fade in active" id="tab1">
-                <h4 class="titleWithBorder mgB15">All meeting coming up</h4>
-                <table class="uiGrid table table-hover table-striped table-metting">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Time</th>
-                        <th>Member</th>
-                        <th class="center">Action</th>
+</div>
+<div id="UITabPane" class="uiTabNormal uiTabInPage">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a data-target="#tab1" data-toggle="tab">Coming up</a>
+        </li>
+        <li class="">
+            <a data-target="#tab2" data-toggle="tab">Pending</a>
+        </li>
+        <li>
+            <a data-target="#tab3" data-toggle="tab">Invited</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <!-- TAB 1 -->
+        <div class="tab-pane fade in active" id="tab1">
+            <h4 class="titleWithBorder mgB20">All meeting coming up</h4>
+            <table class="uiGrid table table-hover table-striped table-metting">
+                <thead>
+                    <tr class="row-action">
+                        <th class="center"><a class="actionIcon" href="#"><i class="uiIconDelete uiIconLightGray"></i></a></th>
+                        <th class="left"></th>
+                        <th>
+                            <a href="#" class="pull-left"><i class="uiIconMiniArrowLeft uiIconLightGray"></i></a>
+                            <span>Week 28, 6 - 12 July 2015</span>
+                            <a href="#" class="pull-right"><i class="uiIconMiniArrowRight uiIconLightGray"></i></a>
+                        </th>
+                        <th colspan="2" class="right">
+                            <button class="btn btn-default">Today</button>
+                            <ul class="btn-group">
+                                <li class="btn ">
+                                    <a href="#">Day</a>
+                                </li>
+                                <li class="btn active">
+                                    <a href="#">Week</a>
+                                </li>
+                                <li class="btn">
+                                    <a href="#">Month</a>
+                                </li>
+                            </ul>
+                        </th>
                     </tr>
-                    </thead>
-                    <tbody>
                     <tr>
+                        <th class="select-column">
+                            <span class="uiCheckbox">
+                             <input type="checkbox" class="checkbox">
+                             <span></span>
+                         </span>
+                        </th>
+                        <th class="name-column"><a href="#">Name <i class="uiIconMiniArrowUp uiIconLightGray pull-right"></i>
+                        <th class="time-column">Time</th>
+                        <th class="member-column">Member</th>
+                        <th class="action-column center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="uiCheckbox">
+                             <input type="checkbox" class="checkbox">
+                             <span></span>
+                         </span>
+                        </td>
                         <td><a href="#" class="meeting-name">Lorem ipsum dolor sit amet</a></td>
                         <td>
                             <div><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</div>
@@ -41,11 +76,17 @@
                             <span class="uiMention">giangnt</span><span class="uiMention">toanhn</span>
                         </td>
                         <td class="center">
-                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Edit"><i class="uiIconEdit"></i></a>
+                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
                             <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Delete"><i class="uiIconDelete"></i></a>
                         </td>
                     </tr>
                     <tr class="meeting">
+                        <td>
+                            <span class="uiCheckbox">
+                             <input type="checkbox" class="checkbox">
+                             <span></span>
+                         </span>
+                        </td>
                         <td><a href="#" class="meeting-name">In non risus quis libero convallis</a></td>
                         <td>
                             <ol class="list-time">
@@ -59,11 +100,17 @@
                             <span class="uiMention">giangnt</span><span class="uiMention">toanhn</span>
                         </td>
                         <td class="center">
-                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Edit"><i class="uiIconEdit"></i></a>
+                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
                             <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Delete"><i class="uiIconDelete"></i></a>
                         </td>
                     </tr>
                     <tr>
+                        <td>
+                            <span class="uiCheckbox">
+                             <input type="checkbox" class="checkbox">
+                             <span></span>
+                         </span>
+                        </td>
                         <td><a href="#" class="meeting-name">Aenean non eleifend magna</a></td>
                         <td>
                             <div><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</div>
@@ -73,11 +120,17 @@
                             <span class="uiMention">giangnt</span><span class="uiMention">toanhn</span>
                         </td>
                         <td class="center">
-                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Edit"><i class="uiIconEdit"></i></a>
+                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
                             <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Delete"><i class="uiIconDelete"></i></a>
                         </td>
                     </tr>
                     <tr>
+                        <td>
+                            <span class="uiCheckbox">
+                             <input type="checkbox" class="checkbox">
+                             <span></span>
+                         </span>
+                        </td>
                         <td><a href="#" class="meeting-name">Scum Meeting week 25</a></td>
                         <td>
                             <div><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</div>
@@ -87,19 +140,288 @@
                             <span class="uiMention">giangnt</span><span class="uiMention">toanhn</span>
                         </td>
                         <td class="center">
-                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Edit"><i class="uiIconEdit"></i></a>
+                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
                             <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Delete"><i class="uiIconDelete"></i></a>
                         </td>
                     </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="tab-pane fade" id="tab2">
-                The Content of Tab 2 ...
-            </div>
-            <div class="tab-pane fade" id="tab3">
-                The Content of Tab 3 ...
-            </div>
+                </tbody>
+            </table>
+        </div>
+        <!-- TAB 2 -->
+        <div class="tab-pane fade" id="tab2">
+            <h4 class="titleWithBorder mgB20">All meeting waiting peoples to vote</h4>
+            <table class="uiGrid table table-hover table-striped table-metting">
+                <!-- <caption>Lorem ipsum dolor sit amet </caption> -->
+                <thead>
+                    <tr class="row-action">
+                        <th class="center"><a class="actionIcon" href="#"><i class="uiIconDelete uiIconLightGray"></i></a></th>
+                        <th class="left"></th>
+                        <th>
+                            <a href="#" class="pull-left"><i class="uiIconMiniArrowLeft uiIconLightGray"></i></a>
+                            <span>Week 28, 6 - 12 July 2015</span>
+                            <a href="#" class="pull-right"><i class="uiIconMiniArrowRight uiIconLightGray"></i></a>
+                        </th>
+                        <th colspan="2" class="right">
+                            <button class="btn btn-default">Today</button>
+                            <ul class="btn-group">
+                                <li class="btn ">
+                                    <a href="#">Day</a>
+                                </li>
+                                <li class="btn active">
+                                    <a href="#">Week</a>
+                                </li>
+                                <li class="btn">
+                                    <a href="#">Month</a>
+                                </li>
+                            </ul>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="select-column">
+                            <span class="uiCheckbox">
+                             <input type="checkbox" class="checkbox">
+                             <span></span>
+                         </span>
+                        </th>
+                        <th class="name-column"><a href="#">Name <i class="uiIconMiniArrowUp uiIconLightGray pull-right"></i></a></th>
+                        <th class="time-column">Time</th>
+                        <th class="member-column">Member</th>
+                        <th class="action-column center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="uiCheckbox">
+                             <input type="checkbox" class="checkbox">
+                             <span></span>
+                         </span>
+                        </td>
+                        <td><a href="#" class="meeting-name">Lorem ipsum dolor sit amet</a></td>
+                        <td>
+                            <div><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</div>
+                            <div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
+                        </td>
+                        <td>
+                            <span class="uiMention">toanhn</span>
+                            <span class="uiMention disabled">giangnt</span>
+                            <span class="uiMention">trangvh</span>
+                            <span class="uiMention disabled">tuyennt</span>
+                        </td>
+                        <td class="center">
+                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
+                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Delete"><i class="uiIconDelete"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="uiCheckbox">
+                             <input type="checkbox" class="checkbox">
+                             <span></span>
+                         </span>
+                        </td>
+                        <td><a href="#" class="meeting-name">In non risus quis libero convallis</a></td>
+                        <td>
+                            <ol class="list-time">
+                                <li><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</li>
+                                <li><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</li>
+                                <li><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</li>
+                            </ol>
+                            <div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
+                        </td>
+                        <td>
+                            <span class="uiMention">giangnt</span><span class="uiMention disabled">toanhn</span>
+                        </td>
+                        <td class="center">
+                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
+                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Delete"><i class="uiIconDelete"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="uiCheckbox">
+                             <input type="checkbox" class="checkbox">
+                             <span></span>
+                         </span>
+                        </td>
+                        <td><a href="#" class="meeting-name">Aenean non eleifend magna</a></td>
+                        <td>
+                            <div><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</div>
+                            <div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
+                        </td>
+                        <td>
+                        <span class="uiMention disabled">toanhn</span>
+                            <span class="uiMention">giangnt</span>
+                        </td>
+                        <td class="center">
+                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
+                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Delete"><i class="uiIconDelete"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="uiCheckbox">
+                             <input type="checkbox" class="checkbox">
+                             <span></span>
+                         </span>
+                        </td>
+                        <td><a href="#" class="meeting-name">Scum Meeting week 25</a></td>
+                        <td>
+                            <ol class="list-time">
+                                <li><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</li>
+                                <li><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</li>
+                            </ol>
+                            <div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
+                        </td>
+                        <td>
+                            <span class="uiMention">trangvh</span>
+                            <span class="uiMention disabled">tuyennt</span>
+                        </td>
+                        <td class="center">
+                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
+                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Delete"><i class="uiIconDelete"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- TAB 3 -->
+        <div class="tab-pane fade" id="tab3">
+            
+            <h4 class="titleWithBorder mgB20">All meeting waiting you confirm</h4>
+            <table class="uiGrid table table-hover table-striped table-metting">
+                <thead>
+                    <tr class="row-action">
+                        <th class="center"><a class="actionIcon" href="#"><i class="uiIconDelete uiIconLightGray"></i></a></th>
+                        <th class="left"></th>
+                        <th>
+                            <a href="#" class="pull-left"><i class="uiIconMiniArrowLeft uiIconLightGray"></i></a>
+                            <span>Week 28, 6 - 12 July 2015</span>
+                            <a href="#" class="pull-right"><i class="uiIconMiniArrowRight uiIconLightGray"></i></a>
+                        </th>
+                        <th colspan="2" class="right">
+                            <button class="btn btn-default">Today</button>
+                            <ul class="btn-group">
+                                <li class="btn ">
+                                    <a href="#">Day</a>
+                                </li>
+                                <li class="btn active">
+                                    <a href="#">Week</a>
+                                </li>
+                                <li class="btn">
+                                    <a href="#">Month</a>
+                                </li>
+                            </ul>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="select-column">
+                            <span class="uiCheckbox">
+                             <input type="checkbox" class="checkbox">
+                             <span></span>
+                         </span>
+                        </th>
+                        <th class="name-column"><a href="#">Name <i class="uiIconMiniArrowUp uiIconLightGray pull-right"></i>
+                        <th class="time-column">Time</th>
+                        <th class="member-column">Member</th>
+                        <th class="action-column center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="uiCheckbox">
+                             <input type="checkbox" class="checkbox">
+                             <span></span>
+                         </span>
+                        </td>
+                        <td><a href="#" class="meeting-name">Lorem ipsum dolor sit amet</a></td>
+                        <td>
+                            <div><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</div>
+                            <div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
+                        </td>
+                        <td>
+                            <span class="uiMention">toanhn</span>
+                            <span class="uiMention disabled">giangnt</span>
+                            <span class="uiMention">trangvh</span>
+                            <span class="uiMention disabled">tuyennt</span>
+                        </td>
+                        <td class="center">
+                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
+                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Delete"><i class="uiIconDelete"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="uiCheckbox">
+                             <input type="checkbox" class="checkbox">
+                             <span></span>
+                         </span>
+                        </td>
+                        <td><a href="#" class="meeting-name">In non risus quis libero convallis</a></td>
+                        <td>
+                            <ol class="list-time">
+                                <li><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</li>
+                                <li><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</li>
+                                <li><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</li>
+                            </ol>
+                            <div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
+                        </td>
+                        <td>
+                            <span class="uiMention">giangnt</span><span class="uiMention disabled">toanhn</span>
+                        </td>
+                        <td class="center">
+                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
+                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Delete"><i class="uiIconDelete"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="uiCheckbox">
+                             <input type="checkbox" class="checkbox">
+                             <span></span>
+                         </span>
+                        </td>
+                        <td><a href="#" class="meeting-name">Aenean non eleifend magna</a></td>
+                        <td>
+                            <div><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</div>
+                            <div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
+                        </td>
+                        <td>
+                        <span class="uiMention disabled">toanhn</span>
+                            <span class="uiMention">giangnt</span>
+                        </td>
+                        <td class="center">
+                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
+                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Delete"><i class="uiIconDelete"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="uiCheckbox">
+                             <input type="checkbox" class="checkbox">
+                             <span></span>
+                         </span>
+                        </td>
+                        <td><a href="#" class="meeting-name">Scum Meeting week 25</a></td>
+                        <td>
+                            <ol class="list-time">
+                                <li><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</li>
+                                <li><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</li>
+                            </ol>
+                            <div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
+                        </td>
+                        <td>
+                            <span class="uiMention">trangvh</span>
+                            <span class="uiMention disabled">tuyennt</span>
+                        </td>
+                        <td class="center">
+                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
+                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Delete"><i class="uiIconDelete"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

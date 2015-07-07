@@ -1,24 +1,59 @@
 #MeetingSchedulePortlet {
+	.uiMention.disabled {
+		background-color: #eee;
+		color: #aaa;
+		border-color: #ccc;
+	}
 	.table-metting {
+		.row-action {
+			th, td {
+				text-align: center;
+				border: none;
+				padding-top: 10px;
+				padding-bottom: 10px;
+			}
+		}
+		caption {
+			background-color: #f0f0f0;
+			border: 1px solid #cccccc;
+			border-bottom: none;
+			/*-webkit-box-shadow: 0 1px 2px rgba(13, 13, 13, 0.2);
+			-moz-box-shadow: 0 1px 2px rgba(13, 13, 13, 0.2);
+			box-shadow: 0 1px 2px rgba(13, 13, 13, 0.2);*/
+			-webkit-border-radius: 3px 3px 0 0;
+			-moz-border-radius: 3px 3px 0 0;
+			border-radius: 3px 3px 0 0;
+			padding: 8px 10px;
+			line-height: 20px;
+			margin: 0;
+			word-wrap: break-word;
+			.actionIcon {
+			margin: -3px 0;
+			}
+		}
+		th a {
+			display: block;
+			color: #333;
+			.uiIconMiniArrowUp, .uiIconMiniArrowDown {
+				margin-top: 3px;
+			}
+		}
+		.select-column {
+			width: 1px;
+		}
+		.member-column {
+			width: 25%;
+		}
 		.meeting-name {
 			font-size: 14px;
+		}
+		.time-column {
+			width: 30%;
 		}
 		.meeting {
 			td {
 				background-color: #D7F8D5;
 			}
-			/*position: relative;
-			td:first-child {
-				&:before {
-					content: "";
-					width: 2px;
-					height: 100%;
-					position: absolute;
-					left: -1px;
-					top: 0;
-					background-color: #39C522;
-				}
-			}*/
 		}
 		.expire-vote {
 			margin-top: 5px;
@@ -58,5 +93,19 @@
 				}
 			}
 		}
+		.right {
+			text-align: right!important;
+		}
+		.left {
+			text-align: left!important;
+		}
+	}
+}
+
+
+// HACK FOR CHROME
+@media all and (-webkit-min-device-pixel-ratio:0) and (min-resolution: .001dpcm) {
+	#MeetingSchedulePortlet .table-metting .list-time {
+		margin-left: 15px;
 	}
 }
