@@ -37,7 +37,7 @@
         <init-params>
             <value-param>
                 <name>override</name>
-                <value>false</value>
+                <value>true</value>
             </value-param>
             <object-param>
                 <name>portal.configuration</name>
