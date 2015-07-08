@@ -5,14 +5,13 @@ import com.google.gson.reflect.TypeToken;
 import org.apache.commons.lang.StringUtils;
 import org.exoplatform.calendar.service.CalendarEvent;
 import org.exoplatform.calendar.service.CalendarService;
-import org.exoplatform.codefest.service.MeetingService;
 import org.exoplatform.codefest.entity.Meeting;
 import org.exoplatform.codefest.entity.MeetingComment;
 import org.exoplatform.codefest.entity.Page;
 import org.exoplatform.codefest.entity.TimeOption;
 import org.exoplatform.codefest.entity.UserVoted;
-import org.exoplatform.container.ExoContainerContext;
 import org.exoplatform.codefest.service.MeetingService;
+import org.exoplatform.container.ExoContainerContext;
 import org.exoplatform.services.cms.comments.CommentsService;
 import org.exoplatform.services.cms.jcrext.activity.ActivityCommonService;
 import org.exoplatform.services.jcr.RepositoryService;
@@ -428,7 +427,7 @@ public class MeetingServiceImpl implements MeetingService {
       meeting.setDateCreated(node.getProperty(EXO_PROP_MEETING_DATE_CREATED).getLong());
     if (node.hasProperty(EXO_PROP_MEETING_DATE_MODIFIED))
       meeting.setDateModified(node.getProperty(EXO_PROP_MEETING_DATE_MODIFIED).getLong());
-
+    meeting.setId(node.getName());
     meeting.setJcrPath(node.getPath());
   }
 }

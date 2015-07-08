@@ -94,6 +94,10 @@ public class Meeting {
     this.title = title;
   }
 
+  public void setId(String id) {
+    this.id = id;
+  }
+
   public String getLocation() {
     return location;
   }
