@@ -618,6 +618,12 @@
                             <div class="cart-meeting">
                                 <div class="inner">
                                     <div class="date-time"><small class="date">20</small><span class="month">July</span></div>
+                                    <div class="heading">
+                                        <h4 class="title">Lorem ipsum dolor sit amet</h4>
+                                    </div>
+                                    <div class="main">
+                                        
+                                    </div>
                                 </div>
                             </div>
                         </td>
