@@ -66,7 +66,6 @@ public class UIListMeetingSchedule extends UIContainer {
   public static class ScheduleNewMeetingActionListener extends EventListener<UIListMeetingSchedule> {
     @Override
     public void execute(Event<UIListMeetingSchedule> event) throws Exception {
-      System.out.println("Hello world");
       UIListMeetingSchedule ui = event.getSource();
       UIMeetingSchedulePortlet portlet = ui.getAncestorOfType(UIMeetingSchedulePortlet.class);
       portlet.getChild(UIListMeetingSchedule.class).setRendered(false);
@@ -79,7 +78,6 @@ public class UIListMeetingSchedule extends UIContainer {
   public static class ViewDetailActionListener extends EventListener<UIListMeetingSchedule> {
     @Override
     public void execute(Event<UIListMeetingSchedule> event) throws Exception {
-      System.out.println("Hello world");
 
       UIApplication uiApp = event.getRequestContext().getUIApplication();
       String jcrPath = event.getRequestContext().getRequestParameter(OBJECTID);

@@ -14,6 +14,8 @@ import java.util.UUID;
  */
 public class Meeting {
 
+  public static final int MEETING_OPTION_VOTED_BY_USER = 1;
+
   private String id; // node uuid
   private String jcrPath;
   private String title;
@@ -214,8 +216,8 @@ public class Meeting {
   public boolean isVotedOption(String username, String optionId) {
     if (this.userVotes != null && !this.userVotes.isEmpty()) {
       for (UserVoted userVoted : this.userVotes) {
-        if (userVoted.getUsername().equals(username) && userVoted.getOptionId().equals(optionId)) {
-          return true;
+        if (userVoted.getUsername().equals(username) && userVoted.getOptionId().equals(optionId) ) {
+          if(userVoted.getValue() == MEETING_OPTION_VOTED_BY_USER) return true;
         }
       }
     }

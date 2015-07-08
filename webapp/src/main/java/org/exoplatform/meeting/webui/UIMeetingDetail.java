@@ -47,7 +47,9 @@ import java.util.Set;
         @EventConfig(listeners = UIMeetingDetail.ScheduleNewMeetingActionListener.class),
         @EventConfig(listeners = UIMeetingDetail.VoteActionListener.class),
         @EventConfig(listeners = UIMeetingDetail.ToggleOptionActionListener.class),
-        @EventConfig(listeners = UIMeetingDetail.MakeFinalActionListener.class)
+        @EventConfig(listeners = UIMeetingDetail.MakeFinalActionListener.class),
+        @EventConfig(listeners = UIMeetingDetail.EditMeetingActionListener.class)
+
 })
 public class UIMeetingDetail extends UIContainer {
   private Meeting meeting;
@@ -141,5 +143,17 @@ public class UIMeetingDetail extends UIContainer {
 
       event.getRequestContext().addUIComponentToUpdateByAjax(portlet);
     }
+  }
+
+  public static class EditMeetingActionListener extends EventListener<UIMeetingDetail>{
+
+      @Override
+      public void execute(Event<UIMeetingDetail> event) throws Exception {
+        UIMeetingSchedulePortlet portlet = event.getSource().getAncestorOfType(UIMeetingSchedulePortlet.class);
+        portlet.getChild(UIListMeetingSchedule.class).setRendered(false);
+        portlet.getChild(UINewMeetingSchedule.class).setRendered(true);
+
+        event.getRequestContext().addUIComponentToUpdateByAjax(portlet);
+      }
   }
 }
