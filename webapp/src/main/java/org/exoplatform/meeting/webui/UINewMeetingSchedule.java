@@ -230,6 +230,9 @@ public class UINewMeetingSchedule extends UIForm {
       ui.addMessage(new ApplicationMessage("Save meeting schedule successfully", new Object[0], AbstractApplicationMessage.INFO));
       form.timeOptions.clear();
       form.participants.clear();
+      form.getUIStringInput("title").setValue("");
+      form.getUIStringInput("location").setValue("");
+      form.getUIFormTextAreaInput("description").setValue("");
     }
   }
 
