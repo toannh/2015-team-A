@@ -183,7 +183,7 @@ public class MeetingServiceImpl implements MeetingService {
   }
 
   @Override
-  public void updateVote(Meeting m, String username, Map<String, String> userVoteds) throws Exception{
+  public Meeting updateVote(Meeting m, String username, Map<String, String> userVoteds) throws Exception{
     Meeting meeting = getMeeting(m.getJcrPath());
     List<UserVoted> _userVotedsFromDB = meeting.getUserVotes();
     if(_userVotedsFromDB == null ) _userVotedsFromDB = new ArrayList<UserVoted>();
@@ -206,14 +206,19 @@ public class MeetingServiceImpl implements MeetingService {
     }
 
     meeting.setUserVotes(_userVotedsFromDB);
-    save(meeting);
+    return save(meeting);
   }
 
   @Override
-  public void finalMeeting(Meeting meeting, String[] timeOptionId) {
-    meeting.setStatus(1);
+  public Meeting finalMeeting(Meeting meeting, List<String> timeOptionIds) throws Exception{
+    meeting.setStatus(1); //close voting
     List<TimeOption> timeOptions = meeting.getTimeOptions();
-    for (String)
+    for (TimeOption timeOption: timeOptions){
+      if(timeOptionIds.contains(timeOption.getId())){
+        timeOption.setSelected(true);
+      }
+    }
+    return save(meeting);
   }
 
   /**

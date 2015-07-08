@@ -82,9 +82,9 @@ public interface MeetingService {
    * @param userVoteds
    * @return
    */
-  public void updateVote(Meeting meeting, String username, Map<String, String> userVoteds) throws Exception;
+  public Meeting updateVote(Meeting meeting, String username, Map<String, String> userVoteds) throws Exception;
 
-  public void finalMeeting(Meeting meeting, String[] timeOptionId);
+  public Meeting finalMeeting(Meeting meeting, List<String> timeOptionIds) throws Exception;
 
   /**
    * Add new option for meeting
