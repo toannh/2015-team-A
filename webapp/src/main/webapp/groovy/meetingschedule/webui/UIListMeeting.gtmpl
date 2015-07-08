@@ -1,3 +1,9 @@
+<%
+import org.exoplatform.meeting.webui.UIListMeetingSchedule;
+import org.exoplatform.codefest.utils.Utils;
+
+%>
+
 <div class="uiActionBar uiGrayLightBox mgB15 clearfix">
     <div class="pull-left btnLeft">
         <button id="UIActionBarQuickAddEvent" class="btn btn-primary" type="button" onclick="<%=uicomponent.event('ScheduleNewMeeting')%>">
@@ -18,10 +24,10 @@
 <div id="UITabPane" class="uiTabNormal uiTabInPage">
     <ul class="nav nav-tabs">
         <li class="active">
-            <a data-target="#tab1" data-toggle="tab">Coming up</a>
+            <a data-target="#tab1" data-toggle="tab">Pending</a>
         </li>
         <li class="">
-            <a data-target="#tab2" data-toggle="tab">Pending</a>
+            <a data-target="#tab2" data-toggle="tab">Coming up</a>
         </li>
         <li>
             <a data-target="#tab3" data-toggle="tab">Invited</a>
@@ -75,6 +81,44 @@
                         <th class="action-column center">Action</th>
                     </tr>
                 </thead>
+                <tbody>
+                <%
+                def pendingMeetings = uicomponent.getPendingMeeting();
+                if (pendingMeetings.size() <= 0) {%>
+                <tr><td style="font-size: 13px;"><%=uiform.getLabel('noData')%></td></tr>
+                <%} else {
+                for (meeting in pendingMeetings) {
+                  String title = meeting.getTitle();
+                  String description = meeting.getDescription();
+                  String owner = meeting.getOwner();
+                %>
+                    <tr>
+                        <td>
+                            <span class="uiCheckbox">
+                             <input type="checkbox" class="checkbox">
+                             <span></span>
+                         </span>
+                        </td>
+                        <td><a href="#" class="meeting-name">$title ($owner)</a></td>
+                        <td>
+                            <%for (option in meeting.getTimeOptions()) {
+                              String fromDate = Utils.toDate(option.getFromDate());
+                              String toDate = Utils.toDate(option.getToDate());
+                            %>
+                              <div><span class="muted">From</span> $fromDate <span class="muted">to</span> $toDate</div>
+                            <%}%>
+                        </td>
+                        <td><%for (participant in meeting.getParticipant()) {%>
+                            <span class="uiMention">$participant</span>
+                            <%}%>
+                        </td>
+                        <td class="center">
+                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
+                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Delete"><i class="uiIconDelete"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+                <%} }%>
                 <tbody>
                     <tr>
                         <td>
