@@ -4,11 +4,14 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import org.apache.commons.lang.StringUtils;
+import org.exoplatform.calendar.service.CalendarEvent;
+import org.exoplatform.calendar.service.CalendarService;
 import org.exoplatform.codefest.service.MeetingService;
 import org.exoplatform.codefest.entity.Meeting;
 import org.exoplatform.codefest.entity.Page;
 import org.exoplatform.codefest.entity.TimeOption;
 import org.exoplatform.codefest.entity.UserVoted;
+import org.exoplatform.container.ExoContainerContext;
 import org.exoplatform.services.jcr.RepositoryService;
 import org.exoplatform.services.jcr.core.ManageableRepository;
 import org.exoplatform.services.jcr.ext.app.SessionProviderService;
@@ -26,6 +29,7 @@ import javax.jcr.query.QueryManager;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -218,7 +222,36 @@ public class MeetingServiceImpl implements MeetingService {
         timeOption.setSelected(true);
       }
     }
-    return save(meeting);
+
+    Meeting m = save(meeting);
+    CalendarService calService = (CalendarService)ExoContainerContext.getCurrentContainer().getComponentInstanceOfType(CalendarService.class);
+    for (String username : m.getParticipant()) {
+      List<org.exoplatform.calendar.service.Calendar> calendars = calService.getUserCalendars(username, true);
+      if (calendars != null && calendars.size() > 0) {
+        org.exoplatform.calendar.service.Calendar calendar = calendars.get(0);
+
+        for(TimeOption opt : m.getTimeOptions()) {
+          if (opt.isSelected()) {
+            CalendarEvent event = new CalendarEvent();
+            event.setCalendarId(calendar.getId());
+            event.setEventType(CalendarEvent.TYPE_EVENT);
+            event.setLocation(m.getLocation());
+            event.setDescription(m.getDescription());
+            event.setSummary(m.getTitle());
+            event.setFromDateTime(new Date(opt.getFromDate()));
+            event.setToDateTime(new Date(opt.getToDate()));
+
+            try {
+              calService.saveUserEvent(username, calendar.getId(), event, true);
+            } catch (Exception ex) {
+              ex.printStackTrace();
+            }
+          }
+        }
+      }
+    }
+
+    return m;
   }
 
   /**
