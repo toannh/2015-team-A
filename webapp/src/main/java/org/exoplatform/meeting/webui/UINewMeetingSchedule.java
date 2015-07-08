@@ -223,8 +223,7 @@ public class UINewMeetingSchedule extends UIForm {
       MeetingService meetingService = form.getApplicationComponent(MeetingService.class);
       meetingService.save(meeting);
 
-      System.out.println("Save meeting successfully, please redirect to detail view");
-      ui.addMessage(new ApplicationMessage("Save meeting schedule successfully", new Object[0], AbstractApplicationMessage.ERROR));
+      ui.addMessage(new ApplicationMessage("Save meeting schedule successfully", new Object[0], AbstractApplicationMessage.INFO));
       form.timeOptions.clear();
       form.participants.clear();
     }
