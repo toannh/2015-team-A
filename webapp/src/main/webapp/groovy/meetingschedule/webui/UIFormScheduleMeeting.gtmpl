@@ -49,7 +49,7 @@
                                     <div class="date inputSmall pull-left">
                                         <%=df.format(toDate)%>
                                     </div>
-                                    <a class="actionIcon" rel="tooltip" data-placement="bottom" title="" href="#" data-original-title="Add time"><i class="uiIconDelete uiIconLightGray"></i></a>
+                                    <a class="actionIcon" rel="tooltip" data-placement="bottom" title="" href="#" data-original-title="Add time" onclick="<%=uicomponent.event('RemoveTimeOption', opt.getId())%>"><i class="uiIconDelete uiIconLightGray"></i></a>
                                 </div>
                             <%}%>
                             <div class="row-select-time">
@@ -75,7 +75,7 @@
                         <label class="control-label">Member:</label>
                         <div class="controls">
                             <%for (String user : uicomponent.getParticipants()) {%>
-                                <span class="uiMention">${user}<a href="#" class="uiIconClose"></a></span>
+                                <span class="uiMention">${user}<a href="#" class="uiIconClose" onclick="<%=uicomponent.event('RemoveParticipant', user)%>"></a></span>
                             <%}%>
                             <a class="actionIcon" rel="tooltip" data-placement="bottom" title="" href="#" data-original-title="Add Member" onclick="<%=uicomponent.event('Invite')%>">
                                 <i class="uiIconPlus uiIconLightGray"></i>

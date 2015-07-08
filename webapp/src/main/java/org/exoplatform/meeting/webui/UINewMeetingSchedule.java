@@ -66,7 +66,9 @@ import java.util.TimeZone;
                         @EventConfig(listeners = UINewMeetingSchedule.BackActionListener.class),
                         @EventConfig(listeners = UINewMeetingSchedule.SaveActionListener.class),
                         @EventConfig(listeners = UINewMeetingSchedule.AddTimeOptionActionListener.class),
-                        @EventConfig(listeners = UINewMeetingSchedule.InviteActionListener.class)
+                        @EventConfig(listeners = UINewMeetingSchedule.InviteActionListener.class),
+                        @EventConfig(listeners = UINewMeetingSchedule.RemoveTimeOptionActionListener.class),
+                        @EventConfig(listeners = UINewMeetingSchedule.RemoveParticipantActionListener.class)
                 }
         ),
         @ComponentConfig(
@@ -181,6 +183,41 @@ public class UINewMeetingSchedule extends UIForm {
       uiPopupWindow.setShow(true);
       uiPopupWindow.setRendered(true);
       uiPopupWindow.setWindowSize(740, 400) ;
+    }
+  }
+
+  public static class RemoveTimeOptionActionListener extends EventListener<UINewMeetingSchedule> {
+    @Override
+    public void execute(Event<UINewMeetingSchedule> event) throws Exception {
+      String optionId = event.getRequestContext().getRequestParameter(OBJECTID);
+      if (optionId == null || optionId.isEmpty()) {
+        return;
+      }
+
+      UINewMeetingSchedule ui = event.getSource();
+      int index = -1;
+      for(int i = 0; i < ui.timeOptions.size(); i++) {
+        TimeOption opt = ui.timeOptions.get(i);
+        if (optionId.equals(opt.getId())) {
+          index = i;
+          break;
+        }
+      }
+      if (index != -1) {
+        ui.timeOptions.remove(index);
+      }
+    }
+  }
+
+  public static class RemoveParticipantActionListener extends EventListener<UINewMeetingSchedule> {
+    @Override
+    public void execute(Event<UINewMeetingSchedule> event) throws Exception {
+      String participant = event.getRequestContext().getRequestParameter(OBJECTID);
+      if (participant == null || participant.isEmpty()) {
+        return;
+      }
+      UINewMeetingSchedule ui = event.getSource();
+      ui.participants.remove(participant);
     }
   }
 
