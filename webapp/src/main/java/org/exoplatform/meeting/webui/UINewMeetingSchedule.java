@@ -262,7 +262,7 @@ public class UINewMeetingSchedule extends UIForm {
 
       Identity identity = ConversationState.getCurrent().getIdentity();
       Meeting meeting = new Meeting();
-
+      if(form.getEditMeeting()!=null) meeting.setId(form.getEditMeeting().getId());
       meeting.setTitle(title);
       meeting.setDescription(description);
       meeting.setLocation(location);
@@ -275,11 +275,7 @@ public class UINewMeetingSchedule extends UIForm {
       meeting = meetingService.save(meeting);
 
       ui.addMessage(new ApplicationMessage("Save meeting schedule successfully", new Object[0], AbstractApplicationMessage.INFO));
-      form.timeOptions.clear();
-      form.participants.clear();
-      form.getUIStringInput("title").setValue("");
-      form.getUIStringInput("location").setValue("");
-      form.getUIFormTextAreaInput("description").setValue("");
+      clearForm(form);
 
       UIMeetingSchedulePortlet portlet = form.getAncestorOfType(UIMeetingSchedulePortlet.class);
       portlet.getChild(UINewMeetingSchedule.class).setRendered(false);
@@ -340,5 +336,13 @@ public class UINewMeetingSchedule extends UIForm {
     UIFormComboBox to_time = this.getChildById("to_time");
     to_time.setOptions(options);
     if(editMeeting!=null) setParticipants(new HashSet<String>(editMeeting.getParticipant()));
+  }
+
+  public static void clearForm(UINewMeetingSchedule form){
+    form.timeOptions.clear();
+    form.participants.clear();
+    form.getUIStringInput("title").setValue("");
+    form.getUIStringInput("location").setValue("");
+    form.getUIFormTextAreaInput("description").setValue("");
   }
 }

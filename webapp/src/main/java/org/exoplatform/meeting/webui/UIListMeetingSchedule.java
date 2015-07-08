@@ -69,8 +69,9 @@ public class UIListMeetingSchedule extends UIContainer {
       UIListMeetingSchedule ui = event.getSource();
       UIMeetingSchedulePortlet portlet = ui.getAncestorOfType(UIMeetingSchedulePortlet.class);
       portlet.getChild(UIListMeetingSchedule.class).setRendered(false);
-      portlet.getChild(UINewMeetingSchedule.class).setRendered(true);
-
+      UINewMeetingSchedule form = portlet.getChild(UINewMeetingSchedule.class);
+      UINewMeetingSchedule.clearForm(form);
+      form.setRendered(true);
       event.getRequestContext().addUIComponentToUpdateByAjax(portlet);
     }
   }
