@@ -10,6 +10,8 @@
 	.table {
 		.row-white {
 			td {
+				padding-top: 15px;
+				padding-bottom: 15px;
 				background-color: #fff!important;
 			}
 		}
@@ -72,7 +74,7 @@
 			}
 		}
 		.select-column {
-			width: 1px;
+			width: 23px;
 		}
 		.member-column {
 			width: 25%;
@@ -184,12 +186,89 @@
 		padding-top: 10px;
 	}
 }
-.cart-meeting {
+.list-card-meeting {
+	+ .list-card-meeting {
+		margin-top: 20px;
+	}
+}
+.card-meeting {
 	border: 1px solid #ddd;
-	border-radius: 3px;
-	float: left;
+	position: relative;
+	.time-meeting {
+		color: #2f5e92;
+		text-align: center;
+		display: inline-block;
+		font-weight: bold;
+		font-size: 16px;
+		height: 40px;
+	}
+	.action {
+		position: absolute;
+		right: 3px;
+		bottom: 3px;
+		display: none;
+	}
+	&:hover {
+		background-color: #f9f9f9;
+		.action {
+			display: block;
+		}
+		&:before {
+			border-right-color: #aaa;
+		}
+	}
+	&.today {
+		border-color: #2f5e92;
+		background-color: #f7f7f7;
+		&:before {
+			border-right-color: #2f5e92;
+		}
+	}
+	&:before {
+		content: "";
+		position: absolute;
+		top: -1px;
+		right: -1px;
+		border-top: 0px solid transparent;
+		border-bottom: 70px solid transparent;
+		border-right: 70px solid #ccc;
+	}
+	.uiMention {
+		margin-bottom: 0!important;
+		margin-top: 6px;
+	}
 	> .inner {
 		padding: 10px;
+		display: inline-block;
+	}
+	.title {
+		font-size: 14px;
+		margin-bottom: 5px;
+	}
+	.desc {
+		height: 60px;
+		overflow: hidden;
+		display: block;
+		font-style: italic;
+		margin-bottom: 3px;
+	}
+	.joined {
+		font-weight: bold;
+		font-style: italic;
+		font-size: 12px;
+	}
+	.date-time {
+		color: #fff;
+		position: absolute;
+		right: 5px;
+		top: 2px;
+		text-align: right;
+		.date {
+			color: #fff;
+			font-size: 20px;
+			font-weight: bold;
+			display: block;
+		}
 	}
 }
 .UIComboboxList {
@@ -207,7 +286,7 @@
 
 // HACK FOR CHROME
 @media all and (-webkit-min-device-pixel-ratio:0) and (min-resolution: .001dpcm) {
-	#MeetingSchedulePortlet .table-metting .list-time {
+	#UIMeetingSchedulePortlet .table-metting .list-time {
 		margin-left: 15px;
 	}
 }
