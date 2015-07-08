@@ -3,6 +3,7 @@ import org.exoplatform.meeting.webui.UIListMeetingSchedule;
 import org.exoplatform.codefest.utils.Utils;
 
 %>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" ></script>
 
 <div class="uiActionBar uiGrayLightBox mgB15 clearfix">
     <div class="pull-left btnLeft">
@@ -37,14 +38,14 @@ import org.exoplatform.codefest.utils.Utils;
         <!-- TAB 1 -->
         <div class="tab-pane fade in active" id="tab1">
             <h4 class="titleWithBorder mgB20">All meeting coming up</h4>
-            <table class="uiGrid table table-hover table-striped table-metting">
+            <table id="pending-list-view" class="uiGrid table table-hover table-striped table-metting">
                 <thead>
                     <tr class="row-action">
                         <th colspan="2" class="left">
-                            <a href="#" class="actionIcon delete-all" data-placement="bottom" rel="tooltip" data-original-title="Delete all meeting selected"><i class="uiIconDelete uiIconLightGray"></i></a>
+                            <a href="#" class="actionIcon delete-all" style="display: none;" data-placement="bottom" rel="tooltip" data-original-title="Delete all meeting selected"><i class="uiIconDelete uiIconLightGray"></i></a>
                             <div class="btn-group">
-                                <a class="btn active" href="#" ><i class="uiIconEcmsViewList uiIconEcmsLightGray" data-placement="bottom" rel="tooltip" data-original-title="List View"></i></a>
-                                <a class="btn" href="#" ><i class="uiIconEcmsViewIcons uiIconEcmsLightGray" data-placement="bottom" rel="tooltip" data-original-title="Grid view"></i></a>
+                                <a class="btn active  toggle-show-pending-list-view" href="#" onclick="showList();" ><i class="uiIconEcmsViewList uiIconEcmsLightGray" data-placement="bottom" rel="tooltip" data-original-title="List View"></i></a>
+                                <a class="btn toggle-show-pending-grid-view" href="#" onclick="showGrid()" ><i class="uiIconEcmsViewIcons uiIconEcmsLightGray" data-placement="bottom" rel="tooltip" data-original-title="Grid view"></i></a>
                             </div>
                         </th>
                         <th>
@@ -126,17 +127,13 @@ import org.exoplatform.codefest.utils.Utils;
                 </tbody>
                 <%} }%>
             </table>
-        </div>
-        <!-- TAB 2 -->
-        <div class="tab-pane fade" id="tab2">
-            <h4 class="titleWithBorder mgB20">All meeting waiting peoples to vote</h4>
-            <table class="uiGrid table table-hover table-striped table-metting card-view">
+            <table id="pending-grid-view" class="uiGrid table table-hover table-striped table-metting card-view" style="display: none;">
                 <thead>
                     <tr class="row-action">
                         <th class="left">
                             <div class="btn-group">
-                                <a class="btn" href="#"><i class="uiIconEcmsViewList uiIconEcmsLightGray" data-placement="bottom" rel="tooltip" data-original-title="List View"></i></a>
-                                <a class="btn active" href="#"><i class="uiIconEcmsViewIcons uiIconEcmsLightGray" data-placement="bottom" rel="tooltip" data-original-title="Grid view"></i></a>
+                                <a class="btn toggle-show-pending-list-view" href="#" onclick="showList();" ><i class="uiIconEcmsViewList uiIconEcmsLightGray" data-placement="bottom" rel="tooltip" data-original-title="List View"></i></a>
+                                <a class="btn active toggle-show-pending-grid-view" href="#" onclick="showGrid();"><i class="uiIconEcmsViewIcons uiIconEcmsLightGray" data-placement="bottom" rel="tooltip" data-original-title="Grid view"></i></a>
                             </div>
                         </th>
                         <th>
@@ -358,12 +355,21 @@ import org.exoplatform.codefest.utils.Utils;
                     </tr>
                 </tbody>
             </table>
+        </div>
+        <!-- TAB 2 -->
+        <div class="tab-pane fade" id="tab2">
+            <h4 class="titleWithBorder mgB20">All meeting waiting peoples to vote</h4>
             <table class="uiGrid table table-hover table-striped table-metting">
                 <!-- <caption>Lorem ipsum dolor sit amet </caption> -->
                 <thead>
                     <tr class="row-action">
-                        <th class="center"><a class="actionIcon" href="#"><i class="uiIconDelete uiIconLightGray"></i></a></th>
-                        <th class="left"></th>
+                        <th colspan="2" class="left">
+                            <a href="#" class="actionIcon delete-all" style="display: none;" data-placement="bottom" rel="tooltip" data-original-title="Delete all meeting selected"><i class="uiIconDelete uiIconLightGray"></i></a>
+                            <div class="btn-group">
+                                <a class="btn active  toggle-show-coming-list-view" href="#" ><i class="uiIconEcmsViewList uiIconEcmsLightGray" data-placement="bottom" rel="tooltip" data-original-title="List View"></i></a>
+                                <a class="btn toggle-show-coming-grid-view" href="#" ><i class="uiIconEcmsViewIcons uiIconEcmsLightGray" data-placement="bottom" rel="tooltip" data-original-title="Grid view"></i></a>
+                            </div>
+                        </th>
                         <th>
                             <div class="control-time">
                                 <a href="#" class="pull-left"><i class="uiIconMiniArrowLeft uiIconLightGray"></i></a>
@@ -502,8 +508,13 @@ import org.exoplatform.codefest.utils.Utils;
             <table class="uiGrid table table-hover table-striped table-metting">
                 <thead>
                     <tr class="row-action">
-                        <th class="center"><a class="actionIcon" href="#"><i class="uiIconDelete uiIconLightGray"></i></a></th>
-                        <th class="left"></th>
+                        <th colspan="2" class="left">
+                            <a href="#" class="actionIcon delete-all" style="display: none;" data-placement="bottom" rel="tooltip" data-original-title="Delete all meeting selected"><i class="uiIconDelete uiIconLightGray"></i></a>
+                            <div class="btn-group">
+                                <a class="btn active  toggle-show-invited-list-view" href="#" ><i class="uiIconEcmsViewList uiIconEcmsLightGray" data-placement="bottom" rel="tooltip" data-original-title="List View"></i></a>
+                                <a class="btn toggle-show-invited-grid-view" href="#" ><i class="uiIconEcmsViewIcons uiIconEcmsLightGray" data-placement="bottom" rel="tooltip" data-original-title="Grid view"></i></a>
+                            </div>
+                        </th>
                         <th>
                             <div class="control-time">
                                 <a href="#" class="pull-left"><i class="uiIconMiniArrowLeft uiIconLightGray"></i></a>

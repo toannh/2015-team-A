@@ -21,5 +21,20 @@
                 }
             });
         });
+
+        $("#pending-grid-view").hide();
+        window.showList = function() {
+            $("#pending-list-view").show();
+            $("#pending-grid-view").hide();
+            console.log($(this));
+        };
+        
+        window.showGrid = function() {
+            $("#pending-grid-view").show();
+            $("#pending-list-view").hide();
+            console.log($(this));
+        };
+
+
     });
 })($);
