@@ -1,6 +1,6 @@
 <div class="uiActionBar uiGrayLightBox mgB15 clearfix">
     <div class="pull-left btnLeft">
-        <button id="UIActionBarQuickAddEvent" class="btn btn-primary" type="button" onclick="<%=uicomponent.event('ScheduleNewMeeting')%>">
+        <button id="UIActionBarQuickAddEvent" class="btn btn-primary" type="button">
         <i class="uiIconClock  uiIconDarkGray"></i> Schedule Meeting
         </button>
     </div>
@@ -71,7 +71,8 @@
                                     <div class="inner">
                                         <div class="date-time"><small class="date">20</small><span class="month">July</span></div>
                                         <div class="time-meeting">
-                                            09:00 AM - 11:00 PM
+                                            <div><del>09:00 AM - 11:00 PM</del></div>
+                                            <div>03:00 AM - 04:00 PM</div>
                                         </div>
                                         <div class="heading">
                                             <h5 class="title">Lorem ipsum dolor sit amet</h5>
@@ -93,7 +94,6 @@
                                     <div class="inner">
                                         <div class="date-time"><small class="date">21</small><span class="month">July</span></div>
                                         <div class="time-meeting">
-                                            <div>09:00 AM - 11:00 PM</div>
                                             <div>03:00 AM - 04:00 PM</div>
                                         </div>
                                         <div class="heading">
@@ -117,7 +117,6 @@
                                         <div class="date-time"><small class="date">22</small><span class="month">July</span></div>
                                         <div class="time-meeting">
                                             <div>09:00 AM - 11:00 PM</div>
-                                            <div>03:00 AM - 04:00 PM</div>
                                         </div>
                                         <div class="heading">
                                             <h5 class="title">Lorem ipsum dolor sit amet</h5>
@@ -140,7 +139,6 @@
                                         <div class="date-time"><small class="date">23</small><span class="month">July</span></div>
                                         <div class="time-meeting">
                                             <div>09:00 AM - 11:00 PM</div>
-                                            <div>03:00 AM - 04:00 PM</div>
                                         </div>
                                         <div class="heading">
                                             <h5 class="title">Lorem ipsum dolor sit amet</h5>
@@ -186,7 +184,6 @@
                                         <div class="date-time"><small class="date">25</small><span class="month">July</span></div>
                                         <div class="time-meeting">
                                             <div>09:00 AM - 11:00 PM</div>
-                                            <div>03:00 AM - 04:00 PM</div>
                                         </div>
                                         <div class="heading">
                                             <h5 class="title">Lorem ipsum dolor sit amet</h5>
@@ -309,7 +306,6 @@
                         <td><a href="#" class="meeting-name">Lorem ipsum dolor sit amet</a></td>
                         <td>
                             <div><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</div>
-                            <div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
                         </td>
                         <td>
                             <span class="uiMention">giangnt</span>
@@ -334,7 +330,6 @@
                                 <li><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</li>
                                 <li><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</li>
                             </ol>
-                            <div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
                         </td>
                         <td>
                             <span class="uiMention">giangnt</span>
@@ -355,7 +350,6 @@
                         <td><a href="#" class="meeting-name">Aenean non eleifend magna</a></td>
                         <td>
                             <div><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</div>
-                            <div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
                         </td>
                         <td>
                             <span class="uiMention">giangnt</span>
@@ -376,7 +370,6 @@
                         <td><a href="#" class="meeting-name">Scum Meeting week 25</a></td>
                         <td>
                             <div><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</div>
-                            <div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
                         </td>
                         <td>
                             <span class="uiMention">giangnt</span>
