@@ -151,8 +151,12 @@ public class UIMeetingDetail extends UIContainer {
       public void execute(Event<UIMeetingDetail> event) throws Exception {
         UIMeetingSchedulePortlet portlet = event.getSource().getAncestorOfType(UIMeetingSchedulePortlet.class);
         portlet.getChild(UIListMeetingSchedule.class).setRendered(false);
-        portlet.getChild(UINewMeetingSchedule.class).setRendered(true);
-
+        UINewMeetingSchedule uiNewMeetingSchedule =  portlet.getChild(UINewMeetingSchedule.class);
+        String jcrPath = event.getRequestContext().getRequestParameter(OBJECTID);
+        MeetingService meetingService = portlet.getApplicationComponent(MeetingService.class);
+        uiNewMeetingSchedule.setEditMeeting(meetingService.getMeeting(jcrPath));
+        uiNewMeetingSchedule.init();
+        uiNewMeetingSchedule.setRendered(true);
         event.getRequestContext().addUIComponentToUpdateByAjax(portlet);
       }
   }

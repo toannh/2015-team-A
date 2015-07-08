@@ -19,9 +19,9 @@
 
 package org.exoplatform.meeting.webui;
 
-import org.exoplatform.codefest.service.MeetingService;
 import org.exoplatform.codefest.entity.Meeting;
 import org.exoplatform.codefest.entity.TimeOption;
+import org.exoplatform.codefest.service.MeetingService;
 import org.exoplatform.services.security.ConversationState;
 import org.exoplatform.services.security.Identity;
 import org.exoplatform.web.application.AbstractApplicationMessage;
@@ -46,14 +46,7 @@ import org.exoplatform.webui.organization.account.UIUserSelector;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
-import java.util.TimeZone;
+import java.util.*;
 
 /**
  * @author <a href="mailto:tuyennt@exoplatform.com">Tuyen Nguyen The</a>.
@@ -86,6 +79,15 @@ public class UINewMeetingSchedule extends UIForm {
 
   private Set<String> participants = new HashSet<String>();
   private List<TimeOption> timeOptions = new ArrayList<TimeOption>();
+  public Meeting editMeeting;
+
+  public void setEditMeeting(Meeting editMeeting){
+      this.editMeeting = editMeeting;
+  }
+
+  public Meeting getEditMeeting(){
+      return editMeeting;
+  }
 
   public UINewMeetingSchedule() throws Exception {
     addUIFormInput(new UIFormStringInput("title", "title", ""));
@@ -103,11 +105,17 @@ public class UINewMeetingSchedule extends UIForm {
   }
 
   public List<TimeOption> getTimeOptions() {
+    if(editMeeting!=null) return editMeeting.getTimeOptions();
     return this.timeOptions;
   }
 
   public Set<String> getParticipants() {
+    if(editMeeting!=null) editMeeting.getParticipant().toArray();
     return this.participants;
+  }
+
+  public void setParticipants(Set<String> participants ){
+    this.participants = participants;
   }
 
   private List<SelectItemOption<String>> getTimeOptions(String labelFormat, String valueFormat, long timeInteval) {
@@ -313,5 +321,24 @@ public class UINewMeetingSchedule extends UIForm {
       uiPopup.setShow(false);
       event.getRequestContext().addUIComponentToUpdateByAjax(form);
     }
+  }
+
+  public void init(){
+    UIFormStringInput titleComponent = this.getChildById("title");
+    titleComponent.setValue(editMeeting != null ? editMeeting.getTitle() : "");
+
+    UIFormStringInput locationComponent = this.getChildById("location");
+    locationComponent.setValue(editMeeting!=null?editMeeting.getLocation():"");
+
+    UIFormTextAreaInput descriptionComponent = this.getChildById("description");
+    descriptionComponent.setValue(editMeeting != null ? editMeeting.getDescription() : "");
+
+    List<SelectItemOption<String>> options = getTimeOptions("HH:mm", "HH:mm", 30);
+    UIFormComboBox from_time = this.getChildById("from_time");
+    from_time.setOptions(options);
+
+    UIFormComboBox to_time = this.getChildById("to_time");
+    to_time.setOptions(options);
+    if(editMeeting!=null) setParticipants(new HashSet<String>(editMeeting.getParticipant()));
   }
 }
