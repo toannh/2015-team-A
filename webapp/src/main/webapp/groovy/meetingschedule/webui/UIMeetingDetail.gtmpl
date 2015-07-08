@@ -312,9 +312,9 @@
 
 		<hr>
 		<div class="text-right">
+            <%if (currentUser == owner && status == 0) {%>
 			<button class="btn" onclick="<%=uicomponent.event('EditMeeting')%>"><i class="uiIconEdit uiIconLightGray"></i>&nbsp;Edit</button>
 			<button class="btn"><i class="uiIconDelete uiIconLightGray"></i>&nbsp;Delete</button>
-            <%if (currentUser == owner) {%>
             <button class="btn btn-primary" onclick="<%=uicomponent.event('MakeFinal')%>"><i class="uiIconClock  uiIconDarkGray"></i>&nbsp;Create Meeting</button>
             <%}%>
 		</div>
