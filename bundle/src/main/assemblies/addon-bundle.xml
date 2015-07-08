@@ -50,5 +50,13 @@
             <outputFileNameMapping>${artifact.artifactId}-${artifact.baseVersion}.${artifact.extension}
             </outputFileNameMapping>
         </dependencySet>
+        <dependencySet>
+          <useProjectArtifact>false</useProjectArtifact>
+          <outputDirectory>/</outputDirectory>
+          <includes>
+            <include>com.google.code.gson:gson</include>
+          </includes>
+          <outputFileNameMapping>${artifact.artifactId}-${artifact.baseVersion}.${artifact.extension}</outputFileNameMapping>
+        </dependencySet>
     </dependencySets>
 </assembly>

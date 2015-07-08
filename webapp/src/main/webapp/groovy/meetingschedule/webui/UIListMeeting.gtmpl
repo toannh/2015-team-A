@@ -1,6 +1,6 @@
 <div class="uiActionBar uiGrayLightBox mgB15 clearfix">
     <div class="pull-left btnLeft">
-        <button id="UIActionBarQuickAddEvent" class="btn btn-primary" type="button">
+        <button id="UIActionBarQuickAddEvent" class="btn btn-primary" type="button" onclick="<%=uicomponent.event('ScheduleNewMeeting')%>">
         <i class="uiIconClock  uiIconDarkGray"></i> Schedule Meeting
         </button>
     </div>

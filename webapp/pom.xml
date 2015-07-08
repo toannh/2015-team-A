@@ -46,6 +46,7 @@
     <dependency>
       <groupId>org.exoplatform.addons.codefest.team_a</groupId>
       <artifactId>team-a-addon-lib</artifactId>
+      <scope>provided</scope>
     </dependency>
   </dependencies>
 
