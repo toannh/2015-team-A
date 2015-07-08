@@ -211,7 +211,9 @@ public class MeetingServiceImpl implements MeetingService {
 
   @Override
   public void finalMeeting(Meeting meeting, String[] timeOptionId) {
-
+    meeting.setStatus(1);
+    List<TimeOption> timeOptions = meeting.getTimeOptions();
+    for (String)
   }
 
   /**

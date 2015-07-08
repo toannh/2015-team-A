@@ -203,6 +203,8 @@ public class UINewMeetingSchedule extends UIForm {
     public void execute(Event<UINewMeetingSchedule> event) throws Exception {
       UINewMeetingSchedule form = event.getSource();
 
+      List<TimeOption> timeOptions = new ArrayList<TimeOption>(form.getTimeOptions());
+      List<String> participants = new ArrayList<String>(new ArrayList<String>(form.participants));
       String title = form.getUIStringInput("title").getValue();
       String location = form.getUIStringInput("location").getValue();
       String description = form.getUIFormTextAreaInput("description").getValue();
@@ -219,8 +221,8 @@ public class UINewMeetingSchedule extends UIForm {
       meeting.setTitle(title);
       meeting.setDescription(description);
       meeting.setLocation(location);
-      meeting.setTimeOptions(form.getTimeOptions());
-      meeting.setParticipant(new ArrayList<String>(form.participants));
+      meeting.setTimeOptions(timeOptions);
+      meeting.setParticipant(participants);
       meeting.setOwner(identity.getUserId());
       meeting.setStatus(0);
 
