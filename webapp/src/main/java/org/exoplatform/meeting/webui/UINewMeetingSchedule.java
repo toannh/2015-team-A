@@ -104,6 +104,10 @@ public class UINewMeetingSchedule extends UIForm {
     return this.timeOptions;
   }
 
+  public Set<String> getParticipants() {
+    return this.participants;
+  }
+
   private List<SelectItemOption<String>> getTimeOptions(String labelFormat, String valueFormat, long timeInteval) {
     WebuiRequestContext context = RequestContext.getCurrentInstance() ;
     Locale locale = context.getParentAppRequestContext().getLocale() ;

@@ -3,82 +3,116 @@
     import org.exoplatform.codefest.entity.TimeOption;
     import java.util.Date;
     import java.text.SimpleDateFormat;
-    def df = new SimpleDateFormat("dd MMM");
+    def df = new SimpleDateFormat("dd MMM HH:mm");
 %>
-<div class="uiQuickAddEvent">
-    <div class="form-horizontal quickAddEventContainer">
-        <%uiform.begin()%>
-        <div class="control-group">
-            <div class="control-label" ><%=uicomponent.getLabel("title")%>:</div>
-            <div class="controls">
-                <%uicomponent.renderField("title")%>
-            </div>
-        </div>
-        <div class="control-group">
-            <div class="control-label" ><%=uicomponent.getLabel("location")%>:</div>
-            <div class="controls">
-                <%uicomponent.renderField("location")%>
-            </div>
-        </div>
-        <div class="control-group">
-            <div class="control-label" ><%=uicomponent.getLabel("description")%>:</div>
-            <div class="controls descriptionArea">
-                <%uicomponent.renderField("description")%>
-            </div>
-        </div>
-        <div class="control-group">
-            <div class="controls descriptionArea">
-                <%
-                    for(TimeOption opt : uicomponent.getTimeOptions()) {
-                        def fromDate = new Date(opt.getFromDate());
-                        def toDate = new Date(opt.getToDate());
-                    %>
-                    <div><%=df.format(fromDate);%> - <%=df.format(toDate)%></div>
-                    <%}
-                %>
-            </div>
-        </div>
-        <div class="control-group">
-            <div class="control-label" ><%=uicomponent.getLabel("from")%>:</div>
-            <div class="controls">
-                <div class="date inputSmall pull-left">
-                    <%uicomponent.renderField("from")%>
-                </div>
-                <div class="time inputSmall  pull-left"><!-- start time -->
-                    <%uicomponent.renderField("from_time")%>
-                </div>
-            </div>
-            <div class="control-label" ><%=uicomponent.getLabel("to")%>:</div>
-            <div class="controls">
-                <div class="date inputSmall pull-left">
-                    <%uicomponent.renderField("to")%>
-                </div>
-                <div class="time inputSmall  pull-left"><!-- start time -->
-                    <%uicomponent.renderField("to_time")%>
-                </div>
-            </div>
-            <button id="UIActionBarQuickAddEvent" class="btn btn-primary" type="button" onclick="<%=uicomponent.event('AddTimeOption')%>">
-                <i class="uiIconPlus  uiIconDarkGray"></i>
-            </button>
-        </div>
-        <button id="UIActionBarQuickAddEvent" class="btn btn-primary" type="button" onclick="<%=uicomponent.event('Invite')%>">
-            <i class="uiIconPlus  uiIconDarkGray"></i>
-        </button>
-        <%uiform.end();%>
+<div class="uiActionBar uiGrayLightBox mgB15 clearfix">
+    <div class="pull-left btnLeft">
+        <button class="btn pdL5" onclick="<%=uicomponent.event('Back')%>"><i class="uiIconBack"></i> Back</button>
     </div>
-    <div class="uiAction uiActionBorder">
-        <% for(action in uicomponent.getActions()) {
-            String actionLabel = _ctx.appRes(uicomponent.getName() + ".action." + action) ;
-            String link = uicomponent.event(action) ;
-        %>
-        <button onclick="$link" type="button" class="btn">$actionLabel</button>
-        <%}%>
+</div>
+<div class="uiBox">
+    <div class="uiContentBox">
+    <%uiform.begin()%>
+        <div class="row-fluid detail-meeting">
+            <div class="span9">
+                <div class="form-horizontal">
+                    <div class="control-group">
+                        <label class="control-label">Title:</label>
+                        <div class="controls">
+                            <%uicomponent.renderField("title")%>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Location:</label>
+                        <div class="controls">
+                            <%uicomponent.renderField("location")%>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Description: </label>
+                        <div class="controls">
+                            <%uicomponent.renderField("description")%>
+                        </div>
+                    </div>
+                    <!-- when be vote will no display start date and due date -->
+                    <div class="control-group select-time-meeting">
+                        <label class="control-label">Select time:</label>
+                        <div class="controls">
+                            <%for(TimeOption opt : uicomponent.getTimeOptions()) {
+                                def fromDate = new Date(opt.getFromDate());
+                                def toDate = new Date(opt.getToDate());%>
+                                <div class="row-select-time">
+                                    <div class="date inputSmall pull-left">
+                                        <%=df.format(fromDate);%>
+                                    </div>
+                                    <span class="control-text pull-left muted">To</span>
+                                    <div class="date inputSmall pull-left">
+                                        <%=df.format(toDate)%>
+                                    </div>
+                                    <a class="actionIcon" rel="tooltip" data-placement="bottom" title="" href="#" data-original-title="Add time"><i class="uiIconDelete uiIconLightGray"></i></a>
+                                </div>
+                            <%}%>
+                            <div class="row-select-time">
+
+                                <div class="date inputSmall pull-left">
+                                    <%uicomponent.renderField("from")%>
+                                </div>
+                                <div class="time inputSmall  pull-left"><!-- start time -->
+                                    <%uicomponent.renderField("from_time")%>
+                                </div>
+                                <span class="control-text pull-left muted">To</span>
+                                <div class="date inputSmall pull-left">
+                                    <%uicomponent.renderField("to")%>
+                                </div>
+                                <div class="time inputSmall  pull-left"><!-- start time -->
+                                    <%uicomponent.renderField("to_time")%>
+                                </div>
+                                <a class="actionIcon" rel="tooltip" data-placement="bottom" title="" href="#" data-original-title="Add time" onclick="<%=uicomponent.event('AddTimeOption')%>"><i class="uiIconPlus uiIconLightGray"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Member:</label>
+                        <div class="controls">
+                            <%for (String user : uicomponent.getParticipants()) {%>
+                                <span class="uiMention">${user}<a href="#" class="uiIconClose"></a></span>
+                            <%}%>
+                            <a class="actionIcon" rel="tooltip" data-placement="bottom" title="" href="#" data-original-title="Add Member" onclick="<%=uicomponent.event('Invite')%>">
+                                <i class="uiIconPlus uiIconLightGray"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="span3">
+                <div class="sub-info">
+                    <div>
+                        <div class="mgB5"><strong>Attached file(s):</strong></div>
+                        <p class="attachmentIcon">
+                            <a href="#" rel="tooltip" data-placement="bottom" title="" data-original-title="config taskMng.txt(1.75 KB) ">
+                                <i class="uiIcon16x16FileTxt uiIcon16x16nt_file"></i>&nbsp;config taskMng.txt
+                            </a>
+                            (1.75 KB)
+                        </p>
+                    </div>
+                    <hr>
+                    <div>
+                        <p class="text-center">Upload Attached file:</p>
+                        <div>
+                            <button class="btn btn-primary  btn-block"><i class="uiIconUpload"></i> Upload file</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="text-right">
+            <button type="submit" class="btn" onclick="<%=uicomponent.event('Back')%>">Cancel</button>
+            <button type="submit" class="btn btn-primary" onclick="<%=uicomponent.event('Save')%>">Save</button>
+        </div>
+    <%uiform.end();%>
     </div>
-    <%
-        if (uicomponent.getChild(UIPopupWindow.class) == null) {%>
-            <div>Wrong in render popup</div>
-        <%} else { %>
-            <% uicomponent.renderChild(UIPopupWindow.class); %>
-        <%}
-    %>
+    <% if (uicomponent.getChild(UIPopupWindow.class) != null) {
+        uicomponent.renderChild(UIPopupWindow.class);
+    }%>
 </div>
