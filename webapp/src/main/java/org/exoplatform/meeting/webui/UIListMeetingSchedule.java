@@ -23,8 +23,11 @@ import org.exoplatform.codefest.service.MeetingService;
 import org.exoplatform.codefest.entity.Meeting;
 import org.exoplatform.services.security.ConversationState;
 import org.exoplatform.services.security.Identity;
+import org.exoplatform.web.application.AbstractApplicationMessage;
+import org.exoplatform.web.application.ApplicationMessage;
 import org.exoplatform.webui.config.annotation.ComponentConfig;
 import org.exoplatform.webui.config.annotation.EventConfig;
+import org.exoplatform.webui.core.UIApplication;
 import org.exoplatform.webui.core.UIContainer;
 import org.exoplatform.webui.event.Event;
 import org.exoplatform.webui.event.EventListener;
@@ -35,7 +38,8 @@ import java.util.List;
  * @author <a href="mailto:tuyennt@exoplatform.com">Tuyen Nguyen The</a>.
  */
 @ComponentConfig(template = "app:/groovy/meetingschedule/webui/UIListMeeting.gtmpl", events = {
-        @EventConfig(listeners = UIListMeetingSchedule.ScheduleNewMeetingActionListener.class)
+        @EventConfig(listeners = UIListMeetingSchedule.ScheduleNewMeetingActionListener.class),
+        @EventConfig(listeners = UIListMeetingSchedule.ViewDetailActionListener.class)
 })
 public class UIListMeetingSchedule extends UIContainer {
   private final MeetingService meetingService;
@@ -69,6 +73,38 @@ public class UIListMeetingSchedule extends UIContainer {
       portlet.getChild(UINewMeetingSchedule.class).setRendered(true);
 
       event.getRequestContext().addUIComponentToUpdateByAjax(portlet);
+    }
+  }
+
+  public static class ViewDetailActionListener extends EventListener<UIListMeetingSchedule> {
+    @Override
+    public void execute(Event<UIListMeetingSchedule> event) throws Exception {
+      System.out.println("Hello world");
+
+      UIApplication uiApp = event.getRequestContext().getUIApplication();
+      String jcrPath = event.getRequestContext().getRequestParameter(OBJECTID);
+      if (jcrPath == null || jcrPath.isEmpty()) {
+        uiApp.addMessage(new ApplicationMessage("Meeting ID is required", new Object[0], AbstractApplicationMessage.ERROR));
+        return;
+      }
+      UIListMeetingSchedule list = event.getSource();
+      UIMeetingSchedulePortlet portlet = list.getAncestorOfType(UIMeetingSchedulePortlet.class);
+
+      MeetingService service = list.getApplicationComponent(MeetingService.class);
+      try {
+        Meeting meeting = service.getMeeting(jcrPath);
+
+        UIMeetingDetail detail = portlet.getChild(UIMeetingDetail.class);
+        detail.setMeeting(meeting);
+        detail.setRendered(true);
+        list.setRendered(false);
+        event.getRequestContext().addUIComponentToUpdateByAjax(portlet);
+
+      } catch (Exception ex) {
+        uiApp.addMessage(new ApplicationMessage("Meeting Not found", new Object[0], AbstractApplicationMessage.ERROR));
+        return;
+      }
+
     }
   }
 }

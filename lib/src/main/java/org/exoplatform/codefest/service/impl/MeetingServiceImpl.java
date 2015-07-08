@@ -179,7 +179,7 @@ public class MeetingServiceImpl implements MeetingService {
       StringBuilder queryBuilder = new StringBuilder("SELECT * FROM ").append(EXO_MEETING);
       queryBuilder.append(" WHERE jcr:path LIKE '/" + EXO_MEETING_DRIVE + "/%' ");
       queryBuilder.append(" AND (" + EXO_PROP_MEETING_OWNER + " LIKE '%" + username + "%'");
-      queryBuilder.append(" OR CONTAINS(" + EXO_PROP_MEETING_PARTICIPANT + ", '" + username + "')");
+      queryBuilder.append(" OR " + EXO_PROP_MEETING_PARTICIPANT + " LIKE '%" + username + "%'");
       queryBuilder.append(") ");
       queryBuilder.append(" AND (" + EXO_PROP_MEETING_STATUS + " = '" + status + "' )");
       String sortCriterion = "";
@@ -428,5 +428,7 @@ public class MeetingServiceImpl implements MeetingService {
       meeting.setDateCreated(node.getProperty(EXO_PROP_MEETING_DATE_CREATED).getLong());
     if (node.hasProperty(EXO_PROP_MEETING_DATE_MODIFIED))
       meeting.setDateModified(node.getProperty(EXO_PROP_MEETING_DATE_MODIFIED).getLong());
+
+    meeting.setJcrPath(node.getPath());
   }
 }
