@@ -114,7 +114,7 @@ public class MeetingServiceImpl implements MeetingService {
     Node rootNode = session.getRootNode();
     Calendar calendar = Calendar.getInstance();
     String meetingYear = String.valueOf(calendar.get(Calendar.YEAR));
-    String meetingMonth = String.valueOf(calendar.get(Calendar.MONTH));
+    String meetingMonth = String.valueOf(calendar.get(Calendar.MONTH)) + 1;
 
     if (!rootNode.hasNode(EXO_MEETING_DRIVE)) {
       rootNode.addNode(EXO_MEETING_DRIVE);
@@ -185,7 +185,7 @@ public class MeetingServiceImpl implements MeetingService {
       if (page != null) sortCriterion = page.getSort();
       if (StringUtils.isEmpty(sortCriterion)) sortCriterion = "ASC";
       queryBuilder.append(" ORDER BY " + EXO_PROP_MEETING_DATE_CREATED + " " + sortCriterion);
-      log.info("Query to getMeetings: " + queryBuilder.toString());
+//      log.info("Query to getMeetings: " + queryBuilder.toString());
       QueryManager queryManager = session.getWorkspace().getQueryManager();
       QueryImpl query = (QueryImpl) queryManager.createQuery(queryBuilder.toString(), Query.SQL);
       if (page != null) {
@@ -272,7 +272,8 @@ public class MeetingServiceImpl implements MeetingService {
             try {
               calService.saveUserEvent(username, calendar.getId(), event, true);
             } catch (Exception ex) {
-              ex.printStackTrace();
+//              ex.printStackTrace();
+              log.error("Error when create final option.", ex);
             }
           }
         }

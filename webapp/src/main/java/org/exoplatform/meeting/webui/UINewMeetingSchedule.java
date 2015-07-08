@@ -170,7 +170,7 @@ public class UINewMeetingSchedule extends UIForm {
   public static class InviteActionListener extends EventListener<UINewMeetingSchedule> {
     @Override
     public void execute(Event<UINewMeetingSchedule> event) throws Exception {
-      System.out.println("InviteActionListener");
+//      System.out.println("InviteActionListener");
 
       UINewMeetingSchedule form = event.getSource();
       UIPopupWindow uiPopupWindow = form.getChild(UIPopupWindow.class) ;
@@ -224,7 +224,7 @@ public class UINewMeetingSchedule extends UIForm {
   public static class BackActionListener extends EventListener<UINewMeetingSchedule> {
     @Override
     public void execute(Event<UINewMeetingSchedule> event) throws Exception {
-      System.out.println("Test event listener");
+//      System.out.println("Test event listener");
       UINewMeetingSchedule ui = event.getSource();
       UIMeetingSchedulePortlet portlet = ui.getAncestorOfType(UIMeetingSchedulePortlet.class);
       //portlet.getChild(UIMeetingDetail.class).setRendered(false);
@@ -294,7 +294,7 @@ public class UINewMeetingSchedule extends UIForm {
         }
       }
 
-      System.out.println("Selected: " + userNamesSelected);
+//      System.out.println("Selected: " + userNamesSelected);
 
       UIPopupWindow uiPopup = form.getChild(UIPopupWindow.class);
       uiPopup.setUIComponent(null);
