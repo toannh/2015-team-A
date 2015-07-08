@@ -19,15 +19,64 @@
 
 package org.exoplatform.meeting.webui;
 
+import org.exoplatform.codefest.entity.Meeting;
 import org.exoplatform.webui.config.annotation.ComponentConfig;
 import org.exoplatform.webui.config.annotation.EventConfig;
 import org.exoplatform.webui.core.UIContainer;
+import org.exoplatform.webui.event.Event;
+import org.exoplatform.webui.event.EventListener;
 
 /**
  * @author <a href="mailto:tuyennt@exoplatform.com">Tuyen Nguyen The</a>.
  */
 @ComponentConfig(template = "app:/groovy/meetingschedule/webui/UIMeetingDetail.gtmpl", events = {
-
+        @EventConfig(listeners = UIMeetingDetail.BackActionListener.class),
+        @EventConfig(listeners = UIMeetingDetail.ScheduleNewMeetingActionListener.class),
+        @EventConfig(listeners = UIMeetingDetail.VoteActionListener.class)
 })
 public class UIMeetingDetail extends UIContainer {
+  private Meeting meeting;
+  public UIMeetingDetail() {
+  }
+
+  public void setMeeting(Meeting meeting) {
+    this.meeting = meeting;
+  }
+
+  public Meeting getMeeting() {
+    return this.meeting;
+  }
+
+  public static class VoteActionListener extends EventListener<UIMeetingDetail> {
+    @Override
+    public void execute(Event<UIMeetingDetail> event) throws Exception {
+      System.out.println("Vote or unvote");
+      String optionId = event.getRequestContext().getRequestParameter(OBJECTID);
+      System.out.println("OPtion: " + optionId);
+    }
+  }
+
+  public static class BackActionListener extends EventListener<UIMeetingDetail> {
+    @Override
+    public void execute(Event<UIMeetingDetail> event) throws Exception {
+      UIMeetingDetail detail = event.getSource();
+      UIMeetingSchedulePortlet portlet = detail.getAncestorOfType(UIMeetingSchedulePortlet.class);
+      detail.setRendered(false);
+      portlet.getChild(UIListMeetingSchedule.class).setRendered(true);
+      event.getRequestContext().addUIComponentToUpdateByAjax(portlet);
+    }
+  }
+
+  public static class ScheduleNewMeetingActionListener extends EventListener<UIMeetingDetail> {
+    @Override
+    public void execute(Event<UIMeetingDetail> event) throws Exception {
+      UIMeetingDetail ui = event.getSource();
+      UIMeetingSchedulePortlet portlet = ui.getAncestorOfType(UIMeetingSchedulePortlet.class);
+      ui.setRendered(false);
+      portlet.getChild(UIListMeetingSchedule.class).setRendered(false);
+      portlet.getChild(UINewMeetingSchedule.class).setRendered(true);
+
+      event.getRequestContext().addUIComponentToUpdateByAjax(portlet);
+    }
+  }
 }

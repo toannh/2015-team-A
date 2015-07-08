@@ -107,8 +107,8 @@
         </div>
         <hr>
         <div class="text-right">
-            <button type="submit" class="btn" onclick="<%=uicomponent.event('Back')%>">Cancel</button>
-            <button type="submit" class="btn btn-primary" onclick="<%=uicomponent.event('Save')%>">Save</button>
+            <button type="button" class="btn" onclick="<%=uicomponent.event('Back')%>">Cancel</button>
+            <button type="button" class="btn btn-primary" onclick="<%=uicomponent.event('Save')%>">Save</button>
         </div>
     <%uiform.end();%>
     </div>

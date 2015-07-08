@@ -40,6 +40,6 @@ public class UIMeetingSchedulePortlet extends UIPortletApplication {
     super();
     addChild(UIListMeetingSchedule.class, null, "UIListMeetings");
     addChild(UINewMeetingSchedule.class, null, "UIMeetingForm").setRendered(false);
-    addChild(UIMeetingDetail.class, null, "UIMeetingDetail");
+    addChild(UIMeetingDetail.class, null, "UIMeetingDetail").setRendered(false);
   }
 }

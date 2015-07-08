@@ -195,4 +195,26 @@ public class Meeting {
     Gson gson = new Gson();
     return gson.toJson(this);
   }
+
+  public boolean isVoted(String username) {
+    if (this.userVotes != null && !this.userVotes.isEmpty()) {
+      for (UserVoted userVoted : this.userVotes) {
+        if (userVoted.getUsername().equals(username)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  public boolean isVotedOption(String username, String optionId) {
+    if (this.userVotes != null && !this.userVotes.isEmpty()) {
+      for (UserVoted userVoted : this.userVotes) {
+        if (userVoted.getUsername().equals(username) && userVoted.getOptionId().equals(optionId)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
 }

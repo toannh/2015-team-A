@@ -42,8 +42,29 @@
         <module>bts_tab</module>
       </depends>
       <depends>
+        <module>iphoneStyleCheckboxTeamA</module>
+      </depends>
+      <depends>
         <module>uiForm</module>
       </depends>
     </module>
   </portlet>
+
+  <!-- IphoneStyle plugin -->
+  <module>
+    <name>iphoneStyleCheckboxTeamA</name>
+    <script>
+      <adapter>
+        (function($) {
+        var _$ = window.jQuery; window.jQuery = $;
+        <include>/javascript/iphone-style-checkboxes.js</include>
+        window.jQuery = _$;
+        })($);
+      </adapter>
+    </script>
+    <depends>
+      <module>jquery</module>
+      <as>$</as>
+    </depends>
+  </module>
 </gatein-resources>

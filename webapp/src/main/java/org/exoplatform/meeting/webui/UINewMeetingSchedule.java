@@ -227,7 +227,7 @@ public class UINewMeetingSchedule extends UIForm {
       meeting.setStatus(0);
 
       MeetingService meetingService = form.getApplicationComponent(MeetingService.class);
-      meetingService.save(meeting);
+      meeting = meetingService.save(meeting);
 
       ui.addMessage(new ApplicationMessage("Save meeting schedule successfully", new Object[0], AbstractApplicationMessage.INFO));
       form.timeOptions.clear();
@@ -235,6 +235,12 @@ public class UINewMeetingSchedule extends UIForm {
       form.getUIStringInput("title").setValue("");
       form.getUIStringInput("location").setValue("");
       form.getUIFormTextAreaInput("description").setValue("");
+
+      UIMeetingSchedulePortlet portlet = form.getAncestorOfType(UIMeetingSchedulePortlet.class);
+      portlet.getChild(UINewMeetingSchedule.class).setRendered(false);
+      portlet.getChild(UIListMeetingSchedule.class).setRendered(false);
+      UIMeetingDetail detail = portlet.getChild(UIMeetingDetail.class).setRendered(true);
+      detail.setMeeting(meeting);
     }
   }
 

@@ -1,6 +1,25 @@
+<%
+    import org.exoplatform.services.security.Identity;
+    import org.exoplatform.services.security.ConversationState;
+    import org.exoplatform.codefest.entity.TimeOption;
+    import java.util.Date;
+    import java.text.SimpleDateFormat;
+    import org.exoplatform.web.application.JavascriptManager;
+
+    def dateFormat = new SimpleDateFormat("EEE dd/MM");
+    def timeFormat = new SimpleDateFormat("HH:mm a");
+
+    def rcontext = _ctx.getRequestContext();
+    JavascriptManager jsManager = rcontext.getJavascriptManager();
+    jsManager.require("SHARED/jquery", "jq")
+    .require("SHARED/iphoneStyleCheckboxTeamA", "iphoneStyle")
+    .addScripts("jq('input.yesno').each(function(){jq(this).iphoneStyle(" +
+    "{disabledClass: 'switchBtnDisabled', containerClass: 'uiSwitchBtn', labelOnClass: 'switchBtnLabelOn', labelOffClass: 'switchBtnLabelOff', handleClass: 'switchBtnHandle', checkedLabel:'YES',uncheckedLabel:'NO', onChange: function(el, val){jq(el).click();}});" +
+    "jq(this).change(function(){alert('test');jq(this).trigger('click');});});");
+%>
 <div class="uiActionBar uiGrayLightBox mgB15 clearfix">
     <div class="pull-left btnLeft">
-    	<button class="btn pdL5"><i class="uiIconBack"></i> Back</button>
+    	<button class="btn pdL5" onclick="<%=uicomponent.event('Back')%>"><i class="uiIconBack"></i> Back</button>
         <button id="UIActionBarQuickAddEvent" class="btn btn-primary" type="button" onclick="<%=uicomponent.event('ScheduleNewMeeting')%>">
         <i class="uiIconClock  uiIconDarkGray"></i> Schedule Meeting
         </button>
@@ -16,7 +35,7 @@
    </div>
 </div>
 
-<div class="uiBox">
+<div class="uiBox" style="display: none">
 	<form class="uiContentBox">
 		<div class="row-fluid detail-meeting">
 			<div class="span9">
@@ -119,102 +138,75 @@
 		</div>
 	</form>
 </div>
-
+<%
+    def meeting = uicomponent.getMeeting();
+%>
 <div class="uiBox">
-	<h5 class="title"><i class="uiIconClock  uiIconDarkGray"></i> Sprin meeting week 30</h5>
+	<h5 class="title"><i class="uiIconClock  uiIconDarkGray"></i> <%=meeting.getTitle()%></h5>
 	<div class="uiContentBox">
 		<table class="uiGrid table table-hover table-striped table-metting-vote">
 			<thead>
 				<tr>
-					<th class="member-column"><h4>Attendees</h4></th>
-					<th class="vote-column">
-						<h5>Wed 8/7</h5>
-						<div>9:15 AM</div>
-						<div>12:00 AM</div>
-					</th>
-					<th class="vote-column">
-						<h5>Wed 8/8</h5>
-						<div>9:15 AM</div>
-						<div>12:00 AM</div>
-					</th>
+					<th id="tablecol_member" class="member-column"><h4>Attendees</h4></th>
+                    <%for(TimeOption opt : meeting.getTimeOptions()) {
+                        def fromDate = new Date(opt.getFromDate());
+                        def toDate = new Date(opt.getToDate());
+                    %>
+                    <th id="tablecol_<%=opt.getId()%>" class="vote-column">
+                        <h5><%=dateFormat.format(fromDate)%></h5>
+                        <div><%=timeFormat.format(fromDate)%></div>
+                        <div><%=timeFormat.format(toDate)%></div>
+                    </th>
+                    <%}%>
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="me">
-					<td><strong>Nguyen Truong Giang</strong></td>
-					<td class="center">
-						<div class="uiSwitchBtn" style="width: 60px;">
-							<div class="iPhoneCheckContainer" style="width: 60px;">
-								<input type="checkbox" name="NewUserPlugin" checked="checked" class="providerAction yesno enable" data-no="NO" data-yes="YES" value="false">
-								<label class="switchBtnLabelOff" style="width: 51px;">
-									<span style="margin-right: -41px;">NO</span>
-								</label>
-								<label class="switchBtnLabelOn" style="width: 51px;">
-									<span style="margin-left: 0px;">YES</span>
-								</label>
-								<div class="switchBtnHandle" style="left: 41px;">
-									<div class="switchBtnHandleRight">
-										<div class="switchBtnHandleCenter"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</td>
-					<td class="center">
-						<div class="uiSwitchBtn" style="width: 60px;">
-							<div class="iPhoneCheckContainer" style="width: 60px;">
-								<input type="checkbox" name="NewUserPlugin" checked="checked" class="providerAction yesno enable" data-no="NO" data-yes="YES" value="false">
-								<label class="switchBtnLabelOff" style="width: 51px;">
-									<span style="margin-right: -41px;">NO</span>
-								</label>
-								<label class="switchBtnLabelOn" style="width: 51px;">
-									<span style="margin-left: 0px;">YES</span>
-								</label>
-								<div class="switchBtnHandle" style="left: 41px;">
-									<div class="switchBtnHandleRight">
-										<div class="switchBtnHandleCenter"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td><strong>Nguyen Hai Toan</strong></td>
-					<td class="center">
-						<i class="uiIconColorValidate"></i>
-					</td>
-					<td class="center">
-						<i class="uiIconQuestion"></i>
-					</td>
-				</tr>
-				<tr>
-					<td><strong>Nguyen The Tuyen</strong></td>
-					<td class="center">
-						<i class="uiIconColorError"></i>
-					</td>
-					<td class="center">
-						<i class="uiIconColorValidate"></i>
-					</td>
-				</tr>
-				<tr>
-					<td><strong>Vu Huyen Trang</strong></td>
-					<td class="center">
-						<i class="uiIconColorValidate"></i>
-					</td>
-					<td class="center">
-						<i class="uiIconColorError"></i>
-					</td>
-				</tr>
-				<tr>
-					<td><strong>Nguyen Duy Tu</strong></td>
-					<td class="center">
-						<i class="uiIconQuestion"></i>
-					</td>
-					<td class="center">
-						<i class="uiIconQuestion"></i>
-					</td>
-				</tr>
+                <%
+                Identity identity = ConversationState.getCurrent().getIdentity();
+                String currentUser = identity.getUserId();
+                for(String user : meeting.getParticipant()) {
+                    def isVotedInMeeting = meeting.isVoted(user);
+                    if (user == currentUser) {%>
+                        <tr class="me">
+                            <td headers="tablecol_member"><strong><%=user%></strong></td>
+                            <%for(TimeOption opt : meeting.getTimeOptions()) {
+                                def fromDate = new Date(opt.getFromDate());
+                                def toDate = new Date(opt.getToDate());
+                                def isVotedInOption = meeting.isVotedOption(user, opt.getId());
+                                def checked = "";
+                                if (isVotedInOption) {
+                                    checked = "checked=\"checked\"";
+                                }
+                            %>
+                            <td headers="tablecol_<%=opt.getId()%>" class="center">
+                                <input type="checkbox" name="NewUserPlugin" <%=checked%> class="providerAction yesno enable" data-no="NO" data-yes="YES" onclick="<%uicomponent.event('Vote', opt.getId())%>">
+                            </td>
+                            <%}%>
+                        </tr>
+                    <%} else { %>
+                        <tr>
+                            <td headers="tablecol_member"><strong><%=user%></strong></td>
+                            <%for(TimeOption opt : meeting.getTimeOptions()) {
+                                def fromDate = new Date(opt.getFromDate());
+                                def toDate = new Date(opt.getToDate());
+                                def iconClass = "uiIconQuestion";
+                                if (isVotedInMeeting) {
+                                    def isVotedInOption = meeting.isVotedOption(user, opt.getId());
+                                    if (isVotedInOption) {
+                                        iconClass = "uiIconColorValidate";
+                                    } else {
+                                        iconClass = "uiIconColorError";
+                                    }
+                                }
+                            %>
+                            <td headers="tablecol_<%=opt.getId()%>" class="center">
+                                <i class="<%=iconClass%>"></i>
+                            </td>
+                            <%}%>
+                        </tr>
+                    <%}
+                }
+                %>
 			</tbody>
 			<!-- tfoot only show for ad -->
 			<tfoot>
@@ -245,51 +237,43 @@
 					<div class="control-group">
 						<label class="control-label">Title:</label>
 						<div class="controls">
-							<div class="control-text"><strong>Sprin meeting week 30</strong></div>
+							<div class="control-text"><strong><%=meeting.getTitle()%></strong></div>
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label">Location:</label>
 						<div class="controls">
-							<div class="control-text">Room M8</div>
+							<div class="control-text"><%=meeting.getLocation()%></div>
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label">Description: </label>
 						<div class="controls">
-							<div class="control-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa necessitatibus, deserunt totam illo nihil magni distinctio earum quaerat soluta, aperiam sit repellendus blanditiis sed hic numquam. Nostrum quas libero blanditiis.</div>
+							<div class="control-text"><%=meeting.getDescription()%></div>
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label">Member:</label>
 						<div class="controls">
-							<div class="uiMention">giagnnt</div>
-							<div class="uiMention">toanhn</div>
-							<div class="uiMention">tuyennt</div>
-							<div class="uiMention">trangvh</div>
+                            <% for (String user : meeting.getParticipant()) {%>
+                                <div class="uiMention"><%=user%></div>
+                            <%}%>
 						</div>
 					</div>
 					<!-- when be vote will no display start date and due date -->
-					<div class="control-group">
+					<div class="control-group" style="display:none">
 						<label class="control-label">Start time:</label>
 						<div class="controls">
 							<div class="control-text">07/07/2015 07:00</div>
 						</div>
 					</div>
-					<div class="control-group">
+					<div class="control-group" style="display:none">
 						<label class="control-label">End time:</label>
 						<div class="controls">
 							<div class="control-text">07/07/2015 08:00</div>
 						</div>
 					</div>
-
 					<br>
-					<!-- <div class="control-group">
-						<div class="controls">
-							<button type="submit" class="btn">Cancel</button>
-							<button type="submit" class="btn btn-primary">Create Meeting</button>
-						</div>
-					</div> -->
 				</form>
 			</div>
 			<div class="span3">
