@@ -7,7 +7,7 @@ import java.util.UUID;
  * Author : eXoPlatform
  * toannh@exoplatform.com
  * On 7/6/15
- * #comments here
+ * TimeOption object, which details about Meeting's options
  */
 public class TimeOption {
   private long fromDate;

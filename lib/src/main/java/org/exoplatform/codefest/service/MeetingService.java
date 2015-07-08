@@ -11,7 +11,7 @@ import java.util.Map;
  * Author : eXoPlatform
  * toannh@exoplatform.com
  * On 7/6/15
- * #comments here
+ * Meeting interface, declare all methods of Meeting service
  */
 public interface MeetingService {
 

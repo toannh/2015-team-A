@@ -58,11 +58,11 @@
     <type>org.exoplatform.services.jcr.ext.hierarchy.impl.NodeHierarchyCreatorImpl</type>
     <init-params>
       <object-param>
-        <name>Blog</name>
-        <description>Blog Posts in Taxonomy</description>
+        <name>Meeting</name>
+        <description>Meeting in Taxonomy</description>
         <object type="org.exoplatform.services.cms.drives.DriveData">
           <field name="name">
-            <string>Blog</string>
+            <string>Meeting</string>
           </field>
           <field name="workspace">
             <string>collaboration</string>
@@ -77,7 +77,7 @@
             <string></string>
           </field>
           <field name="views">
-            <string>blog-view</string>
+            <string>authoring-view</string>
           </field>
           <field name="viewPreferences">
             <boolean>false</boolean>
@@ -656,7 +656,7 @@
               <string></string>
             </field>
             <field name="views">
-              <string>blog-view</string>
+              <string>authoring-view</string>
             </field>
             <field name="viewPreferences">
               <boolean>false</boolean>

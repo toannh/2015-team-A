@@ -5,7 +5,7 @@ package org.exoplatform.codefest.entity;
  * Author : eXoPlatform
  * toannh@exoplatform.com
  * On 7/6/15
- * #comments here
+ * Page object, for paging Meeting entries
  */
 public class Page {
   private int limit;

@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
  * Author : eXoPlatform
  * toannh@exoplatform.com
  * On 7/8/15
- * #comments here
+ * Utils
  */
 public class Utils {
   private static final SimpleDateFormat formatDateTime = new SimpleDateFormat();

@@ -48,20 +48,11 @@ public class MeetingServiceImpl implements MeetingService {
   private SessionProviderService sessionProviderService;
   private Gson gson;
 
-
   public MeetingServiceImpl(RepositoryService repoService,
                             SessionProviderService sessionProviderService) {
     this.repoService = repoService;
     this.sessionProviderService = sessionProviderService;
     this.gson = new Gson();
-//    try {
-//      this.repo = repoService.getCurrentRepository().getConfiguration().getName();
-//    } catch (Exception ex) {
-//      if (log.isErrorEnabled()) {
-//        log.error("Using default repository & workspace", ex.getMessage());
-//      }
-//    }
-
   }
 
 

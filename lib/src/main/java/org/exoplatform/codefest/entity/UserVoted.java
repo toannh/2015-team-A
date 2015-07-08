@@ -5,7 +5,7 @@ package org.exoplatform.codefest.entity;
  * Author : eXoPlatform
  * toannh@exoplatform.com
  * On 7/6/15
- * #comments here
+ * List users who voted Meeting's options
  */
 public class UserVoted {
   private String username;
