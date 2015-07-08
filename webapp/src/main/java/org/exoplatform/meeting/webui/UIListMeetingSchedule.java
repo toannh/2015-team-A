@@ -48,7 +48,7 @@ public class UIListMeetingSchedule extends UIContainer {
     this.meetingService = getApplicationComponent(MeetingService.class);
   }
 
-  public List<Meeting> getUpcomingMeeting() {
+  public List<Meeting> getPlannedMeeting() {
     Identity identity = ConversationState.getCurrent().getIdentity();
     return meetingService.getMeetings(identity.getUserId(), 1, null);
   }
@@ -58,9 +58,9 @@ public class UIListMeetingSchedule extends UIContainer {
     return meetingService.getMeetings(identity.getUserId(), 0, null);
   }
 
-  public List<Meeting> getIncomingMeeting() {
+  public List<Meeting> getMyPendingMeeting() {
     Identity identity = ConversationState.getCurrent().getIdentity();
-    return meetingService.getMeetings(identity.getUserId(), 1, null);
+    return meetingService.getMeetingsByOwner(identity.getUserId(), 0, null);
   }
 
   public static class ScheduleNewMeetingActionListener extends EventListener<UIListMeetingSchedule> {

@@ -50,11 +50,20 @@ public interface MeetingService {
   /**
    * Get all meeting by username & status
    * @param username
-   * @param status values: 1: booked, 0: voting, -1: closed
+   * @param status values: 0: open for voting, 1: closed
    * @param page
-   * @return
+   * @return a list of meetings relate to current username at status
    */
   public List<Meeting> getMeetings(String username, int status, Page page);
+  
+  /**
+   * Get all meetings organized by a user
+   * @param username
+   * @param status values:  0: open for voting, 1: closed
+   * @param page
+   * @return a list of meetings owned by username at status
+   */
+  public List<Meeting> getMeetingsByOwner(String username, int status, Page page);
 
   /**
    * Get details a meeting

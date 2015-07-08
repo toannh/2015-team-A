@@ -26,13 +26,13 @@ public class Meeting {
   private boolean isMultiChoice;
 
   private String owner;
-  private String type;
+  private String type; // team's meeting, space's meeting
 
   private List<String> participant;
 
   private List<UserVoted> userVotes;
 
-  private int status; // Event status, values: 1: booked, 0: voting, -1: closed
+  private int status; // Schedule status, values: 0: open for voting, 1: closed
 
   private String documentPath;
   private long dateCreated;

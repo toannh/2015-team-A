@@ -25,19 +25,19 @@ import org.exoplatform.codefest.utils.Utils;
 <div id="UITabPane" class="uiTabNormal uiTabInPage">
     <ul class="nav nav-tabs">
         <li class="active">
-            <a data-target="#tab1" data-toggle="tab">Pending</a>
-        </li>
-        <li class="">
-            <a data-target="#tab2" data-toggle="tab">Coming up</a>
+            <a data-target="#tab1" data-toggle="tab">My Open Schedules</a>
         </li>
         <li>
-            <a data-target="#tab3" data-toggle="tab">Invited</a>
+            <a data-target="#tab3" data-toggle="tab">My Organized Schedules</a>
+        </li>
+        <li>
+            <a data-target="#tab2" data-toggle="tab">Upcoming Meetings</a>
         </li>
     </ul>
     <div class="tab-content">
         <!-- TAB 1 -->
         <div class="tab-pane fade in active" id="tab1">
-            <h4 class="titleWithBorder mgB20">All meeting coming up</h4>
+            <h4 class="titleWithBorder mgB20">All open schedules I can vote</h4>
             <table id="pending-list-view" class="uiGrid table table-hover table-striped table-metting">
                 <thead>
                     <tr class="row-action">
@@ -76,10 +76,10 @@ import org.exoplatform.codefest.utils.Utils;
                              <span></span>
                          </span>
                         </th>
-                        <th class="name-column"><a href="#">Name <i class="uiIconMiniArrowUp uiIconLightGray pull-right"></i>
+                        <th class="name-column"><a href="#">Title (owner) <i class="uiIconMiniArrowUp uiIconLightGray pull-right"></i>
                         <th class="time-column">Time</th>
-                        <th class="member-column">Member</th>
-                        <th class="action-column center">Action</th>
+                        <th class="member-column">Attendee(s)</th>
+                        <th class="action-column center">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -89,7 +89,7 @@ import org.exoplatform.codefest.utils.Utils;
                 <tr class="row-white">
                     <td colspan="5" class="center">
                         <br>
-                        <h4>There is no meeting.</h4>
+                        <h4>There is no schedule.</h4>
                         <br>
                     </td>
                 </tr>
@@ -170,7 +170,7 @@ import org.exoplatform.codefest.utils.Utils;
                                             <div>09:00 AM - 11:00 PM</div>
                                             <div>03:00 AM - 04:00 PM</div>
                                         </div>
-                                        <div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
+                                        <div class="expire-vote"><small>Vote to close on <strong>05/25/2015</strong></small></div>
                                         <div class="heading">
                                             <h5 class="title">Lorem ipsum dolor sit amet</h5>
                                         </div>
@@ -178,7 +178,7 @@ import org.exoplatform.codefest.utils.Utils;
                                             <div class="desc">Duis aute irure dolor in reprehenderit in voluptate velit esse
                                             cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                                             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-                                            <div class="joined">2/3 peoples joined</div>
+                                            <div class="joined">2/3 people joined</div>
                                         </div>
                                         <div class="action">
                                             <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
@@ -193,7 +193,7 @@ import org.exoplatform.codefest.utils.Utils;
                                         <div class="time-meeting">
                                             <div>03:00 AM - 04:00 PM</div>
                                         </div>
-                                        <div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
+                                        <div class="expire-vote"><small>Vote to close on <strong>05/25/2015</strong></small></div>
                                         <div class="heading">
                                             <h5 class="title">Lorem ipsum dolor sit amet</h5>
                                         </div>
@@ -201,7 +201,7 @@ import org.exoplatform.codefest.utils.Utils;
                                             <div class="desc">Duis aute irure dolor in reprehenderit in voluptate velit esse
                                             cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                                             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-                                            <div class="joined">2/3 peoples joined</div>
+                                            <div class="joined">2/3 people joined</div>
                                         </div>
                                         <div class="action">
                                             <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
@@ -216,7 +216,7 @@ import org.exoplatform.codefest.utils.Utils;
                                         <div class="time-meeting">
                                             <div>09:00 AM - 11:00 PM</div>
                                         </div>
-                                        <div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
+                                        <div class="expire-vote"><small>Vote to close on <strong>05/25/2015</strong></small></div>
                                         <div class="heading">
                                             <h5 class="title">Lorem ipsum dolor sit amet</h5>
                                         </div>
@@ -224,7 +224,7 @@ import org.exoplatform.codefest.utils.Utils;
                                             <div class="desc">Duis aute irure dolor in reprehenderit in voluptate velit esse
                                             cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                                             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-                                            <div class="joined">2/3 peoples joined</div>
+                                            <div class="joined">2/3 people joined</div>
                                         </div>
                                         <div class="action">
                                             <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
@@ -239,7 +239,7 @@ import org.exoplatform.codefest.utils.Utils;
                                         <div class="time-meeting">
                                             <div>09:00 AM - 11:00 PM</div>
                                         </div>
-                                        <div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
+                                        <div class="expire-vote"><small>Vote to close on <strong>05/25/2015</strong></small></div>
                                         <div class="heading">
                                             <h5 class="title">Lorem ipsum dolor sit amet</h5>
                                         </div>
@@ -247,7 +247,7 @@ import org.exoplatform.codefest.utils.Utils;
                                             <div class="desc">Duis aute irure dolor in reprehenderit in voluptate velit esse
                                             cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                                             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-                                            <div class="joined">2/3 peoples joined</div>
+                                            <div class="joined">2/3 people joined</div>
                                         </div>
                                         <div class="action">
                                             <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
@@ -263,7 +263,7 @@ import org.exoplatform.codefest.utils.Utils;
                                         <div class="time-meeting">
                                             09:00 AM - 11:00 PM
                                         </div>
-                                        <div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
+                                        <div class="expire-vote"><small>Vote to close on <strong>05/25/2015</strong></small></div>
                                         <div class="heading">
                                             <h5 class="title">Lorem ipsum dolor sit amet</h5>
                                         </div>
@@ -271,7 +271,7 @@ import org.exoplatform.codefest.utils.Utils;
                                             <div class="desc">Duis aute irure dolor in reprehenderit in voluptate velit esse
                                             cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                                             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-                                            <div class="joined">2/3 peoples joined</div>
+                                            <div class="joined">2/3 people joined</div>
                                         </div>
                                         <div class="action">
                                             <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
@@ -286,7 +286,7 @@ import org.exoplatform.codefest.utils.Utils;
                                         <div class="time-meeting">
                                             <div>09:00 AM - 11:00 PM</div>
                                         </div>
-                                        <div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
+                                        <div class="expire-vote"><small>Vote to close on <strong>05/25/2015</strong></small></div>
                                         <div class="heading">
                                             <h5 class="title">Lorem ipsum dolor sit amet</h5>
                                         </div>
@@ -294,7 +294,7 @@ import org.exoplatform.codefest.utils.Utils;
                                             <div class="desc">Duis aute irure dolor in reprehenderit in voluptate velit esse
                                             cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                                             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-                                            <div class="joined">2/3 peoples joined</div>
+                                            <div class="joined">2/3 people joined</div>
                                         </div>
                                         <div class="action">
                                             <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
@@ -310,7 +310,7 @@ import org.exoplatform.codefest.utils.Utils;
                                             <div>09:00 AM - 11:00 PM</div>
                                             <div>03:00 AM - 04:00 PM</div>
                                         </div>
-                                        <div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
+                                        <div class="expire-vote"><small>Vote to close on <strong>05/25/2015</strong></small></div>
                                         <div class="heading">
                                             <h5 class="title">Lorem ipsum dolor sit amet</h5>
                                         </div>
@@ -318,7 +318,7 @@ import org.exoplatform.codefest.utils.Utils;
                                             <div class="desc">Duis aute irure dolor in reprehenderit in voluptate velit esse
                                             cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                                             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-                                            <div class="joined">2/3 peoples joined</div>
+                                            <div class="joined">2/3 people joined</div>
                                         </div>
                                         <div class="action">
                                             <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
@@ -334,7 +334,7 @@ import org.exoplatform.codefest.utils.Utils;
                                             <div>09:00 AM - 11:00 PM</div>
                                             <div>03:00 AM - 04:00 PM</div>
                                         </div>
-                                        <div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
+                                        <div class="expire-vote"><small>Vote to close on <strong>05/25/2015</strong></small></div>
                                         <div class="heading">
                                             <h5 class="title">Lorem ipsum dolor sit amet</h5>
                                         </div>
@@ -342,7 +342,7 @@ import org.exoplatform.codefest.utils.Utils;
                                             <div class="desc">Duis aute irure dolor in reprehenderit in voluptate velit esse
                                             cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                                             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-                                            <div class="joined">2/3 peoples joined</div>
+                                            <div class="joined">2/3 people joined</div>
                                         </div>
                                         <div class="action">
                                             <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
@@ -357,8 +357,101 @@ import org.exoplatform.codefest.utils.Utils;
             </table>
         </div>
         <!-- TAB 2 -->
+        <div class="tab-pane fade" id="tab3">
+            <h4 class="titleWithBorder mgB20">All meetings organized by me</h4>
+            <table class="uiGrid table table-hover table-striped table-metting">
+                <thead>
+                    <tr class="row-action">
+                        <th colspan="2" class="left">
+                            <a href="#" class="actionIcon delete-all" style="display: none;" data-placement="bottom" rel="tooltip" data-original-title="Delete all meeting selected"><i class="uiIconDelete uiIconLightGray"></i></a>
+                            <div class="btn-group">
+                                <a class="btn active  toggle-show-invited-list-view" href="#" ><i class="uiIconEcmsViewList uiIconEcmsLightGray" data-placement="bottom" rel="tooltip" data-original-title="List View"></i></a>
+                                <a class="btn toggle-show-invited-grid-view" href="#" ><i class="uiIconEcmsViewIcons uiIconEcmsLightGray" data-placement="bottom" rel="tooltip" data-original-title="Grid view"></i></a>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="control-time">
+                                <a href="#" class="pull-left"><i class="uiIconMiniArrowLeft uiIconLightGray"></i></a>
+                                <span>Week 28, 6 - 12 July 2015</span>
+                                <a href="#" class="pull-right"><i class="uiIconMiniArrowRight uiIconLightGray"></i></a>
+                            </div>
+                        </th>
+                        <th colspan="2" class="right">
+                            <button class="btn btn-default">Today</button>
+                            <ul class="btn-group">
+                                <li class="btn ">
+                                    <a href="#">Day</a>
+                                </li>
+                                <li class="btn active">
+                                    <a href="#">Week</a>
+                                </li>
+                                <li class="btn">
+                                    <a href="#">Month</a>
+                                </li>
+                            </ul>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="select-column">
+                            <span class="uiCheckbox">
+                             <input type="checkbox" class="checkbox">
+                             <span></span>
+                         </span>
+                        </th>
+                        <th class="name-column"><a href="#">Title <i class="uiIconMiniArrowUp uiIconLightGray pull-right"></i>
+                        <th class="time-column">Time</th>
+                        <th class="member-column">Attendee(s)</th>
+                        <th class="action-column center">Action</th>
+                    </tr>
+                </thead>
+                <%
+                def myPendingMeetings = uicomponent.getMyPendingMeeting();
+                if (myPendingMeetings.size() <= 0) {%>
+                <tr class="row-white">
+                    <td colspan="5" class="center">
+                        <br>
+                        <h4>There is no schedule.</h4>
+                        <br>
+                    </td>
+                </tr>
+                <%} else {
+                for (meeting in myPendingMeetings) {
+                  String title = meeting.getTitle();
+                  String description = meeting.getDescription();
+                  String owner = meeting.getOwner();
+                %>
+                    <tr>
+                        <td>
+                            <span class="uiCheckbox">
+                             <input type="checkbox" class="checkbox">
+                             <span></span>
+                         </span>
+                        </td>
+                        <td><a href="#" class="meeting-name" onclick="<%=uicomponent.event('ViewDetail', meeting.getJcrPath())%>">$title ($owner)</a></td>
+                        <td>
+                            <%for (option in meeting.getTimeOptions()) {
+                              String fromDate = Utils.toDate(option.getFromDate());
+                              String toDate = Utils.toDate(option.getToDate());
+                            %>
+                              <div><span class="muted">From</span> $fromDate <span class="muted">to</span> $toDate</div>
+                            <%}%>
+                        </td>
+                        <td><%for (participant in meeting.getParticipant()) {%>
+                            <span class="uiMention">$participant</span>
+                            <%}%>
+                        </td>
+                        <td class="center">
+                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail" onclick="<%=uicomponent.event('ViewDetail', meeting.getJcrPath())%>"><i class="uiIconPreview"></i></a>
+                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Delete"><i class="uiIconDelete"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+                <%} }%>
+            </table>
+        </div>
+                <!-- TAB 3 -->
         <div class="tab-pane fade" id="tab2">
-            <h4 class="titleWithBorder mgB20">All meeting waiting peoples to vote</h4>
+            <h4 class="titleWithBorder mgB20">All scheduled meetings</h4>
             <table class="uiGrid table table-hover table-striped table-metting">
                 <!-- <caption>Lorem ipsum dolor sit amet </caption> -->
                 <thead>
@@ -399,13 +492,28 @@ import org.exoplatform.codefest.utils.Utils;
                              <span></span>
                          </span>
                         </th>
-                        <th class="name-column"><a href="#">Name <i class="uiIconMiniArrowUp uiIconLightGray pull-right"></i></a></th>
+                        <th class="name-column"><a href="#">Title (owner) <i class="uiIconMiniArrowUp uiIconLightGray pull-right"></i></a></th>
                         <th class="time-column">Time</th>
-                        <th class="member-column">Member</th>
+                        <th class="member-column">Attendee(s)</th>
                         <th class="action-column center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
+                <%
+                def upcomingMeetings = uicomponent.getPlannedMeeting();
+                if (upcomingMeetings.size() <= 0) {%>
+                <tr class="row-white">
+                    <td colspan="5" class="center">
+                        <br>
+                        <h4>There is no meeting.</h4>
+                        <br>
+                    </td>
+                </tr>
+                <%} else {
+                for (meeting in upcomingMeetings) {
+                  String title = meeting.getTitle();
+                  String owner = meeting.getOwner();
+                %>
                     <tr>
                         <td>
                             <span class="uiCheckbox">
@@ -413,237 +521,27 @@ import org.exoplatform.codefest.utils.Utils;
                              <span></span>
                          </span>
                         </td>
-                        <td><a href="#" class="meeting-name">Lorem ipsum dolor sit amet</a></td>
+                        <td><a href="#" class="meeting-name" onclick="<%=uicomponent.event('ViewDetail', meeting.getJcrPath())%>">$title ($owner)</a></td>
                         <td>
-                            <div><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</div>
-                            <div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
+                            <%for (option in meeting.getTimeOptions()) {
+                              if (option.isSelected) {
+                                String fromDate = Utils.toDate(option.getFromDate());
+                                String toDate = Utils.toDate(option.getToDate());
+                            %>
+                                <div><span class="muted">From</span> $fromDate <span class="muted">to</span> $toDate</div>
+                            <%} }%>
                         </td>
-                        <td>
-                            <span class="uiMention">toanhn</span>
-                            <span class="uiMention disabled">giangnt</span>
-                            <span class="uiMention">trangvh</span>
-                            <span class="uiMention disabled">tuyennt</span>
+                        <td><%for (participant in meeting.getParticipant()) {%>
+                            <span class="uiMention">$participant</span>
+                            <%}%>
                         </td>
                         <td class="center">
-                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
-                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Delete"><i class="uiIconDelete"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="uiCheckbox">
-                             <input type="checkbox" class="checkbox">
-                             <span></span>
-                         </span>
-                        </td>
-                        <td><a href="#" class="meeting-name">In non risus quis libero convallis</a></td>
-                        <td>
-                            <ol class="list-time">
-                                <li><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</li>
-                                <li><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</li>
-                                <li><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</li>
-                            </ol>
-                            <div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
-                        </td>
-                        <td>
-                            <span class="uiMention">giangnt</span><span class="uiMention disabled">toanhn</span>
-                        </td>
-                        <td class="center">
-                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
-                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Delete"><i class="uiIconDelete"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="uiCheckbox">
-                             <input type="checkbox" class="checkbox">
-                             <span></span>
-                         </span>
-                        </td>
-                        <td><a href="#" class="meeting-name">Aenean non eleifend magna</a></td>
-                        <td>
-                            <div><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</div>
-                            <div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
-                        </td>
-                        <td>
-                        <span class="uiMention disabled">toanhn</span>
-                            <span class="uiMention">giangnt</span>
-                        </td>
-                        <td class="center">
-                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
-                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Delete"><i class="uiIconDelete"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="uiCheckbox">
-                             <input type="checkbox" class="checkbox">
-                             <span></span>
-                         </span>
-                        </td>
-                        <td><a href="#" class="meeting-name">Scum Meeting week 25</a></td>
-                        <td>
-                            <ol class="list-time">
-                                <li><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</li>
-                                <li><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</li>
-                            </ol>
-                            <div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
-                        </td>
-                        <td>
-                            <span class="uiMention">trangvh</span>
-                            <span class="uiMention disabled">tuyennt</span>
-                        </td>
-                        <td class="center">
-                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
+                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail" onclick="<%=uicomponent.event('ViewDetail', meeting.getJcrPath())%>"><i class="uiIconPreview"></i></a>
                             <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Delete"><i class="uiIconDelete"></i></a>
                         </td>
                     </tr>
                 </tbody>
-            </table>
-        </div>
-        <!-- TAB 3 -->
-        <div class="tab-pane fade" id="tab3">
-
-            <h4 class="titleWithBorder mgB20">All meeting waiting you confirm</h4>
-            <table class="uiGrid table table-hover table-striped table-metting">
-                <thead>
-                    <tr class="row-action">
-                        <th colspan="2" class="left">
-                            <a href="#" class="actionIcon delete-all" style="display: none;" data-placement="bottom" rel="tooltip" data-original-title="Delete all meeting selected"><i class="uiIconDelete uiIconLightGray"></i></a>
-                            <div class="btn-group">
-                                <a class="btn active  toggle-show-invited-list-view" href="#" ><i class="uiIconEcmsViewList uiIconEcmsLightGray" data-placement="bottom" rel="tooltip" data-original-title="List View"></i></a>
-                                <a class="btn toggle-show-invited-grid-view" href="#" ><i class="uiIconEcmsViewIcons uiIconEcmsLightGray" data-placement="bottom" rel="tooltip" data-original-title="Grid view"></i></a>
-                            </div>
-                        </th>
-                        <th>
-                            <div class="control-time">
-                                <a href="#" class="pull-left"><i class="uiIconMiniArrowLeft uiIconLightGray"></i></a>
-                                <span>Week 28, 6 - 12 July 2015</span>
-                                <a href="#" class="pull-right"><i class="uiIconMiniArrowRight uiIconLightGray"></i></a>
-                            </div>
-                        </th>
-                        <th colspan="2" class="right">
-                            <button class="btn btn-default">Today</button>
-                            <ul class="btn-group">
-                                <li class="btn ">
-                                    <a href="#">Day</a>
-                                </li>
-                                <li class="btn active">
-                                    <a href="#">Week</a>
-                                </li>
-                                <li class="btn">
-                                    <a href="#">Month</a>
-                                </li>
-                            </ul>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th class="select-column">
-                            <span class="uiCheckbox">
-                             <input type="checkbox" class="checkbox">
-                             <span></span>
-                         </span>
-                        </th>
-                        <th class="name-column"><a href="#">Name <i class="uiIconMiniArrowUp uiIconLightGray pull-right"></i>
-                        <th class="time-column">Time</th>
-                        <th class="member-column">Member</th>
-                        <th class="action-column center">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <span class="uiCheckbox">
-                             <input type="checkbox" class="checkbox">
-                             <span></span>
-                         </span>
-                        </td>
-                        <td><a href="#" class="meeting-name">Lorem ipsum dolor sit amet</a></td>
-                        <td>
-                            <div><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</div>
-                            <div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
-                        </td>
-                        <td>
-                            <span class="uiMention">toanhn</span>
-                            <span class="uiMention disabled">giangnt</span>
-                            <span class="uiMention">trangvh</span>
-                            <span class="uiMention disabled">tuyennt</span>
-                        </td>
-                        <td class="center">
-                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
-                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Delete"><i class="uiIconDelete"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="uiCheckbox">
-                             <input type="checkbox" class="checkbox">
-                             <span></span>
-                         </span>
-                        </td>
-                        <td><a href="#" class="meeting-name">In non risus quis libero convallis</a></td>
-                        <td>
-                            <ol class="list-time">
-                                <li><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</li>
-                                <li><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</li>
-                                <li><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</li>
-                            </ol>
-                            <div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
-                        </td>
-                        <td>
-                            <span class="uiMention">giangnt</span><span class="uiMention disabled">toanhn</span>
-                        </td>
-                        <td class="center">
-                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
-                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Delete"><i class="uiIconDelete"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="uiCheckbox">
-                             <input type="checkbox" class="checkbox">
-                             <span></span>
-                         </span>
-                        </td>
-                        <td><a href="#" class="meeting-name">Aenean non eleifend magna</a></td>
-                        <td>
-                            <div><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</div>
-                            <div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
-                        </td>
-                        <td>
-                        <span class="uiMention disabled">toanhn</span>
-                            <span class="uiMention">giangnt</span>
-                        </td>
-                        <td class="center">
-                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
-                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Delete"><i class="uiIconDelete"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="uiCheckbox">
-                             <input type="checkbox" class="checkbox">
-                             <span></span>
-                         </span>
-                        </td>
-                        <td><a href="#" class="meeting-name">Scum Meeting week 25</a></td>
-                        <td>
-                            <ol class="list-time">
-                                <li><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</li>
-                                <li><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</li>
-                            </ol>
-                            <div class="expire-vote"><small>Expire to vote on <strong>05/25/2015</strong></small></div>
-                        </td>
-                        <td>
-                            <span class="uiMention">trangvh</span>
-                            <span class="uiMention disabled">tuyennt</span>
-                        </td>
-                        <td class="center">
-                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
-                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Delete"><i class="uiIconDelete"></i></a>
-                        </td>
-                    </tr>
-                </tbody>
+                <%} }%>
             </table>
         </div>
     </div>

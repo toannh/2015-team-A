@@ -77,7 +77,7 @@ public class UIMeetingDetail extends UIContainer {
       UIMeetingDetail detail = event.getSource();
       UIApplication uiApp = event.getRequestContext().getUIApplication();
       if (detail.selectedOptions.isEmpty()) {
-        uiApp.addMessage(new ApplicationMessage("You need select at least one option", new Object[0], AbstractApplicationMessage.ERROR));
+        uiApp.addMessage(new ApplicationMessage("You need to select at least one option", new Object[0], AbstractApplicationMessage.ERROR));
         return;
       }
 

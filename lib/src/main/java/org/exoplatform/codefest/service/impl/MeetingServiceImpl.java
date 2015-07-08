@@ -2,6 +2,7 @@ package org.exoplatform.codefest.service.impl;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
 import org.apache.commons.lang.StringUtils;
 import org.exoplatform.calendar.service.CalendarEvent;
 import org.exoplatform.calendar.service.CalendarService;
@@ -29,6 +30,7 @@ import javax.jcr.NodeIterator;
 import javax.jcr.Session;
 import javax.jcr.query.Query;
 import javax.jcr.query.QueryManager;
+
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -179,7 +181,7 @@ public class MeetingServiceImpl implements MeetingService {
       queryBuilder.append(" WHERE jcr:path LIKE '/" + EXO_MEETING_DRIVE + "/%' ");
       queryBuilder.append(" AND (" + EXO_PROP_MEETING_OWNER + " LIKE '%" + username + "%'");
       queryBuilder.append(" OR " + EXO_PROP_MEETING_PARTICIPANT + " LIKE '%" + username + "%'");
-      queryBuilder.append(") ");
+      queryBuilder.append(")");
       queryBuilder.append(" AND (" + EXO_PROP_MEETING_STATUS + " = '" + status + "' )");
       String sortCriterion = "";
       if (page != null) sortCriterion = page.getSort();
@@ -433,4 +435,41 @@ public class MeetingServiceImpl implements MeetingService {
     meeting.setId(node.getName());
     meeting.setJcrPath(node.getPath());
   }
+
+@Override
+public List<Meeting> getMeetingsByOwner(String username, int status, Page page) {
+    try {
+        Session session = getSession();      
+        List<Meeting> meetings = new ArrayList<Meeting>();
+        StringBuilder queryBuilder = new StringBuilder("SELECT * FROM ").append(EXO_MEETING);
+        queryBuilder.append(" WHERE jcr:path LIKE '/" + EXO_MEETING_DRIVE + "/%' ");
+        queryBuilder.append(" AND (" + EXO_PROP_MEETING_OWNER + " LIKE '%" + username + "%'");
+//        queryBuilder.append(" OR " + EXO_PROP_MEETING_PARTICIPANT + " LIKE '%" + username + "%'");
+        queryBuilder.append(")");
+        queryBuilder.append(" AND (" + EXO_PROP_MEETING_STATUS + " = '" + status + "')");
+        String sortCriterion = "";
+        if (page != null) sortCriterion = page.getSort();
+        if (StringUtils.isEmpty(sortCriterion)) sortCriterion = "ASC";
+        queryBuilder.append(" ORDER BY " + EXO_PROP_MEETING_DATE_CREATED + " " + sortCriterion);
+//        log.info("Query to getMeetingsByOwner: " + queryBuilder.toString());
+        QueryManager queryManager = session.getWorkspace().getQueryManager();
+        QueryImpl query = (QueryImpl) queryManager.createQuery(queryBuilder.toString(), Query.SQL);
+        if (page != null) {
+          query.setLimit(page.getLimit());
+          query.setOffset(page.getOffset());
+        }
+        NodeIterator nodes = query.execute().getNodes();
+        while (nodes.hasNext()) {
+          Meeting meeting = new Meeting();
+          Node node = nodes.nextNode();
+          meetingNodeToObject(meeting, node);
+          meetings.add(meeting);
+        }
+        return meetings;
+      } catch (Exception ex) {
+        log.error("Exception in getMeetingsByOwner.", ex);
+      }
+
+	return null;
+}
 }
