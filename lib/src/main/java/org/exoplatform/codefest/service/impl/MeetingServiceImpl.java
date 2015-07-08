@@ -2,30 +2,34 @@ package org.exoplatform.codefest.service.impl;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import org.apache.commons.lang.StringUtils;
 import org.exoplatform.calendar.service.CalendarEvent;
 import org.exoplatform.calendar.service.CalendarService;
 import org.exoplatform.codefest.service.MeetingService;
 import org.exoplatform.codefest.entity.Meeting;
+import org.exoplatform.codefest.entity.MeetingComment;
 import org.exoplatform.codefest.entity.Page;
 import org.exoplatform.codefest.entity.TimeOption;
 import org.exoplatform.codefest.entity.UserVoted;
 import org.exoplatform.container.ExoContainerContext;
+import org.exoplatform.codefest.service.MeetingService;
+import org.exoplatform.services.cms.comments.CommentsService;
+import org.exoplatform.services.cms.jcrext.activity.ActivityCommonService;
 import org.exoplatform.services.jcr.RepositoryService;
 import org.exoplatform.services.jcr.core.ManageableRepository;
 import org.exoplatform.services.jcr.ext.app.SessionProviderService;
 import org.exoplatform.services.jcr.ext.common.SessionProvider;
 import org.exoplatform.services.jcr.impl.core.query.QueryImpl;
+import org.exoplatform.services.listener.ListenerService;
 import org.exoplatform.services.log.ExoLogger;
 import org.exoplatform.services.log.Log;
+import org.exoplatform.services.wcm.utils.WCMCoreUtils;
 
 import javax.jcr.Node;
 import javax.jcr.NodeIterator;
 import javax.jcr.Session;
 import javax.jcr.query.Query;
 import javax.jcr.query.QueryManager;
-
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -59,12 +63,17 @@ public class MeetingServiceImpl implements MeetingService {
     this.gson = new Gson();
   }
 
-
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public List<Meeting> getMeetings(String username, Page page) {
     return getMeetings(username, 1, page);
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public Meeting getMeeting(String jcrPath) throws Exception{
     Session session = getSession();
@@ -74,6 +83,9 @@ public class MeetingServiceImpl implements MeetingService {
     return meeting;
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public long getMeetingTotal(String username) {
     try {
@@ -94,6 +106,9 @@ public class MeetingServiceImpl implements MeetingService {
     return 0;
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public Meeting save(Meeting meeting) throws Exception {
     Session session = getSession();
@@ -141,6 +156,9 @@ public class MeetingServiceImpl implements MeetingService {
     return meeting;
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean delete(Meeting meeting) throws Exception{
     Session session = getSession();
@@ -150,6 +168,9 @@ public class MeetingServiceImpl implements MeetingService {
     return true;
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public List<Meeting> getMeetings(String username, int status, Page page) {
     try {
@@ -186,6 +207,9 @@ public class MeetingServiceImpl implements MeetingService {
     return null;
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public Meeting updateVote(Meeting m, String username, Map<String, String> userVoteds) throws Exception{
     Meeting meeting = getMeeting(m.getJcrPath());
@@ -213,6 +237,9 @@ public class MeetingServiceImpl implements MeetingService {
     return save(meeting);
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public Meeting finalMeeting(Meeting meeting, List<String> timeOptionIds) throws Exception{
     meeting.setStatus(1); //close voting
@@ -268,6 +295,9 @@ public class MeetingServiceImpl implements MeetingService {
     return session;
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public Meeting addParticipant(Meeting meeting, String username) throws Exception{
     Session session = getSession();
@@ -286,6 +316,9 @@ public class MeetingServiceImpl implements MeetingService {
     return null;
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public Meeting removeParticipant(Meeting meeting, String username) throws Exception {
     Session session = getSession();
@@ -300,6 +333,56 @@ public class MeetingServiceImpl implements MeetingService {
       meetingNode.getParent().save();
       meeting.setParticipant(participants);
       return meeting;
+    }
+    return null;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public MeetingComment postComment(Meeting meeting, MeetingComment meetingComment) throws Exception {
+    CommentsService commentsService = WCMCoreUtils.getService(CommentsService.class);
+    ListenerService listenerService =  WCMCoreUtils.getService(ListenerService.class);
+    Node meetingNode = (Node)getSession().getItem(meeting.getJcrPath());
+    if(meetingNode==null) return null;
+
+    commentsService.addComment(meetingNode, meetingComment.getUsername(), meetingComment.getEmail(),
+            meetingComment.getSite(), meetingComment.getMessage(), meetingComment.getLanguage() );
+
+    listenerService.broadcast(ActivityCommonService.FILE_EDIT_ACTIVITY, null, meetingNode);
+    return getLastComment(meetingNode);
+  }
+
+  private MeetingComment getLastComment(Node postNode) {
+    try {
+      StringBuilder queryBuilder = new StringBuilder("SELECT * FROM ").append(EXO_COMMENT_NODE);
+      queryBuilder.append(" WHERE jcr:path LIKE '" + postNode.getPath() + "/comments/%' ");
+      queryBuilder.append(" ORDER BY exo:dateCreated DESC ");
+      Session session = postNode.getSession();
+      QueryManager queryManager = session.getWorkspace().getQueryManager();
+      QueryImpl query = (QueryImpl) queryManager.createQuery(queryBuilder.toString(), Query.SQL);
+      query.setLimit(1);
+      query.setOffset(0);
+
+      NodeIterator nodes = query.execute().getNodes();
+      MeetingComment comment = new MeetingComment();
+      if (nodes.hasNext()){
+        Node node = nodes.nextNode();
+        if(node.hasProperty(EXO_COMMENT_PROP_COMMENTOR))
+          comment.setUsername(node.getProperty(EXO_COMMENT_PROP_COMMENTOR).getString());
+        if(node.hasProperty(EXO_COMMENT_PROP_CONTENT))
+          comment.setMessage(node.getProperty(EXO_COMMENT_PROP_CONTENT).getString());
+        if(node.hasProperty(EXO_COMMENT_PROP_DATE))
+          comment.setCommentDate(node.getProperty(EXO_COMMENT_PROP_DATE).getDate().getTimeInMillis());
+        if(node.hasProperty(EXO_COMMENT_PROP_EMAIL))
+          comment.setEmail(node.getProperty(EXO_COMMENT_PROP_EMAIL).getString());
+        if(node.hasProperty(EXO_COMMENT_PROP_SITE))
+          comment.setSite(node.getProperty(EXO_COMMENT_PROP_SITE).getString());
+      }
+      return comment;
+    } catch (Exception ex) {
+      if (log.isErrorEnabled()) log.error(ex.getMessage());
     }
     return null;
   }

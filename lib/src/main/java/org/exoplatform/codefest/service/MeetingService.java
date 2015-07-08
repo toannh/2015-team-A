@@ -1,6 +1,7 @@
 package org.exoplatform.codefest.service;
 
 import org.exoplatform.codefest.entity.Meeting;
+import org.exoplatform.codefest.entity.MeetingComment;
 import org.exoplatform.codefest.entity.Page;
 
 import java.util.List;
@@ -15,7 +16,14 @@ import java.util.Map;
  */
 public interface MeetingService {
 
-  public static String EXO_MEETING_DRIVE            = "Meeting";
+  public final String EXO_MEETING_DRIVE             = "Meeting";
+  public final String EXO_COMMENT_NODE              = "exo:comments";
+  public final String EXO_COMMENT_PROP_COMMENTOR    = "exo:commentor";
+  public final String EXO_COMMENT_PROP_FULLNAME     = "exo:commentorFullName";
+  public final String EXO_COMMENT_PROP_EMAIL        = "exo:commentorEmail";
+  public final String EXO_COMMENT_PROP_SITE         = "exo:commentorSite";
+  public final String EXO_COMMENT_PROP_DATE         = "exo:commentDate";
+  public final String EXO_COMMENT_PROP_CONTENT      = "exo:commentContent";
 
   public final String EXO_MEETING                   = "exo:meeting";
   public final String EXO_PROP_MEETING_TITLE        = "exo:meetingTitle";
@@ -62,7 +70,6 @@ public interface MeetingService {
    */
   public long getMeetingTotal(String username);
 
-
   /**
    * Save a new schedule meeting
    * @param meeting
@@ -102,4 +109,14 @@ public interface MeetingService {
    * @throws Exception
    */
   public Meeting removeParticipant(Meeting meeting, String username) throws Exception;
+
+  /**
+   * Allow comment when Meeting is voting
+   * Return last comment of Meeting
+   * @param meeting
+   * @param meetingComment
+   * @throws Exception
+   */
+  public MeetingComment postComment(Meeting meeting, MeetingComment meetingComment) throws Exception;
+
 }

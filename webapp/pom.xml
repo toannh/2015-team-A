@@ -30,8 +30,8 @@
   </parent>
   <artifactId>team-a-addon-webapp</artifactId>
   <packaging>war</packaging>
-  <name>Codefest 2014 - Team A Addon - Webapp</name>
-  <description>Codefest 2014 - Team A Addon - A portlet or any webapp</description>
+  <name>Codefest 2015 - Team A Addon - Webapp</name>
+  <description>Codefest 2015 - Team A Addon - A portlet or any webapp</description>
   <dependencies>
     <dependency>
       <groupId>org.gatein.portal</groupId>
