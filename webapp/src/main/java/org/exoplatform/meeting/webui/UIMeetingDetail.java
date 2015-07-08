@@ -23,14 +23,21 @@ import org.exoplatform.codefest.entity.Meeting;
 import org.exoplatform.codefest.service.MeetingService;
 import org.exoplatform.services.security.ConversationState;
 import org.exoplatform.services.security.Identity;
+import org.exoplatform.web.application.AbstractApplicationMessage;
+import org.exoplatform.web.application.ApplicationMessage;
 import org.exoplatform.webui.config.annotation.ComponentConfig;
 import org.exoplatform.webui.config.annotation.EventConfig;
+import org.exoplatform.webui.core.UIApplication;
 import org.exoplatform.webui.core.UIContainer;
 import org.exoplatform.webui.event.Event;
 import org.exoplatform.webui.event.EventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author <a href="mailto:tuyennt@exoplatform.com">Tuyen Nguyen The</a>.
@@ -38,10 +45,15 @@ import java.util.Map;
 @ComponentConfig(template = "app:/groovy/meetingschedule/webui/UIMeetingDetail.gtmpl", events = {
         @EventConfig(listeners = UIMeetingDetail.BackActionListener.class),
         @EventConfig(listeners = UIMeetingDetail.ScheduleNewMeetingActionListener.class),
-        @EventConfig(listeners = UIMeetingDetail.VoteActionListener.class)
+        @EventConfig(listeners = UIMeetingDetail.VoteActionListener.class),
+        @EventConfig(listeners = UIMeetingDetail.ToggleOptionActionListener.class),
+        @EventConfig(listeners = UIMeetingDetail.MakeFinalActionListener.class)
 })
 public class UIMeetingDetail extends UIContainer {
   private Meeting meeting;
+
+  private Set<String> selectedOptions = new HashSet<String>();
+
   public UIMeetingDetail() {
   }
 
@@ -51,6 +63,45 @@ public class UIMeetingDetail extends UIContainer {
 
   public Meeting getMeeting() {
     return this.meeting;
+  }
+
+  public boolean isSelectedOption(String optionId) {
+    return selectedOptions.contains(optionId);
+  }
+
+  public static class MakeFinalActionListener extends EventListener<UIMeetingDetail> {
+    @Override
+    public void execute(Event<UIMeetingDetail> event) throws Exception {
+      UIMeetingDetail detail = event.getSource();
+      UIApplication uiApp = event.getRequestContext().getUIApplication();
+      if (detail.selectedOptions.isEmpty()) {
+        uiApp.addMessage(new ApplicationMessage("You need select at least one option", new Object[0], AbstractApplicationMessage.ERROR));
+        return;
+      }
+
+      Identity identity = ConversationState.getCurrent().getIdentity();
+      if (!identity.getUserId().equals(detail.getMeeting().getOwner())) {
+        uiApp.addMessage(new ApplicationMessage("Only owner can make plan for this meeting", new Object[0], AbstractApplicationMessage.ERROR));
+        return;
+      }
+
+      MeetingService service = detail.getApplicationComponent(MeetingService.class);
+      Meeting m = service.finalMeeting(detail.meeting, new ArrayList<String>(detail.selectedOptions));
+      detail.setMeeting(m);
+    }
+  }
+
+  public static class ToggleOptionActionListener extends EventListener<UIMeetingDetail> {
+    @Override
+    public void execute(Event<UIMeetingDetail> event) throws Exception {
+      String optionId = event.getRequestContext().getRequestParameter(OBJECTID);
+      UIMeetingDetail detail = event.getSource();
+      if (detail.selectedOptions.contains(optionId)) {
+        detail.selectedOptions.remove(optionId);
+      } else {
+        detail.selectedOptions.add(optionId);
+      }
+    }
   }
 
   public static class VoteActionListener extends EventListener<UIMeetingDetail> {

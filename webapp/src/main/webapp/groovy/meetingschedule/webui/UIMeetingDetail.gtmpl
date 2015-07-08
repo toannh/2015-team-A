@@ -140,10 +140,15 @@
 </div>
 <%
     def meeting = uicomponent.getMeeting();
+    def owner = meeting.getOwner();
+    Identity identity = ConversationState.getCurrent().getIdentity();
+    String currentUser = identity.getUserId();
+    def status = meeting.getStatus();
 %>
 <div class="uiBox">
 	<h5 class="title"><i class="uiIconClock  uiIconDarkGray"></i> <%=meeting.getTitle()%></h5>
 	<div class="uiContentBox">
+        <% if (status != 1) {%>
 		<table class="uiGrid table table-hover table-striped table-metting-vote">
 			<thead>
 				<tr>
@@ -162,11 +167,9 @@
 			</thead>
 			<tbody>
                 <%
-                Identity identity = ConversationState.getCurrent().getIdentity();
-                String currentUser = identity.getUserId();
                 for(String user : meeting.getParticipant()) {
                     def isVotedInMeeting = meeting.isVoted(user);
-                    if (user == currentUser) {%>
+                    if (user == currentUser && meeting.getStatus() != 1) {%>
                         <tr class="me">
                             <td headers="tablecol_member"><strong><%=user%></strong></td>
                             <%for(TimeOption opt : meeting.getTimeOptions()) {
@@ -184,7 +187,7 @@
                             <%}%>
                         </tr>
                     <%} else { %>
-                        <tr>
+                        <tr class="<%=(user == currentUser ? "me" : "")%>">
                             <td headers="tablecol_member"><strong><%=user%></strong></td>
                             <%for(TimeOption opt : meeting.getTimeOptions()) {
                                 def fromDate = new Date(opt.getFromDate());
@@ -209,28 +212,38 @@
                 %>
 			</tbody>
 			<!-- tfoot only show for ad -->
-			<tfoot>
-				<tr>
-					<td class="right"><strong>Select time to meeting</strong></td>
-					<td class="center">
-						<span class="uiCheckbox">
-							<input type="checkbox" class="checkbox">
-							<span></span>
-						</span>
-					</td>
-					<td class="center">
-						<span class="uiCheckbox">
-							<input type="checkbox" class="checkbox">
-							<span></span>
-						</span>
-					</td>
-				</tr>
-			</tfoot>
+            <%
+                if (currentUser == owner) {%>
+                    <tfoot>
+                    <tr>
+                        <td headers="tablecol_member" class="right"><strong>Select time to meeting</strong></td>
+                        <%for(TimeOption opt : meeting.getTimeOptions()) {
+                            def fromDate = new Date(opt.getFromDate());
+                            def toDate = new Date(opt.getToDate());
+                            def isSelectedOption = uicomponent.isSelectedOption(opt.getId());
+                            def checked = "";
+                            if (isSelectedOption) {
+                            checked = "checked=\"checked\"";
+                            }
+                            def disabled = "";
+                            if (meeting.getStatus() == 1) {
+                            disabled = "disabled";
+                            }
+                        %>
+                        <td headers="tablecol_<%=opt.getId()%>" class="center">
+                                    <span class="uiCheckbox">
+                                        <input type="checkbox" class="checkbox" <%=disabled%> <%=checked%> onclick="<%=uicomponent.event('ToggleOption', opt.getId())%>"/>
+                                        <span></span>
+                                    </span>
+                        </td>
+                        <%}%>
+                    </tr>
+                    </tfoot>
+                <%}
+            %>
 		</table>
-		<div class="text-right">
-			<button class="btn btn-primary">Create Meeting</button>
-		</div>
 		<hr>
+        <%}%>
 		<div class="row-fluid detail-meeting">
 			<div class="span9">
 				<form class="form-horizontal">
@@ -260,19 +273,27 @@
                             <%}%>
 						</div>
 					</div>
-					<!-- when be vote will no display start date and due date -->
-					<div class="control-group" style="display:none">
-						<label class="control-label">Start time:</label>
-						<div class="controls">
-							<div class="control-text">07/07/2015 07:00</div>
-						</div>
-					</div>
-					<div class="control-group" style="display:none">
-						<label class="control-label">End time:</label>
-						<div class="controls">
-							<div class="control-text">07/07/2015 08:00</div>
-						</div>
-					</div>
+                    <% if (status == 1) {
+                        def index = 0;
+                        for(TimeOption opt : meeting.getTimeOptions()) {
+                            if (opt.isSelected()) {
+                                index++;
+                                def fromDate = new Date(opt.getFromDate());
+                                def toDate = new Date(opt.getToDate());
+                    %>
+                                <div class="control-group">
+                                    <label class="control-label">Session <%=index%>:</label>
+                                    <div class="controls">
+                                        <div class="control-text">
+                                            <%=dateFormat.format(fromDate)%> <%=timeFormat.format(fromDate)%>
+                                            <span class="muted">&nbsp;to&nbsp;</span>
+                                            <%=dateFormat.format(toDate)%> <%=timeFormat.format(toDate)%>
+                                        </div>
+                                    </div>
+                                </div>
+                            <%}
+                        }
+                    }%>
 					<br>
 				</form>
 			</div>
@@ -293,6 +314,9 @@
 		<div class="text-right">
 			<button class="btn"><i class="uiIconEdit uiIconLightGray"></i>&nbsp;Edit</button>
 			<button class="btn"><i class="uiIconDelete uiIconLightGray"></i>&nbsp;Delete</button>
+            <%if (currentUser == owner) {%>
+            <button class="btn btn-primary" onclick="<%=uicomponent.event('MakeFinal')%>"><i class="uiIconClock  uiIconDarkGray"></i>&nbsp;Create Meeting</button>
+            <%}%>
 		</div>
 	</div>
 </div>
