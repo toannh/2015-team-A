@@ -30,6 +30,7 @@
       <uri>teama</uri>
       <name>teama</name>
       <label>#{addon.meetingschedule.navigation.node.label}</label>
+      <icon>uiIconClock uiIconDarkGray</icon>
       <page-reference>portal::intranet::teama</page-reference>
     </node>
   </page-nodes>

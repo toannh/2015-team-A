@@ -20,11 +20,17 @@
 package org.exoplatform.meeting.webui;
 
 import org.exoplatform.codefest.entity.Meeting;
+import org.exoplatform.codefest.service.MeetingService;
+import org.exoplatform.services.security.ConversationState;
+import org.exoplatform.services.security.Identity;
 import org.exoplatform.webui.config.annotation.ComponentConfig;
 import org.exoplatform.webui.config.annotation.EventConfig;
 import org.exoplatform.webui.core.UIContainer;
 import org.exoplatform.webui.event.Event;
 import org.exoplatform.webui.event.EventListener;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author <a href="mailto:tuyennt@exoplatform.com">Tuyen Nguyen The</a>.
@@ -50,9 +56,15 @@ public class UIMeetingDetail extends UIContainer {
   public static class VoteActionListener extends EventListener<UIMeetingDetail> {
     @Override
     public void execute(Event<UIMeetingDetail> event) throws Exception {
-      System.out.println("Vote or unvote");
       String optionId = event.getRequestContext().getRequestParameter(OBJECTID);
-      System.out.println("OPtion: " + optionId);
+      UIMeetingDetail detail = event.getSource();
+      Identity identity = ConversationState.getCurrent().getIdentity();
+      boolean isVoted = detail.meeting.isVotedOption(identity.getUserId(), optionId);
+      MeetingService service = detail.getApplicationComponent(MeetingService.class);
+      Map<String, String> voted = new HashMap<String, String>();
+      voted.put(optionId, isVoted ? "0" : "1");
+      Meeting meeting1 = service.updateVote(detail.meeting, identity.getUserId(), voted);
+      detail.setMeeting(meeting1);
     }
   }
 
