@@ -1,6 +1,9 @@
 package org.exoplatform.codefest.service.impl;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import org.apache.commons.lang.StringUtils;
 import org.exoplatform.codefest.service.MeetingService;
 import org.exoplatform.codefest.entity.Meeting;
 import org.exoplatform.codefest.entity.Page;
@@ -19,6 +22,8 @@ import javax.jcr.NodeIterator;
 import javax.jcr.Session;
 import javax.jcr.query.Query;
 import javax.jcr.query.QueryManager;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -161,12 +166,17 @@ public class MeetingServiceImpl implements MeetingService {
       queryBuilder.append(" OR CONTAINS(" + EXO_PROP_MEETING_PARTICIPANT + ", '" + username + "')");
       queryBuilder.append(") ");
       queryBuilder.append(" AND (" + EXO_PROP_MEETING_STATUS + " = '" + status + "' )");
-      queryBuilder.append(" ORDER BY " + EXO_PROP_MEETING_DATE_CREATED + " " + page.getSort());
-      System.out.println(queryBuilder.toString());
+      String sortCriterion = "";
+      if (page != null) sortCriterion = page.getSort();
+      if (StringUtils.isEmpty(sortCriterion)) sortCriterion = "ASC";
+      queryBuilder.append(" ORDER BY " + EXO_PROP_MEETING_DATE_CREATED + " " + sortCriterion);
+      log.info("Query to getMeetings: " + queryBuilder.toString());
       QueryManager queryManager = session.getWorkspace().getQueryManager();
       QueryImpl query = (QueryImpl) queryManager.createQuery(queryBuilder.toString(), Query.SQL);
-      query.setLimit(page.getLimit());
-      query.setOffset(page.getOffset());
+      if (page != null) {
+        query.setLimit(page.getLimit());
+        query.setOffset(page.getOffset());
+      }
       NodeIterator nodes = query.execute().getNodes();
       while (nodes.hasNext()) {
         Meeting meeting = new Meeting();
@@ -176,8 +186,7 @@ public class MeetingServiceImpl implements MeetingService {
       }
       return meetings;
     } catch (Exception ex) {
-      ex.printStackTrace();
-      log.error(ex.getMessage());
+      log.error("Exception in getMeetings.", ex);
     }
     return null;
   }
@@ -239,10 +248,11 @@ public class MeetingServiceImpl implements MeetingService {
   public Meeting addParticipant(Meeting meeting, String username) throws Exception{
     Session session = getSession();
     List<String> participants = new ArrayList<String>();
+    Type listTypeOfString = new TypeToken<List<String>>() {}.getType();
     Node meetingNode = (Node) session.getItem(meeting.getJcrPath());
     if (meetingNode.hasProperty(EXO_PROP_MEETING_PARTICIPANT)) {
       String participantOrigin = meetingNode.getProperty(EXO_PROP_MEETING_PARTICIPANT).getString();
-      participants = gson.fromJson(participantOrigin, participants.getClass());
+      participants = gson.fromJson(participantOrigin, listTypeOfString);
       if(!participants.contains(username)) participants.add(username);
       meetingNode.setProperty(EXO_PROP_MEETING_PARTICIPANT, gson.toJson(participants));
       meetingNode.getParent().save();
@@ -256,10 +266,11 @@ public class MeetingServiceImpl implements MeetingService {
   public Meeting removeParticipant(Meeting meeting, String username) throws Exception {
     Session session = getSession();
     List<String> participants = new ArrayList<String>();
+    Type listTypeOfString = new TypeToken<List<String>>() {}.getType();
     Node meetingNode = (Node) session.getItem(meeting.getJcrPath());
     if (meetingNode.hasProperty(EXO_PROP_MEETING_PARTICIPANT)) {
       String participantOrigin = meetingNode.getProperty(EXO_PROP_MEETING_PARTICIPANT).getString();
-      participants = gson.fromJson(participantOrigin, participants.getClass());
+      participants = gson.fromJson(participantOrigin, listTypeOfString);
       if(participants.contains(username)) participants.remove(username);
       meetingNode.setProperty(EXO_PROP_MEETING_PARTICIPANT, gson.toJson(participants));
       meetingNode.getParent().save();
@@ -272,7 +283,11 @@ public class MeetingServiceImpl implements MeetingService {
   private void meetingNodeToObject(Meeting meeting, Node node) throws Exception{
     List<TimeOption> timeOptions = new ArrayList<TimeOption>();
     List<String> participants = new ArrayList<String>();
-    List<UserVoted> userVoteds = new ArrayList<UserVoted>();
+    List<UserVoted> userVotes = new ArrayList<UserVoted>();
+
+    Type listTypeOfString = new TypeToken<List<String>>() {}.getType();
+    Type listTypeOfTimeOption = new TypeToken<List<TimeOption>>() {}.getType();
+    Type listTypeOfUserVote = new TypeToken<List<UserVoted>>() {}.getType();
 
     if (node.hasProperty(EXO_PROP_MEETING_TITLE))
       meeting.setTitle(node.getProperty(EXO_PROP_MEETING_TITLE).getString());
@@ -288,17 +303,23 @@ public class MeetingServiceImpl implements MeetingService {
       meeting.setOwner(node.getProperty(EXO_PROP_MEETING_OWNER).getString());
     if (node.hasProperty(EXO_PROP_MEETING_DOC_PATH))
       meeting.setDocumentPath(node.getProperty(EXO_PROP_MEETING_DOC_PATH).getString());
-    if (node.hasNode(EXO_PROP_MEETING_VALIDATION))
+    if (node.hasProperty(EXO_PROP_MEETING_VALIDATION))
       meeting.setMeetingValidation(node.getProperty(EXO_PROP_MEETING_VALIDATION).getLong());
-    if (node.hasNode(EXO_PROP_MEETING_TIME_OPTION))
-      meeting.setTimeOptions(gson.fromJson(node.getProperty(EXO_PROP_MEETING_TIME_OPTION).getString(), timeOptions.getClass()));
-    if (node.hasNode(EXO_PROP_MEETING_PARTICIPANT))
-      meeting.setParticipant(gson.fromJson(node.getProperty(EXO_PROP_MEETING_PARTICIPANT).getString(), participants.getClass()));
-    if (node.hasNode(EXO_PROP_MEETING_USER_VOTED))
-      meeting.setUserVotes(gson.fromJson(node.getProperty(EXO_PROP_MEETING_USER_VOTED).getString(), userVoteds.getClass()));
-    if (node.hasNode(EXO_PROP_MEETING_DATE_CREATED))
+    if (node.hasProperty(EXO_PROP_MEETING_PARTICIPANT)) {
+      participants = gson.fromJson(node.getProperty(EXO_PROP_MEETING_PARTICIPANT).getString(), listTypeOfString);
+      meeting.setParticipant(participants);
+    }
+    if (node.hasProperty(EXO_PROP_MEETING_TIME_OPTION)) {
+      timeOptions = gson.fromJson(node.getProperty(EXO_PROP_MEETING_TIME_OPTION).getString(), listTypeOfTimeOption);
+      meeting.setTimeOptions(timeOptions);
+    }
+    if (node.hasProperty(EXO_PROP_MEETING_USER_VOTED)) {
+      userVotes = gson.fromJson(node.getProperty(EXO_PROP_MEETING_USER_VOTED).getString(), listTypeOfUserVote);
+      meeting.setUserVotes(userVotes);
+    }
+    if (node.hasProperty(EXO_PROP_MEETING_DATE_CREATED))
       meeting.setDateCreated(node.getProperty(EXO_PROP_MEETING_DATE_CREATED).getLong());
-    if (node.hasNode(EXO_PROP_MEETING_DATE_MODIFIED))
+    if (node.hasProperty(EXO_PROP_MEETING_DATE_MODIFIED))
       meeting.setDateModified(node.getProperty(EXO_PROP_MEETING_DATE_MODIFIED).getLong());
   }
 }
