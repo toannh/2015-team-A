@@ -14,8 +14,8 @@
     jsManager.require("SHARED/jquery", "jq")
     .require("SHARED/iphoneStyleCheckboxTeamA", "iphoneStyle")
     .addScripts("jq('input.yesno').each(function(){jq(this).iphoneStyle(" +
-    "{disabledClass: 'switchBtnDisabled', containerClass: 'uiSwitchBtn', labelOnClass: 'switchBtnLabelOn', labelOffClass: 'switchBtnLabelOff', handleClass: 'switchBtnHandle', checkedLabel:'YES',uncheckedLabel:'NO', onChange: function(el, val){jq(this).trigger('click');}});" +
-    "jq(this).change(function(){alert('test');jq(this).trigger('click');});});");
+    "{disabledClass: 'switchBtnDisabled', containerClass: 'uiSwitchBtn', labelOnClass: 'switchBtnLabelOn', labelOffClass: 'switchBtnLabelOff', handleClass: 'switchBtnHandle', checkedLabel:'YES',uncheckedLabel:'NO', onChange: function(el, val){jq(el).trigger('click');}});" +
+    "jq(this).change(function(){jq(this).trigger('click');});});");
 %>
 <div class="uiActionBar uiGrayLightBox mgB15 clearfix">
     <div class="pull-left btnLeft">

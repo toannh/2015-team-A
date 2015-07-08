@@ -8,8 +8,6 @@
         })
 
         $('input.yesno').each(function(){
-            console.log(this);
-            alert('test');
             $(this).iphoneStyle({
                 disabledClass: 'switchBtnDisabled',
                 containerClass: 'uiSwitchBtn',
