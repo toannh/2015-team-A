@@ -228,7 +228,7 @@
 			</tfoot>
 		</table>
 		<div class="text-right">
-			<button class="btn btn-primary">Create Meeting</button>
+			<button class="btn btn-primary"><i class="uiIconTick"></i>&nbsp;Select Time</button>
 		</div>
 		<hr>
 		<div class="row-fluid detail-meeting">
@@ -293,6 +293,7 @@
 		<div class="text-right">
 			<button class="btn"><i class="uiIconEdit uiIconLightGray"></i>&nbsp;Edit</button>
 			<button class="btn"><i class="uiIconDelete uiIconLightGray"></i>&nbsp;Delete</button>
+			<button class="btn btn-primary"><i class="uiIconClock  uiIconDarkGray"></i>&nbsp;Create Meeting</button>
 		</div>
 	</div>
 </div>

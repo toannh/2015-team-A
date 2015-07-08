@@ -8,6 +8,11 @@
 		}
 	}
 	.table {
+		.row-white {
+			td {
+				background-color: #fff;
+			}
+		}
 		.meeting, .active, .me {
 			td {
 				background-color: #D7F8D5;
@@ -24,6 +29,12 @@
 		}
 	}
 	.table-metting {
+		.delete-all {
+			margin-right: 8px;
+		}
+		&.card-view {
+			table-layout: fixed;
+		}
 		.row-action {
 			th, td {
 				text-align: center;
@@ -51,7 +62,7 @@
 			}
 		}
 		th a {
-			display: block;
+			display: inline-block;
 			color: #333;
 			.uiIconMiniArrowUp, .uiIconMiniArrowDown {
 				margin-top: 3px;
@@ -167,7 +178,14 @@
 		padding-top: 10px;
 	}
 }
-
+.cart-meeting {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	float: left;
+	> .inner {
+		padding: 10px;
+	}
+}
 .UIComboboxList {
 	padding-top: 28px;
 	padding-left: 7px;
