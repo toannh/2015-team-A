@@ -85,7 +85,13 @@ import org.exoplatform.codefest.utils.Utils;
                 <%
                 def pendingMeetings = uicomponent.getPendingMeeting();
                 if (pendingMeetings.size() <= 0) {%>
-                <tr><td style="font-size: 13px;"><%=uiform.getLabel('noData')%></td></tr>
+                <tr class="row-white">
+                    <td colspan="5" class="center">
+                        <br>
+                        <h4>There is no meeting.</h4>
+                        <br>
+                    </td>
+                </tr>
                 <%} else {
                 for (meeting in pendingMeetings) {
                   String title = meeting.getTitle();
@@ -119,146 +125,6 @@ import org.exoplatform.codefest.utils.Utils;
                     </tr>
                 </tbody>
                 <%} }%>
-                <tbody>
-                    <tr>
-                        <td>
-                            <span class="uiCheckbox">
-                             <input type="checkbox" class="checkbox">
-                             <span></span>
-                         </span>
-                        </td>
-                        <td><a href="#" class="meeting-name">Lorem ipsum dolor sit amet</a></td>
-                        <td>
-                            <div><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</div>
-                        </td>
-                        <td>
-                            <span class="uiMention">giangnt</span>
-                            <span class="uiMention">toanhn</span>
-                        </td>
-                        <td class="center">
-                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
-                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Delete"><i class="uiIconDelete"></i></a>
-                        </td>
-                    </tr>
-                    <tr class="meeting">
-                        <td>
-                            <span class="uiCheckbox">
-                             <input type="checkbox" class="checkbox">
-                             <span></span>
-                         </span>
-                        </td>
-                        <td><a href="#" class="meeting-name">In non risus quis libero convallis</a></td>
-                        <td>
-                            <ol class="list-time">
-                                <li class="muted"><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</li>
-                                <li><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</li>
-                                <li><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</li>
-                            </ol>
-                        </td>
-                        <td>
-                            <span class="uiMention">giangnt</span>
-                            <span class="uiMention">toanhn</span>
-                        </td>
-                        <td class="center">
-                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
-                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Delete"><i class="uiIconDelete"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="uiCheckbox">
-                             <input type="checkbox" class="checkbox">
-                             <span></span>
-                         </span>
-                        </td>
-                        <td><a href="#" class="meeting-name">Aenean non eleifend magna</a></td>
-                        <td>
-                            <div><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</div>
-                        </td>
-                        <td>
-                            <span class="uiMention">giangnt</span>
-                            <span class="uiMention">toanhn</span>
-                        </td>
-                        <td class="center">
-                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
-                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Delete"><i class="uiIconDelete"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="uiCheckbox">
-                             <input type="checkbox" class="checkbox">
-                             <span></span>
-                         </span>
-                        </td>
-                        <td><a href="#" class="meeting-name">Scum Meeting week 25</a></td>
-                        <td>
-                            <div><span class="muted">Form</span> 14:00 PM <span class="muted">to</span> 16:00 PM <span class="muted">on</span> 06/20/2015</div>
-                        </td>
-                        <td>
-                            <span class="uiMention">giangnt</span>
-                            <span class="uiMention">toanhn</span>
-                        </td>
-                        <td class="center">
-                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="View Detail"><i class="uiIconPreview"></i></a>
-                            <a href="#" data-placement="bottom" rel="tooltip" class="actionIcon" data-original-title="Delete"><i class="uiIconDelete"></i></a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="uiGrid table table-hover table-striped table-metting">
-                <thead>
-                    <tr class="row-action">
-                        <th colspan="2" class="left">
-                            <a href="#" class="actionIcon delete-all" data-placement="bottom" rel="tooltip" data-original-title="Delete all meeting selected"><i class="uiIconDelete uiIconLightGray"></i></a>
-                            <div class="btn-group">
-                                <a class="btn active" href="#" ><i class="uiIconEcmsViewList uiIconEcmsLightGray" data-placement="bottom" rel="tooltip" data-original-title="List View"></i></a>
-                                <a class="btn" href="#" ><i class="uiIconEcmsViewIcons uiIconEcmsLightGray" data-placement="bottom" rel="tooltip" data-original-title="Grid view"></i></a>
-                            </div>
-                        </th>
-                        <th>
-                            <div class="control-time">
-                                <a href="#" class="pull-left"><i class="uiIconMiniArrowLeft uiIconLightGray"></i></a>
-                                <span>Week 28, 6 - 12 July 2015</span>
-                                <a href="#" class="pull-right"><i class="uiIconMiniArrowRight uiIconLightGray"></i></a>
-                            </div></th>
-                        <th colspan="2" class="right">
-                            <button class="btn btn-default">Today</button>
-                            <ul class="btn-group">
-                                <li class="btn ">
-                                    <a href="#">Day</a>
-                                </li>
-                                <li class="btn active">
-                                    <a href="#">Week</a>
-                                </li>
-                                <li class="btn">
-                                    <a href="#">Month</a>
-                                </li>
-                            </ul>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th class="select-column">
-                            <span class="uiCheckbox">
-                             <input type="checkbox" class="checkbox">
-                             <span></span>
-                         </span>
-                        </th>
-                        <th class="name-column"><a href="#">Name <i class="uiIconMiniArrowUp uiIconLightGray pull-right"></i>
-                        <th class="time-column">Time</th>
-                        <th class="member-column">Member</th>
-                        <th class="action-column center">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="row-white">
-                        <td colspan="5" class="center">
-                            <br>
-                            <h4>There is no meeting !</h4>
-                            <br>
-                        </td>
-                    </tr>
-                </tbody>
             </table>
         </div>
         <!-- TAB 2 -->
